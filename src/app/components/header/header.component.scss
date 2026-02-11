@@ -1,0 +1,65 @@
+/* A gomb alap stílusa */
+.navbar-toggler {
+  border: none; /* Keret eltüntetése */
+  padding: 0.5rem;
+  
+  &:focus {
+    box-shadow: none; /* Kék keret eltüntetése kattintáskor */
+    outline: none;
+  }
+}
+
+/* A vonalak konténere */
+.hamburger-lines {
+  width: 30px;
+  height: 24px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+  /* A 3 vonal (span) stílusa */
+  span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--secondary-grey); /* A te szürke színed */
+    border-radius: 3px;
+    transition: all 0.3s ease-in-out; /* Animáció sebessége */
+    transform-origin: left center;
+  }
+}
+
+/* --- ANIMÁCIÓK --- */
+
+/* Amikor a menü NYITVA van (nincs rajta a 'collapsed' osztály) */
+.navbar-toggler:not(.collapsed) {
+  
+  .hamburger-lines {
+    /* 1. vonal (felső) -> X egyik szára */
+    span:nth-child(1) {
+      transform: rotate(45deg) translate(2px, -1px);
+      background-color: var(--primary-blue); /* Kék lesz, ha nyitva van */
+    }
+
+    /* 2. vonal (középső) -> Eltűnik */
+    span:nth-child(2) {
+      opacity: 0;
+      width: 0;
+    }
+
+    /* 3. vonal (alsó) -> X másik szára */
+    span:nth-child(3) {
+      transform: rotate(-45deg) translate(2px, 0px);
+      background-color: var(--primary-blue); /* Kék lesz, ha nyitva van */
+    }
+  }
+}
+
+/* Amikor a menü ZÁRVA van (alapállapot, van 'collapsed' osztály) */
+/* Itt csak azt állítjuk be, hogy a hover effektus működjön */
+.navbar-toggler.collapsed:hover {
+  .hamburger-lines span {
+    background-color: var(--primary-blue); /* Rávitelkor kiszíneződik */
+  }
+}

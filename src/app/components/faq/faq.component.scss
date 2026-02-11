@@ -1,0 +1,55 @@
+/* Háttér finomítása (opcionális, ha nincs a globálisban) */
+.bg-light-pattern {
+  background-color: #f8f9fa; /* Nagyon halvány szürke, hogy a fehér kártyák kiugorjanak */
+}
+
+.custom-accordion {
+  .accordion-item {
+    background-color: #fff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    
+    /* Hover effekt: kicsit kiemelkedik, ha ráviszed az egeret */
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 .5rem 1rem rgba(0,0,0,.08) !important;
+    }
+  }
+
+  .accordion-button {
+    background-color: #fff; /* Alapból fehér */
+    color: var(--secondary-grey);
+    box-shadow: none !important; /* Kék keret eltüntetése kattintáskor */
+    font-size: 1.1rem;
+    
+    /* A lenyíló nyíl (chevron) színezése */
+    &::after {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%232C7BE5'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+      transition: transform 0.3s ease;
+    }
+
+    /* Amikor ki van nyitva a kérdés */
+    &:not(.collapsed) {
+      color: var(--primary-blue); /* Kék szöveg */
+      background-color: rgba(44, 123, 229, 0.05); /* Nagyon halvány kék háttér */
+      box-shadow: inset 4px 0 0 var(--primary-blue) !important; /* Bal oldali kék csík jelölő */
+      font-weight: 700; // Vastagabb betű
+
+      /* Az ikon is legyen teljesen élénk */
+      i {
+        opacity: 1 !important;
+      }
+    }
+
+    /* Ikon stílusa alapállapotban */
+    i {
+      font-size: 1.2rem;
+      transition: opacity 0.3s;
+    }
+  }
+
+  .accordion-body {
+    background-color: #fff;
+    /* Ha nyitva van, a body háttere maradjon fehér, vagy legyen halványkék, ízlés kérdése. 
+       Most fehéren hagyjuk a tisztaság érdekében. */
+  }
+}

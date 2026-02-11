@@ -1,0 +1,30 @@
+/* src/styles.scss */
+:root {
+  --primary-blue: #2C7BE5; /* A logó kékje */
+  --secondary-grey: #4A4A4A; /* A logó szürkéje */
+  --bs-primary: #2C7BE5; /* Bootstrap primary felülírása */
+  --bs-primary-rgb: 44, 123, 229;
+}
+
+body {
+  font-family: 'Segoe UI', Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--secondary-grey);
+}
+
+/* Egyedi osztályok, amiket a Bootstrap mellé használunk */
+.text-brand-blue {
+  color: var(--primary-blue);
+}
+
+.bg-brand-blue {
+  background-color: var(--primary-blue);
+}
+
+.btn-primary {
+  background-color: var(--primary-blue);
+  border-color: var(--primary-blue);
+  &:hover {
+    background-color: darken(#2C7BE5, 10%);
+    border-color: darken(#2C7BE5, 10%);
+  }
+}

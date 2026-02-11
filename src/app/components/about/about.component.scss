@@ -1,0 +1,65 @@
+/* Alap stílusok */
+.section-title {
+  color: var(--primary-blue);
+  font-weight: 700;
+  font-size: 2.5rem;
+}
+
+.about-text p {
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+}
+
+
+
+/* Kép stílusa */
+.main-img {
+  max-width: 100%;
+  height: auto;
+  border: 5px solid #fff; /* Fehér keret a kép körül */
+}
+
+/* Gomb animáció */
+.hover-scale {
+  transition: transform 0.2s;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+/* =========================================
+   MOBIL OPTIMALIZÁLÁS
+   ========================================= */
+@media (max-width: 991px) {
+  
+  /* Mobilon a gomb legyen teljes szélességű */
+  .btn-cta-mobile {
+    width: 100%; 
+    display: block;
+  }
+
+  /* Szöveg sorkizárása mobilon a szebb megjelenésért */
+  .about-text {
+    text-align: justify;
+    font-size: 0.95rem;
+  }
+
+  /* Kisebb címsor */
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Kép méretezése mobilon */
+  .main-img {
+    max-height: 250px; /* Ne legyen túl magas, hogy látszódjon a szöveg is */
+    object-fit: cover;
+    width: 100%;
+    border-radius: 15px !important;
+  }
+  
+  /* Kicsit több hely a kép és a szöveg között */
+  .image-wrapper {
+    margin-bottom: 10px;
+  }
+}

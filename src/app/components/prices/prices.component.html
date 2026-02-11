@@ -1,0 +1,122 @@
+<section id="prices" class="py-5 bg-white">
+  <div class="container">
+    
+    <div class="text-center mb-5">
+      <h2 class="fw-bold text-brand-blue display-5">Zsákos Sittszállítás Árak</h2>
+      <p class="text-muted lead">Válassza ki a szállítás helyszínét az árakhoz:</p>
+    </div>
+
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-8 text-center">
+        <div class="btn-group location-switcher shadow-sm" role="group">
+          
+          <button type="button" 
+                  class="btn btn-lg px-4 px-md-5 py-3 fw-bold location-btn" 
+                  [ngClass]="{'active': selectedLocation === 'budapest'}"
+                  (click)="setLocation('budapest')">
+            <i class="bi bi-geo-alt-fill me-2"></i>Budapest
+          </button>
+          
+          <button type="button" 
+                  class="btn btn-lg px-4 px-md-5 py-3 fw-bold location-btn" 
+                  [ngClass]="{'active': selectedLocation === 'pest'}"
+                  (click)="setLocation('pest')">
+            <i class="bi bi-map-fill me-2"></i>Pest megye
+          </button>
+
+        </div>
+
+        <p class="mt-4 text-brand-blue fw-bold fs-5 fade-in">
+          <i class="bi bi-arrow-down-circle me-2"></i>
+          Mutatom a {{ selectedLocation === 'budapest' ? 'budapesti' : 'Pest megyei' }} árakat:
+        </p>
+      </div>
+    </div>
+
+    <div class="row justify-content-center gy-4 mb-5">
+      
+      <div class="col-md-6 col-lg-5">
+        <div class="price-card h-100 text-center p-4 p-lg-5">
+          
+          <div class="icon-circle mb-4 mx-auto bg-blue-soft text-brand-blue">
+            <i class="bi bi-bricks"></i>
+          </div>
+          
+          <h3 class="fw-bold mb-2 fs-2">Inert hulladék</h3>
+          <p class="text-secondary mb-4">(tiszta sitt, tégla, beton, csempe)</p>
+          
+          <div class="price-wrapper mb-4">
+            <div class="current-price text-brand-blue fw-bold display-4">
+              {{ pricing[selectedLocation].inert }} Ft <span class="fs-4 text-muted fw-normal">/ zsák</span>
+            </div>
+            <p class="text-muted small mt-1">Földszintről vagy lifttel</p>
+          </div>
+
+          <div class="floor-surcharge py-3 px-2 rounded-3 mb-3">
+            <span class="d-block text-secondary small text-uppercase fw-bold mb-1">Emeleti díj (lépcsőzés esetén)</span>
+            <div class="d-flex align-items-center justify-content-center text-dark fw-bold fs-5">
+              <i class="bi bi-arrow-up-circle-fill text-brand-blue me-2"></i>
+              + {{ pricing[selectedLocation].floor }} Ft / emelet / zsák
+            </div>
+          </div>
+
+          <p class="text-muted small fst-italic mb-0">Max. 30kg / zsák</p>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-5">
+        <div class="price-card h-100 text-center p-4 p-lg-5">
+          
+          <div class="icon-circle mb-4 mx-auto bg-blue-soft text-brand-blue">
+            <i class="bi bi-trash3-fill"></i>
+          </div>
+          
+          <h3 class="fw-bold mb-2 fs-2">Vegyes hulladék</h3>
+          <p class="text-secondary mb-4">(lom, papír, műanyag, fa, gipszkarton)</p>
+          
+          <div class="price-wrapper mb-4">
+            <div class="current-price text-brand-blue fw-bold display-4">
+              {{ pricing[selectedLocation].mixed }} Ft <span class="fs-4 text-muted fw-normal">/ zsák</span>
+            </div>
+            <p class="text-muted small mt-1">Földszintről vagy lifttel</p>
+          </div>
+
+           <div class="floor-surcharge py-3 px-2 rounded-3 mb-3">
+            <span class="d-block text-secondary small text-uppercase fw-bold mb-1">Emeleti díj (lépcsőzés esetén)</span>
+            <div class="d-flex align-items-center justify-content-center text-dark fw-bold fs-5">
+              <i class="bi bi-arrow-up-circle-fill text-brand-blue me-2"></i>
+              + {{ pricing[selectedLocation].floor }} Ft / emelet / zsák
+            </div>
+          </div>
+
+          <p class="text-muted small fst-italic mb-0">Max. 20kg / zsák</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center">
+        
+        <p class="fst-italic text-muted mb-4 small">
+          (Áraink bruttó árak, az ÁFA-t tartalmazzák.)
+        </p>
+
+        <div class="info-box-dashed p-4 mb-5 mx-auto text-start text-md-center">
+          <p class="mb-0 fw-medium lh-lg">
+            <i class="bi bi-info-circle-fill text-brand-blue me-2"></i>
+            <strong>Kiszállási díj:</strong><br>
+            Budapesten: <strong>INGYENES</strong>.<br>
+            Pest megyében: <strong>Távolságfüggő</strong> (kérjen ajánlatot).<br>
+            Minimális rendelési érték: <strong>12.000 Ft</strong>.
+          </p>
+        </div>
+
+        <a href="tel:+36301234567" class="btn btn-primary btn-lg px-5 py-3 rounded-pill fw-bold shadow-sm hover-lift">
+          Megrendelem a szállítást
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>

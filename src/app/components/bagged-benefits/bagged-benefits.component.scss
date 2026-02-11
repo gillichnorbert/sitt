@@ -1,0 +1,37 @@
+.bagged-section {
+  background-color: var(--primary-blue); /* A logód kékje */
+  color: #ffffff;
+}
+
+.benefit-card {
+  background-color: rgba(255, 255, 255, 0.1); /* Áttetsző fehér háttér */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Halvány keret */
+  border-radius: 15px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+
+  /* Ikon stílusa */
+  .icon-wrapper {
+    background-color: #ffffff;
+    color: var(--primary-blue); /* Az ikon kék legyen */
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  /* Hover effektus: ha ráviszed az egeret, kifehéredik kicsit */
+  &:hover {
+    transform: translateY(-5px);
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* Mobilon legyen egy kis térköz az alján */
+@media (max-width: 768px) {
+  .bagged-section {
+    padding-bottom: 40px;
+  }
+}

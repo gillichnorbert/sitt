@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" routerLink="/">
+      <img src="assets/logo.png" alt="SittTransport" height="50" class="d-inline-block align-text-top me-2">
+    </a>
+
+    <button class="navbar-toggler custom-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="hamburger-lines">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-center">
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/kezdolap" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Kezdőlap</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/szolgaltatasok" routerLinkActive="active">Szolgáltatásaink</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/araink" routerLinkActive="active">Áraink</a>
+        </li>
+
+        <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+          <a href="tel:+36301234567" class="btn btn-primary rounded-pill px-4 fw-bold">
+            <i class="bi bi-telephone-fill me-2"></i>Hívjon most
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

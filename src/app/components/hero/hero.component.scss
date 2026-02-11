@@ -1,0 +1,92 @@
+:root {
+  --primary-blue: #2C7BE5;
+}
+
+.text-brand-blue {
+  color: var(--primary-blue);
+}
+
+.bg-blue-soft {
+  background-color: rgba(44, 123, 229, 0.1);
+}
+
+.hero-section {
+  background-color: #fcfcfc;
+  padding: 80px 0;
+  min-height: 80vh;
+}
+
+/* Dekoratív kör */
+.hero-bg-shape {
+  position: absolute;
+  top: -10%;
+  right: -5%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(44,123,229,0.05) 0%, rgba(255,255,255,0) 70%);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+/* Kép stílusa */
+.hero-img {
+  border-radius: 450px; /* Asztalin kicsit szögletesebb */
+  max-height: 450px;
+  width: auto;
+
+}
+
+
+/* =========================================
+   MOBIL OPTIMALIZÁLÁS
+   ========================================= */
+@media (max-width: 991px) {
+  
+  .hero-section {
+    min-height: auto;
+    padding: 30px 0 50px 0;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-bottom: 0.5rem; /* Kisebb hely a cím alatt, mert jön a kép */
+    
+    br {
+      display: none;
+    }
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    margin-top: 1rem; /* Hely a kép után */
+  }
+
+  /* Kép stílusa mobilon */
+  .hero-img {
+    display: none;
+    max-height: 200px; /* Mobilon legyen látható méretű */
+    border-radius: 10px;
+
+  }
+  
+  /* A kép konténere mobilon */
+  .image-container {
+    padding: 0 10px;
+  }
+
+  /* Gombok */
+  .hero-btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 0;
+  }
+
+  .email-btn {
+    font-size: 0.95rem;
+  }
+}

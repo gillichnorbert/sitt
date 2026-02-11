@@ -1,0 +1,68 @@
+/* =========================================
+   LEBEGŐ HÍVÁS GOMB (FAB)
+   ========================================= */
+.mobile-call-fab {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 9999; /* Legyen mindennek a tetején */
+  
+  width: 65px;
+  height: 65px;
+  background-color: #28a745; /* Zöld szín, mert hívásra ösztönöz (vagy használd a var(--primary-blue)-t) */
+  color: white;
+  border-radius: 50%;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 28px;
+  
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+  
+  /* Pulzáló animáció, hogy észrevegyék */
+  animation: pulse-green 2s infinite;
+
+  &:active {
+    transform: scale(0.9); /* Kattintáskor picit összemegy */
+  }
+
+  /* Kis szövegbuborék mellette (opcionális) */
+  .tooltip-text {
+    position: absolute;
+    right: 75px;
+    background-color: #333;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+}
+
+/* Animáció definíciója */
+@keyframes pulse-green {
+  0% {
+    box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(40, 167, 69, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
+  }
+}
+
+/* =========================================
+   ASZTALI GÉPEN ELREJTÉS
+   ========================================= */
+@media (min-width: 992px) {
+  .mobile-call-fab {
+    display: none; /* Nagy képernyőn ne zavarjon */
+  }
+}

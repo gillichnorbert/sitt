@@ -1,0 +1,150 @@
+/* =========================================
+   VÁLTOZÓK ÉS SEGÉDOSZTÁLYOK
+   ========================================= */
+:root {
+  --primary-blue: #2C7BE5;
+}
+
+.text-brand-blue {
+  color: var(--primary-blue);
+}
+
+.bg-brand-blue {
+  background-color: var(--primary-blue);
+}
+
+.bg-blue-soft {
+  background-color: rgba(44, 123, 229, 0.1);
+}
+
+/* =========================================
+   NINCS KONTÉNER DOBOZ (ALERT BOX)
+   ========================================= */
+.alert-box-custom {
+  background-color: #fff8f0; /* Nagyon halvány narancs/sárgás háttér */
+  border: 1px solid #ffeeba;
+  
+  h2 {
+    color: #333;
+  }
+}
+
+/* --- IKON IGAZÍTÁS JAVÍTÁSA --- */
+.no-container-icon {
+  width: 100px;
+  height: 100px;
+  
+  /* Flexbox a tökéletes középhez */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Az X finomhangolása, hogy ne csússzon le */
+  .bi-x-lg {
+    margin-top: -5px; /* Vizuális korrekció felfelé */
+  }
+}
+
+/* =========================================
+   SZOLGÁLTATÁS KÁRTYÁK
+   ========================================= */
+.service-card {
+  background-color: #fff;
+  transition: all 0.3s ease;
+  border-color: #f0f0f0 !important;
+
+  .icon-box {
+    width: 70px;
+    height: 70px;
+  }
+
+  /* Listaelemek stílusa */
+  ul li {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* =========================================
+   ANIMÁCIÓK
+   ========================================= */
+/* Kártya lebegés */
+.hover-lift {
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    border-color: var(--primary-blue) !important;
+  }
+}
+
+/* Gomb nagyítás */
+.hover-scale {
+  transition: transform 0.2s;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+/* =========================================
+   MOBIL NÉZET OPTIMALIZÁLÁS (max 768px)
+   ========================================= */
+@media (max-width: 768px) {
+  
+  /* 1. A sárga figyelmeztető doboz kompaktabb legyen */
+  .alert-box-custom {
+    padding: 1.5rem !important;
+    text-align: center;
+    
+    h2 {
+      font-size: 1.5rem;
+      margin-top: 10px;
+    }
+
+    /* A zöld pipás címkék (badge) igazítása */
+    .d-flex {
+      justify-content: center;
+      flex-direction: column;
+      gap: 10px !important;
+    }
+    
+    .badge {
+      width: 100%;
+      padding: 10px !important;
+    }
+  }
+
+  /* 2. Az áthúzott konténer ikon igazítása */
+  .no-container-icon {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    transform: scale(0.9);
+  }
+
+  /* 3. Szolgáltatás kártyák finomítása */
+  .service-card {
+    padding: 1.5rem !important;
+    text-align: center;
+
+    ul li {
+      justify-content: center;
+    }
+    
+    .icon-box {
+      margin-bottom: 1rem !important; 
+    }
+  }
+
+  /* 4. A kék CTA sáv az alján */
+  .bg-brand-blue {
+    padding: 2rem !important;
+    
+    h3 {
+      font-size: 1.5rem;
+    }
+    
+    .btn {
+      width: 100%;
+    }
+  }
+}

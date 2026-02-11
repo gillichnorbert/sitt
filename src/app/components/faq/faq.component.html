@@ -1,0 +1,41 @@
+<section id="faq" class="py-5 bg-light-pattern">
+  <div class="container">
+    
+    <div class="text-center mb-5">
+      <h2 class="fw-bold text-brand-blue display-6">Gyakran Ismételt Kérdések</h2>
+
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-9 col-xl-8">
+        
+        <div class="accordion custom-accordion" id="accordionFAQ">
+          
+          @for (item of faqs; track item.question; let i = $index) {
+            <div class="accordion-item shadow-sm mb-3 border-0 rounded-3 overflow-hidden">
+              <h2 class="accordion-header" [id]="'heading' + i">
+                <button class="accordion-button collapsed py-3 fw-semibold" type="button" data-bs-toggle="collapse" 
+                        [attr.data-bs-target]="'#collapse' + i" aria-expanded="false" [attr.aria-controls]="'collapse' + i">
+                  <i class="bi bi-question-circle-fill me-3 text-brand-blue opacity-75"></i>
+                  <span>{{ item.question }}</span>
+                </button>
+              </h2>
+              <div [id]="'collapse' + i" class="accordion-collapse collapse" [attr.aria-labelledby]="'heading' + i" data-bs-parent="#accordionFAQ">
+                <div class="accordion-body text-secondary lh-lg pb-4 px-4 px-md-5">
+                  {{ item.answer }}
+                </div>
+              </div>
+            </div>
+          }
+
+        </div>
+        <div class="text-center mb-5">
+      <p class="text-muted lead">
+        Nem találta meg a választ? További kérdéseire szívesen válaszolunk telefonon!
+      </p>
+    </div>
+
+      </div>
+    </div>
+  </div>
+</section>
