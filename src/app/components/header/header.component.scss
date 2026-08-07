@@ -1,65 +1,211 @@
-/* A gomb alap stílusa */
-.navbar-toggler {
-  border: none; /* Keret eltüntetése */
-  padding: 0.5rem;
-  
-  &:focus {
-    box-shadow: none; /* Kék keret eltüntetése kattintáskor */
-    outline: none;
+/* =========================================
+   VERTREND STÍLUS: EGYEDI ANGULAR NAVIGÁCIÓ
+   ========================================= */
+
+$v-red: #a81c1c;
+$v-dark: #111111;
+$v-border: #e6e6e6;
+
+.v-logo {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: $v-dark;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+
+  .logo-badge {
+    background-color: $v-red;
+    color: #ffffff; /* Fehér szöveg a piros dobozban */
+    padding: 2px 8px;
+    margin-left: 4px;
+    /* border-radius: 4px; <- Ha picit kerekíteni akarod, bár a szögletes ütősebb */
+    transition: background-color 0.3s ease;
+  }
+
+  &:hover .logo-badge {
+    background-color: $v-dark; /* Ráhúzáskor a Move fekete dobozba kerül */
   }
 }
 
-/* A vonalak konténere */
-.hamburger-lines {
-  width: 30px;
-  height: 24px;
+/* --- ALAP NAVIGÁCIÓS SÁV --- */
+.v-navbar {
+  background-color: #ffffff;
+  border-bottom: 1px solid $v-border;
+  position: sticky;
+  top: 0;
+  z-index: 1050; /* A mobil menü felett kell lennie */
+  padding: 12px 0;
+}
+
+.v-nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.v-logo {
   position: relative;
+  z-index: 1051; /* Hogy nyitott menünél is kattintható legyen */
+}
+
+/* --- ASZTALI MENÜ (DESKTOP) --- */
+.v-desktop-menu {
+  align-items: center;
+}
+
+.v-nav-link {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: $v-dark;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  margin-left: 2.5rem;
+  position: relative;
+  padding: 5px 0;
+  transition: color 0.3s ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: $v-red;
+    transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+
+  &:hover, &.active {
+    color: $v-red;
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+/* --- GOMBOK --- */
+.v-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 28px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  border-radius: 0;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.v-btn-primary {
+  background-color: $v-dark;
+  color: #fff;
+  &:hover {
+    background-color: $v-red;
+    color: #fff;
+  }
+}
+
+/* --- EGYEDI HAMBURGER GOMB --- */
+.v-hamburger {
+  background: transparent;
+  border: none;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  
-  /* A 3 vonal (span) stílusa */
+  width: 32px;
+  height: 22px;
+  padding: 0;
+  z-index: 1051; /* A teljes képernyős menü felett kell lennie! */
+
+  &:focus {
+    outline: none;
+  }
+
   span {
     display: block;
     width: 100%;
     height: 3px;
-    background-color: var(--secondary-grey); /* A te szürke színed */
-    border-radius: 3px;
-    transition: all 0.3s ease-in-out; /* Animáció sebessége */
+    background-color: $v-dark;
+    border-radius: 0;
+    transition: all 0.3s ease-in-out;
     transform-origin: left center;
   }
-}
 
-/* --- ANIMÁCIÓK --- */
-
-/* Amikor a menü NYITVA van (nincs rajta a 'collapsed' osztály) */
-.navbar-toggler:not(.collapsed) {
-  
-  .hamburger-lines {
-    /* 1. vonal (felső) -> X egyik szára */
+  /* Kinyitott állapot (X forma) */
+  &.open {
     span:nth-child(1) {
-      transform: rotate(45deg) translate(2px, -1px);
-      background-color: var(--primary-blue); /* Kék lesz, ha nyitva van */
+      transform: rotate(45deg) translate(2px, -2px);
+      background-color: $v-red;
     }
-
-    /* 2. vonal (középső) -> Eltűnik */
     span:nth-child(2) {
       opacity: 0;
       width: 0;
     }
-
-    /* 3. vonal (alsó) -> X másik szára */
     span:nth-child(3) {
-      transform: rotate(-45deg) translate(2px, 0px);
-      background-color: var(--primary-blue); /* Kék lesz, ha nyitva van */
+      transform: rotate(-45deg) translate(2px, 2px);
+      background-color: $v-red;
     }
   }
 }
 
-/* Amikor a menü ZÁRVA van (alapállapot, van 'collapsed' osztály) */
-/* Itt csak azt állítjuk be, hogy a hover effektus működjön */
-.navbar-toggler.collapsed:hover {
-  .hamburger-lines span {
-    background-color: var(--primary-blue); /* Rávitelkor kiszíneződik */
+/* --- PRÉMIUM TELJES KÉPERNYŐS MOBIL MENÜ OVERLAY --- */
+.v-mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #ffffff;
+  z-index: 1040; /* A navbar alatt, de minden más felett */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Animáció beállítások */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-100%); /* Fentről csúszik le */
+  transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+
+  &.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
   }
+}
+
+.v-mobile-menu-content {
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.v-mobile-link {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: $v-dark;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 2px;
+  transition: color 0.3s ease;
+
+  &:hover, &.active {
+    color: $v-red;
+  }
+}
+
+.letter-spacing-1 {
+  letter-spacing: 1px;
 }

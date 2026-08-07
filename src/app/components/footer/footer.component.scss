@@ -1,105 +1,174 @@
-/* Fő konténer */
-.footer-section {
-  background-color: #111111; /* Koromfekete háttér */
-  padding: 60px 0 30px 0;
+/* =========================================
+   VERTREND STÍLUS: FOOTER (LÁBLÉC)
+   ========================================= */
+
+:host {
+  --v-red: #a81c1c;
+  --v-dark: #111111; /* Koromfekete */
+  --v-gray: #888888;
+}
+
+.v-text-red {
+  color: var(--v-red) !important;
+}
+
+.letter-spacing-1 {
+  letter-spacing: 1px;
+}
+
+.v-footer-section {
+  background-color: var(--v-dark);
+  padding: 80px 0 30px 0;
   color: #cccccc;
+  border-top: 4px solid var(--v-red); /* Finom piros csík a lábléc tetején */
 }
 
-.text-brand-blue {
-  color: var(--primary-blue);
-}
-
-.footer-text {
-  color: #adadad;
+.v-footer-text {
+  color: var(--v-gray);
   font-size: 0.95rem;
+  line-height: 1.8;
 }
 
-.footer-divider {
-  border-color: #444;
-  margin: 40px 0 20px 0;
-  opacity: 0.5;
+.v-footer-divider {
+  border-color: #333333;
+  margin: 50px 0 30px 0;
+  opacity: 1;
 }
 
-/* Linkek stílusa */
-.footer-links a {
-  color: #ffffff !important; /* Kényszerített fehér */
-  display: block;
-  margin-bottom: 10px;
-  transition: color 0.3s ease;
+/* --- NAVIGÁCIÓS LINKEK --- */
+.v-footer-links a {
+  color: #cccccc;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
   
   &:hover {
-    color: var(--primary-blue) !important; /* Hoverkor kék */
+    color: #ffffff;
+    transform: translateX(5px); /* Egeret ráhúzva picit jobbra csúszik */
+
+    i {
+      color: #ffffff !important;
+    }
+  }
+
+  i {
+    transition: color 0.3s ease;
   }
 }
 
-/* --- KAPCSOLAT GOMBOK JAVÍTÁSA --- */
-.contact-wrapper {
+/* --- KAPCSOLAT DOBOZOK (SZÖGLETES) --- */
+.v-contact-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Ez rendezi középre vízszintesen! */
   gap: 15px;
 }
 
-.contact-item {
-  display: flex;
+.v-contact-item {
+  display: inline-flex;
   align-items: center;
-  justify-content: center; /* Tartalom középre */
-  background-color: #222; /* Sötétszürke doboz háttér */
-  padding: 10px 20px;
-  border-radius: 50px; /* Lekerekített kapszula forma */
-  text-decoration: none; /* Aláhúzás levétele */
+  background-color: #1a1a1a;
+  padding: 12px 20px;
+  border: 1px solid #2a2a2a;
+  border-radius: 0; /* Szigorúan szögletes */
+  text-decoration: none;
   transition: all 0.3s ease;
-  width: fit-content; /* Csak akkora legyen, amekkora a szöveg */
-  border: 1px solid #333;
+  width: 100%;
+  max-width: 320px;
 
-  /* Ikon kör */
-  .icon-circle {
-    width: 35px;
-    height: 35px;
-    background-color: var(--primary-blue);
-    color: white;
-    border-radius: 50%;
+  /* Szögletes ikon doboz */
+  .v-icon-square {
+    width: 42px;
+    height: 42px;
+    background-color: #222222;
+    color: var(--v-red);
     display: flex;
     align-items: center;
     justify-content: center;
     margin-right: 15px;
-    font-size: 1rem;
-    transition: transform 0.3s;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    border-radius: 0;
   }
 
-  /* Szöveges rész */
   .text-content {
     text-align: left;
     
     .label {
       display: block;
       font-size: 0.75rem;
-      color: #888;
+      color: var(--v-gray);
       text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
     
     .value {
       display: block;
-      color: #ffffff !important; /* Mindig fehér legyen! */
-      font-weight: bold;
+      color: #ffffff;
+      font-weight: 700;
       font-size: 1rem;
     }
   }
 
-  /* HOVER EFFEKT - Amikor ráviszed az egeret */
+  /* HOVER EFFEKT - Teljes doboz sötétpiros lesz */
   &:hover {
-    background-color: var(--primary-blue); /* A doboz háttere kék lesz */
-    border-color: var(--primary-blue);
-    transform: translateY(-3px); /* Picit megemelkedik */
+    background-color: var(--v-red); 
+    border-color: var(--v-red);
+    transform: translateY(-3px); 
 
-    .icon-circle {
-      background-color: white; /* Az ikon köre fehér lesz */
-      color: var(--primary-blue); /* Az ikon kék lesz */
+    .v-icon-square {
+      background-color: #ffffff; 
+      color: var(--v-red); 
     }
 
     .text-content {
-      .label { color: #e0e0e0; } /* A kis szöveg világosabb */
-      .value { color: #ffffff !important; } /* A szám marad fehér */
+      .label { color: rgba(255, 255, 255, 0.8); } 
+      .value { color: #ffffff; } 
     }
+  }
+}
+
+/* --- KÖZÖSSÉGI MÉDIA GOMBOK --- */
+.v-social-links {
+  display: flex;
+  gap: 12px;
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-size: 1.3rem;
+    border: 1px solid #2a2a2a;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-radius: 0; /* Szögletes közösségi gombok */
+
+    &:hover {
+      background-color: var(--v-red);
+      border-color: var(--v-red);
+      transform: translateY(-3px);
+    }
+  }
+}
+
+/* =========================================
+   MOBIL OPTIMALIZÁLÁS
+   ========================================= */
+@media (max-width: 991px) {
+  .v-contact-wrapper {
+    align-items: center; /* Mobilon középre igazodik */
+  }
+  
+  .v-social-links {
+    justify-content: center;
   }
 }

@@ -1,0 +1,252 @@
+/* =========================================
+   VERTREND STÍLUS + ELŐTTE-UTÁNA CSÚSZKA
+   ========================================= */
+
+:host {
+  --v-red: #a81c1c;       
+  --v-dark: #171717;      
+  --v-gray: #4b5563;      
+  --v-light-bg: #f8fafc;  
+  --v-border: #e2e8f0;    
+}
+
+.text-red { color: var(--v-red) !important; }
+.v-bg-red { background-color: var(--v-red) !important; }
+
+/* Fő szekció */
+.v-section {
+  padding: 5rem 0;
+  background-color: var(--v-light-bg);
+}
+
+/* Fejléc részei */
+.v-header {
+  max-width: 800px;
+  margin: 0 auto;
+
+  .v-subtitle {
+    display: block;
+    color: var(--v-red);
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+  }
+
+  .v-title {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--v-dark);
+    text-transform: uppercase;
+    letter-spacing: -0.025em;
+    margin-bottom: 1.5rem;
+    @media (min-width: 768px) { font-size: 2.8rem; }
+  }
+
+  .v-divider {
+    width: 5rem;
+    height: 4px;
+    background-color: var(--v-red);
+    margin: 0 auto 1.5rem auto;
+  }
+
+  .v-desc {
+    font-size: 1.1rem;
+    color: var(--v-gray);
+    font-weight: 500;
+    line-height: 1.75;
+  }
+}
+
+/* =========================================
+   KÁRTYA DIZÁJN
+   ========================================= */
+.v-card {
+  position: relative;
+  background: #ffffff;
+  padding: 1.8rem; /* Picit kisebb belső margó a csúszka miatt */
+  border: 1px solid var(--v-border);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.5s cubic-bezier(0, 0, 0.2, 1);
+  border-radius: 0;
+
+  .v-card-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 0;
+    background-color: var(--v-red);
+    transition: height 0.5s ease-in-out;
+    z-index: 0;
+  }
+
+  .v-card-content {
+    position: relative;
+    z-index: 1;
+    padding-left: 0.5rem;
+  }
+
+  /* Az ikon sötét négyzete */
+  .v-icon-box {
+    width: 3.5rem;
+    height: 3.5rem;
+    background-color: #27272a;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.5s ease;
+    flex-shrink: 0;
+  }
+
+  .v-card-heading {
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: var(--v-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    transition: color 0.3s ease;
+  }
+
+  .v-card-text {
+    font-size: 0.95rem;
+    color: var(--v-gray);
+    line-height: 1.6;
+    font-weight: 500;
+    margin-bottom: 0;
+  }
+
+  /* HOVER EFFEKTEK */
+  &:hover {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px); /* Finom emelkedés */
+
+    .v-card-line { height: 100%; }
+    .v-icon-box { background-color: var(--v-red); }
+    .v-card-heading { color: var(--v-red); }
+  }
+}
+
+/* =========================================
+   ELŐTTE-UTÁNA CSÚSZKA A KÁRTYÁBAN
+   ========================================= */
+/* =========================================
+   ELŐTTE-UTÁNA CSÚSZKA A KÁRTYÁBAN
+   ========================================= */
+.v-before-after-slider {
+  aspect-ratio: 4 / 3; /* Fix keret, sosem ugrál az oldal */
+  background-color: #171717; /* Sötét háttér, ami prémium keretet ad az álló képeknek */
+  display: block;
+  border-radius: 0 !important;
+
+  /* EZ A LÉNYEG: A kép teljes egészében belefér a dobozba, vágás nélkül! */
+  .v-img-contain {
+    object-fit: contain; 
+    object-position: center; 
+  }
+  
+  .cursor-ew-resize {
+    cursor: ew-resize;
+  }
+
+  .v-slider-badge {
+    padding: 4px 10px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+
+  .slider-line {
+    width: 3px;
+    background-color: var(--v-red);
+    transform: translateX(-50%);
+    pointer-events: none;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    
+    .slider-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 36px;
+      height: 36px;
+      background: #fff;
+      border-radius: 0;
+      border: 2px solid var(--v-red);
+      font-size: 1rem;
+      color: var(--v-red);
+    }
+  }
+}
+
+/* --- Az előző kód marad... csak add hozzá a fájl ALJÁRA ezt a blokkot: --- */
+
+/* =========================================
+   THUMBNAILS (Bélyegképek)
+   ========================================= */
+.v-thumbnail {
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+  border-radius: 0; /* Vertrend szögletesség */
+  background-color: var(--v-border);
+
+  &.active {
+    opacity: 1;
+    border-color: var(--v-red);
+    transform: scale(1.05); /* Kicsit kiemelkedik az aktív */
+  }
+
+  &:hover:not(.active) {
+    opacity: 0.9;
+    border-color: #9ca3af;
+  }
+}
+
+/* --- Az előző kódod alá jön ez: --- */
+
+/* =========================================
+   TÖLTÉS INDIKÁTOROK (LOADER / SPINNER)
+   ========================================= */
+.v-loading-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #171717; /* Sötét Vertrend háttér betöltés alatt */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: inherit;
+}
+
+/* Fő forgó animáció */
+.v-spinner {
+  width: 45px;
+  height: 45px;
+  border: 4px solid rgba(168, 28, 28, 0.2); /* Halvány piros sáv */
+  border-top-color: var(--v-red); /* Élénk piros pörgő rész */
+  border-radius: 50%;
+  animation: v-spin 1s linear infinite;
+}
+
+/* Kisebb spinner a bélyegképeknek */
+.v-spinner-sm {
+  width: 20px;
+  height: 20px;
+  border-width: 2px;
+}
+
+@keyframes v-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

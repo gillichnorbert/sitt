@@ -1,92 +1,183 @@
-:root {
-  --primary-blue: #2C7BE5;
+/* =========================================
+   VERTREND STÍLUS: HERO (KÉP NÉLKÜL, SZOLGÁLTATÁS FÓKUSSZAL)
+   ========================================= */
+
+$v-red: #a81c1c;
+$v-dark: #111111;
+$v-gray: #555555;
+$v-bg-light: #eef1f5; /* Elegáns, nagyon halvány ipari szürke háttér */
+
+.v-text-red { color: $v-red !important; }
+.letter-spacing-1 { letter-spacing: 1px; }
+
+/* A teljes szekció háttere */
+.v-hero-section {
+  background-color: $v-bg-light;
+  min-height: 85vh; /* Hogy kitöltse a képernyőt */
+  position: relative;
+  
+  /* Egy finom átlós vonal a háttérben, hogy ne legyen túl üres a kép hiánya miatt */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background: linear-gradient(135deg, transparent 49%, rgba(0,0,0,0.02) 50%, transparent 51%);
+    background-size: 20px 20px;
+    z-index: 0;
+  }
 }
 
-.text-brand-blue {
-  color: var(--primary-blue);
+.container {
+  position: relative;
+  z-index: 1;
 }
 
-.bg-blue-soft {
-  background-color: rgba(44, 123, 229, 0.1);
+/* --- BAL OLDAL: FEHÉR DOBOZ (VERTREND STÍLUS) --- */
+.v-hero-content-box {
+  border-left: 8px solid $v-red; /* A vastag piros vonal bal oldalon */
+  border-radius: 0; /* Szigorúan szögletes */
+  position: relative;
+  z-index: 2;
+  
+  /* A fekete címke */
+  .v-hero-badge {
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+  }
+
+  .v-hero-title {
+    font-size: clamp(2.2rem, 4vw, 3.8rem);
+    font-weight: 900;
+    color: $v-dark;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    line-height: 1.1;
+  }
+
+  .v-hero-desc {
+    font-size: 1.1rem;
+    color: $v-gray;
+    line-height: 1.8;
+    font-weight: 500;
+  }
 }
 
-.hero-section {
-  background-color: #fcfcfc;
-  padding: 80px 0;
-  min-height: 80vh;
+/* --- GOMBOK --- */
+.v-btn {
+  padding: 16px 32px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+  border-radius: 0;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  cursor: pointer;
 }
 
-/* Dekoratív kör */
-.hero-bg-shape {
-  position: absolute;
-  top: -10%;
-  right: -5%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(44,123,229,0.05) 0%, rgba(255,255,255,0) 70%);
-  border-radius: 50%;
-  z-index: 0;
+.v-btn-dark {
+  background-color: $v-dark;
+  color: #fff;
+  
+  &:hover {
+    background-color: $v-red;
+    color: #fff;
+  }
 }
 
-/* Kép stílusa */
-.hero-img {
-  border-radius: 450px; /* Asztalin kicsit szögletesebb */
-  max-height: 450px;
-  width: auto;
-
+.v-btn-outline {
+  background-color: transparent;
+  border-color: $v-dark;
+  color: $v-dark;
+  
+  &:hover {
+    background-color: $v-dark;
+    color: #fff;
+  }
 }
 
+/* --- JOBB OLDAL: SÖTÉT SZOLGÁLTATÁS PANEL --- */
+.v-services-panel {
+  background-color: $v-dark;
+  border-radius: 0;
+  border-right: 4px solid $v-red; /* Kiegészítő piros vonal a túloldalon */
+}
+
+/* Szolgáltatás lista elemek */
+.v-service-item {
+  display: flex;
+  align-items: center;
+  background-color: #1a1a1a;
+  padding: 1rem 1.5rem;
+  border: 1px solid #2a2a2a;
+  transition: all 0.3s ease;
+  color: #ffffff;
+  
+  .icon-box {
+    color: $v-red;
+    font-size: 1.5rem;
+    margin-right: 1.5rem;
+    transition: color 0.3s ease;
+  }
+
+  .service-name {
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .arrow {
+    font-size: 1.2rem;
+    color: #555;
+    transition: all 0.3s ease;
+  }
+
+  /* Hover effektus: Piros lesz az egész sáv */
+  &:hover {
+    background-color: $v-red;
+    border-color: $v-red;
+    transform: translateX(-10px); /* Kicsit balra ugrik */
+    
+    .icon-box, .arrow {
+      color: #ffffff;
+    }
+    
+    .arrow {
+      transform: translateX(5px); /* A nyíl jobbra mozdul */
+    }
+  }
+}
 
 /* =========================================
    MOBIL OPTIMALIZÁLÁS
    ========================================= */
 @media (max-width: 991px) {
-  
-  .hero-section {
+  .v-hero-section {
     min-height: auto;
-    padding: 30px 0 50px 0;
-    text-align: center;
-  }
-
-  .hero-title {
-    font-size: 2rem;
-    line-height: 1.2;
-    margin-bottom: 0.5rem; /* Kisebb hely a cím alatt, mert jön a kép */
-    
-    br {
-      display: none;
-    }
-  }
-
-  .hero-subtitle {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-    margin-top: 1rem; /* Hely a kép után */
-  }
-
-  /* Kép stílusa mobilon */
-  .hero-img {
-    display: none;
-    max-height: 200px; /* Mobilon legyen látható méretű */
-    border-radius: 10px;
-
+    padding: 2rem 0;
   }
   
-  /* A kép konténere mobilon */
-  .image-container {
-    padding: 0 10px;
+  .v-hero-content-box {
+    border-left-width: 5px;
   }
 
-  /* Gombok */
-  .hero-btn {
+  .v-btn {
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 12px 0;
+    padding: 14px 0;
   }
-
-  .email-btn {
-    font-size: 0.95rem;
+  
+  .v-service-item {
+    padding: 1rem;
+    
+    .service-name {
+      font-size: 0.85rem;
+    }
+    .icon-box {
+      margin-right: 1rem;
+      font-size: 1.2rem;
+    }
   }
 }

@@ -1,150 +1,171 @@
 /* =========================================
-   VÁLTOZÓK ÉS SEGÉDOSZTÁLYOK
+   VERTREND STÍLUS TISZTÁN SCSS-BEN
+   (Tailwind nélkül, sötétpiros akcentussal)
    ========================================= */
-:root {
-  --primary-blue: #2C7BE5;
+
+:host {
+  --v-red: #a81c1c;       /* A kért sötétpiros */
+  --v-dark: #171717;      /* Fekete/sötétszürke szövegszín */
+  --v-gray: #4b5563;      /* Szürke leírásokhoz */
+  --v-light-bg: #f8fafc;  /* Nagyon világos háttérszín */
+  --v-border: #e2e8f0;    /* Kártya keretszíne */
 }
 
-.text-brand-blue {
-  color: var(--primary-blue);
+.text-red { 
+  color: var(--v-red) !important; 
 }
 
-.bg-brand-blue {
-  background-color: var(--primary-blue);
+/* Fő szekció */
+.v-section {
+  padding: 6rem 0;
+  background-color: var(--v-light-bg);
+  border-top: 1px solid var(--v-border);
 }
 
-.bg-blue-soft {
-  background-color: rgba(44, 123, 229, 0.1);
+/* Fejléc részei */
+.v-header {
+  max-width: 800px;
+  margin: 0 auto;
+
+  .v-subtitle {
+    display: block;
+    color: var(--v-red);
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+  }
+
+  .v-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--v-dark);
+    text-transform: uppercase;
+    letter-spacing: -0.025em;
+    margin-bottom: 1.5rem;
+    
+    @media (min-width: 768px) { 
+      font-size: 3rem; 
+    }
+  }
+
+  .v-divider {
+    width: 5rem;
+    height: 4px;
+    background-color: var(--v-red);
+    margin: 0 auto 1.5rem auto;
+  }
+
+  .v-desc {
+    font-size: 1.125rem;
+    color: var(--v-gray);
+    font-weight: 500;
+    line-height: 1.75;
+  }
 }
 
 /* =========================================
-   NINCS KONTÉNER DOBOZ (ALERT BOX)
+   KÁRTYA DIZÁJN ÉS ANIMÁCIÓK
    ========================================= */
-.alert-box-custom {
-  background-color: #fff8f0; /* Nagyon halvány narancs/sárgás háttér */
-  border: 1px solid #ffeeba;
-  
-  h2 {
-    color: #333;
-  }
-}
+.v-card {
+  position: relative;
+  background: #ffffff;
+  padding: 2.5rem;
+  border: 1px solid var(--v-border);
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.5s cubic-bezier(0, 0, 0.2, 1);
+  border-radius: 0; /* Vertrend stílus: szigorúan szögletes */
 
-/* --- IKON IGAZÍTÁS JAVÍTÁSA --- */
-.no-container-icon {
-  width: 100px;
-  height: 100px;
-  
-  /* Flexbox a tökéletes középhez */
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  /* Az X finomhangolása, hogy ne csússzon le */
-  .bi-x-lg {
-    margin-top: -5px; /* Vizuális korrekció felfelé */
-  }
-}
-
-/* =========================================
-   SZOLGÁLTATÁS KÁRTYÁK
-   ========================================= */
-.service-card {
-  background-color: #fff;
-  transition: all 0.3s ease;
-  border-color: #f0f0f0 !important;
-
-  .icon-box {
-    width: 70px;
-    height: 70px;
+  /* A piros vonal bal oldalon, ami animálódik */
+  .v-card-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 0;
+    background-color: var(--v-red);
+    transition: height 0.5s ease-in-out;
+    z-index: 0;
   }
 
-  /* Listaelemek stílusa */
-  ul li {
-    margin-bottom: 8px;
+  .v-card-content {
+    position: relative;
+    z-index: 1;
+    padding-left: 0.5rem;
+  }
+
+  /* Az ikon sötét négyzete */
+  .v-icon-box {
+    width: 3.5rem;
+    height: 3.5rem;
+    background-color: #27272a;
+    color: #ffffff;
     display: flex;
     align-items: center;
+    justify-content: center;
+    transition: background-color 0.5s ease;
+    flex-shrink: 0;
   }
-}
 
-/* =========================================
-   ANIMÁCIÓK
-   ========================================= */
-/* Kártya lebegés */
-.hover-lift {
+  .v-card-heading {
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: var(--v-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    transition: color 0.3s ease;
+  }
+
+  .v-card-text {
+    font-size: 0.9rem;
+    color: var(--v-gray);
+    line-height: 1.75;
+    font-weight: 500;
+    margin-bottom: 0;
+  }
+
+  /* Részletek hivatkozás az alján */
+  .v-card-link {
+    display: flex;
+    align-items: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #27272a;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    transition: color 0.3s ease;
+    border-top-color: var(--v-border) !important;
+
+    span {
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+  }
+
+  /* HOVER (EGÉRRÁHÚZÁS) EFFEKTEK */
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    border-color: var(--primary-blue) !important;
-  }
-}
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px); /* Felemelkedik a kártya */
 
-/* Gomb nagyítás */
-.hover-scale {
-  transition: transform 0.2s;
-  &:hover {
-    transform: scale(1.05);
-  }
-}
-
-/* =========================================
-   MOBIL NÉZET OPTIMALIZÁLÁS (max 768px)
-   ========================================= */
-@media (max-width: 768px) {
-  
-  /* 1. A sárga figyelmeztető doboz kompaktabb legyen */
-  .alert-box-custom {
-    padding: 1.5rem !important;
-    text-align: center;
-    
-    h2 {
-      font-size: 1.5rem;
-      margin-top: 10px;
-    }
-
-    /* A zöld pipás címkék (badge) igazítása */
-    .d-flex {
-      justify-content: center;
-      flex-direction: column;
-      gap: 10px !important;
+    .v-card-line { 
+      height: 100%; /* A piros csík végigfut */
     }
     
-    .badge {
-      width: 100%;
-      padding: 10px !important;
-    }
-  }
-
-  /* 2. Az áthúzott konténer ikon igazítása */
-  .no-container-icon {
-    margin-top: 30px;
-    margin-bottom: 10px;
-    transform: scale(0.9);
-  }
-
-  /* 3. Szolgáltatás kártyák finomítása */
-  .service-card {
-    padding: 1.5rem !important;
-    text-align: center;
-
-    ul li {
-      justify-content: center;
+    .v-icon-box { 
+      background-color: var(--v-red); /* Az ikon sötétpiros lesz */
     }
     
-    .icon-box {
-      margin-bottom: 1rem !important; 
-    }
-  }
-
-  /* 4. A kék CTA sáv az alján */
-  .bg-brand-blue {
-    padding: 2rem !important;
-    
-    h3 {
-      font-size: 1.5rem;
+    .v-card-heading,
+    .v-card-link { 
+      color: var(--v-red); /* A cím és a gomb sötétpiros lesz */
     }
     
-    .btn {
-      width: 100%;
+    .v-card-link span { 
+      transform: translateX(8px); /* A nyíl jobbra csúszik */
     }
   }
 }

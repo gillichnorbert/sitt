@@ -6,26 +6,45 @@ import { Component } from '@angular/core';
   templateUrl: './faq.component.html'
 })
 export class FaqComponent {
-faqs = [
-  { 
-    question: 'Kell közterület-foglalási engedély?', 
-    answer: 'NEM szükséges! Mivel nem helyezünk ki konténert az utcára, hanem kisteherautóval érkezünk és azonnal megrakodjuk, így megspórolhatja az engedélyeztetés költségét és utánajárását.' 
-  },
-  { 
-    question: 'Vállalnak cipekedést emeletről is?', 
-    answer: 'Igen, ez a szolgáltatásunk lényege. Kollégáink kézi erővel lehozzák a zsákokat bármilyen emeletről, akár lift nélküli házból, pincéből vagy nehezen megközelíthető udvarról is.' 
-  },
-  { 
-    question: 'Milyen hulladékot szállítanak el?', 
-    answer: 'Tiszta építési törmeléket (beton, tégla, csempe, vakolat) és vegyes hulladékot (lom, fa, műanyag, gipszkarton) is elviszünk. Veszélyes hulladékot (pala, festék, gumiabroncs) nem áll módunkban szállítani.' 
-  },
-  { 
-    question: 'Mennyire gyors a kiszállás?', 
-    answer: 'Mivel kisteherautókkal dolgozunk, rugalmasabbak vagyunk a nagy konténereseknél. Kapacitástól függően akár a hívás napján, de legkésőbb 24-48 órán belül megpróbálunk érkezni.' 
-  },
-  { 
-    question: 'Van minimális rendelési mennyiség?', 
-    answer: 'Kiszállási díj Budapesten nincs. A minimális fizetendő díj fordulónként 12.000 Ft. Ez akkor is érvényes, ha a elszállítandó mennyiség értéke ennél kevesebb lenne (pl. csak pár zsák).' 
-  }
-];
+  faqs = [
+    { 
+      question: 'Kell-e közterület-foglalási engedély sittszállításnál?', 
+      answer: 'Nem. A sittszállításhoz nincs szükség közterület-foglalási engedélyre.' 
+    },
+    { 
+      question: 'Vállalnak emeletről fel- és lehordást is?', 
+      answer: 'Igen. Igény esetén szakembereink az árut vagy a sittet emeletről is fel- és lehordják.'
+    },
+    // ÚJ: Lomtalanítás fókuszú kérdés
+    { 
+      question: 'Raklapos árut is szállítanak?', 
+      answer: 'Igen. Raklapos áruk, építőanyagok, bútorok és egyéb csomagok szállítását is vállaljuk.'
+    },
+    // ÚJ: Lomtalanítás árazása
+    { 
+      question: 'Hogyan alakul a teherfuvarozás ára?', 
+      answer: 'Fuvarozásunk óradíjas vagy egyedi, fix áras ajánlat alapján történik, a szállítás jellegétől függően.'
+    },
+    // ÚJ: Bútorszerelés
+    { 
+      question: 'A gépi földmunkákhoz biztosítanak gépkezelőt is?', 
+      answer: 'Igen. Minden földmunkát tapasztalt gépkezelővel és korszerű munkagépekkel végzünk.'
+    },
+    { 
+      question: 'A kitermelt, feleslegessé vált föld elszállítását is vállalják?', 
+      answer: 'Igen. A kitermelt föld elszállítását és szakszerű elhelyezését is biztosítjuk.'
+    },
+    { 
+      question: 'Műanyag és fa nyílászárókkal is foglalkoznak?', 
+      answer: 'Igen. Műanyag és fa nyílászárók szervizelését, javítását és beépítését egyaránt vállaljuk.'
+    },
+    { 
+      question: 'Nyílászárók beépítését is vállalják?', 
+      answer: 'Igen. Bejárati ajtók, teraszajtók és ablakok szakszerű beépítését is elvégezzük.'
+    },
+    { 
+      question: 'Mennyi idő a kiszállás?', 
+      answer: 'A legtöbb esetben akár aznapi vagy másnapi kiszállást is vállalunk Budapest és Pest vármegye területén.'
+    }
+  ];
 }

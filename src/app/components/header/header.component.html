@@ -1,38 +1,61 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
-  <div class="container">
-    <a class="navbar-brand d-flex align-items-center" routerLink="/">
-      <img src="assets/logo.png" alt="SittTransport" height="50" class="d-inline-block align-text-top me-2">
+<nav class="v-navbar ">
+  <div class="container v-nav-container">
+    
+    <a class="v-logo" routerLink="/" (click)="closeMenu()">
+      Terra<span class="logo-badge">Move</span>
     </a>
 
-    <button class="navbar-toggler custom-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="hamburger-lines">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+    <div class="v-desktop-menu d-none d-lg-flex">
+      <a class="v-nav-link" routerLink="/kezdolap" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Kezdőlap</a>
+      <a class="v-nav-link" routerLink="/szolgaltatasok" routerLinkActive="active">Szolgáltatások</a>
+      <a class="v-nav-link" routerLink="/araink" routerLinkActive="active">Áraink</a>
+      <a class="v-nav-link" routerLink="/galeria" routerLinkActive="active">Galéria</a>
+      
+      <a href="tel:+36707287316" class="v-btn v-btn-primary ms-5">
+        <i class="bi bi-telephone-fill me-2"></i> +36 70 728 7316
+      </a>
+            <a href="mailto:terramoveinfo@gmail.com" class="v-btn v-btn-primary ms-2">
+        <i class="bi bi-envelope-fill "></i>
+      </a>
+    </div>
+
+    <button class="v-hamburger d-lg-none" [class.open]="isMenuOpen" (click)="toggleMenu()" aria-label="Menü">
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto align-items-center">
-        
-        <li class="nav-item">
-          <a class="nav-link" href="/kezdolap" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Kezdőlap</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="/szolgaltatasok" routerLinkActive="active">Szolgáltatásaink</a>
-        </li>
-        
-        <li class="nav-item">
-          <a class="nav-link" href="/araink" routerLinkActive="active">Áraink</a>
-        </li>
-
-        <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
-          <a href="tel:+36301234567" class="btn btn-primary rounded-pill px-4 fw-bold">
-            <i class="bi bi-telephone-fill me-2"></i>Hívjon most
-          </a>
-        </li>
-      </ul>
-    </div>
   </div>
 </nav>
+
+<div class="v-mobile-menu" [class.open]="isMenuOpen">
+  <div class="v-mobile-menu-content">
+    
+    <a class="v-mobile-link" routerLink="/kezdolap" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">
+      Kezdőlap
+    </a>
+    <a class="v-mobile-link" routerLink="/szolgaltatasok" routerLinkActive="active" (click)="closeMenu()">
+      Szolgáltatások
+    </a>
+    <a class="v-mobile-link" routerLink="/araink" routerLinkActive="active" (click)="closeMenu()">
+      Áraink
+    </a>
+    <a class="v-mobile-link" routerLink="/galeria" routerLinkActive="active" (click)="closeMenu()">
+      Galéria
+    </a>
+ 
+    
+    <div class="v-mobile-contact mt-5 pt-4 border-top">
+      <p class="text-uppercase letter-spacing-1 text-secondary mb-3" style="font-size: 0.8rem; font-weight: 800;">
+        Azonnali kapcsolat
+      </p>
+      <a href="tel:+36707287316" class="v-btn v-btn-primary w-100" (click)="closeMenu()">
+        <i class="bi bi-telephone-fill me-2"></i> +36 70 728 7316
+      </a>
+      <a href="mailto:terramoveinfo@gmail.com" class="v-btn v-btn-primary w-100 mt-2" (click)="closeMenu()">
+        <i class="bi bi-envelope-fill me-2"></i> terramoveinfo&#64;gmail.com
+      </a>
+    </div>
+
+  </div>
+</div>

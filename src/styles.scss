@@ -1,30 +1,163 @@
-/* src/styles.scss */
+/* =========================================
+   GLOBÁLIS VÁLTOZÓK (TERRAMOVE / VERTREND)
+   ========================================= */
 :root {
-  --primary-blue: #2C7BE5; /* A logó kékje */
-  --secondary-grey: #4A4A4A; /* A logó szürkéje */
-  --bs-primary: #2C7BE5; /* Bootstrap primary felülírása */
-  --bs-primary-rgb: 44, 123, 229;
+  /* Régi logó színek (ha máshol még kellenének) */
+  --primary-blue: #2C7BE5;
+  --secondary-grey: #4A4A4A;
+  
+  /* Új Ipari / Építészeti színek */
+  --v-red: #a81c1c;       
+  --v-dark: #111111;      
+  --v-gray: #555555;      
+  --v-bg-light: #f4f4f4;
+  --v-border: #e0e0e0;
 }
 
 body {
   font-family: 'Segoe UI', Roboto, "Helvetica Neue", Arial, sans-serif;
-  color: var(--secondary-grey);
+  color: var(--v-gray);
 }
 
-/* Egyedi osztályok, amiket a Bootstrap mellé használunk */
-.text-brand-blue {
-  color: var(--primary-blue);
+/* =========================================
+   GLOBÁLIS HASZNOS OSZTÁLYOK (UTILITY)
+   ========================================= */
+.v-text-red {
+  color: var(--v-red) !important;
 }
 
-.bg-brand-blue {
-  background-color: var(--primary-blue);
+.v-bg-red {
+  background-color: var(--v-red) !important;
+  color: #fff !important;
 }
 
-.btn-primary {
-  background-color: var(--primary-blue);
-  border-color: var(--primary-blue);
+/* Gombok globális stílusa */
+.v-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 24px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+  border-radius: 0;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 2px solid transparent;
+  text-align: center;
+}
+
+.v-btn-primary {
+  background-color: var(--v-red);
+  color: #fff;
   &:hover {
-    background-color: darken(#2C7BE5, 10%);
-    border-color: darken(#2C7BE5, 10%);
+    background-color: #fff;
+    color: var(--v-red);
+    border-color: var(--v-red);
+  }
+}
+
+.v-btn-outline {
+  background-color: transparent;
+  border-color: var(--v-dark);
+  color: var(--v-dark);
+  &:hover {
+    background-color: var(--v-dark);
+    color: #fff;
+  }
+}
+
+/* =========================================
+   BOOTSTRAP ACCORDION FELÜLÍRÁSA (GLOBÁLIS)
+   ========================================= */
+.v-accordion {
+  .accordion-item {
+    background-color: #fff;
+    border: 1px solid var(--v-border) !important;
+    border-radius: 0 !important;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      border-color: #ccc !important;
+      transform: translateX(-5px);
+      box-shadow: 10px 10px 30px rgba(0,0,0,0.05) !important;
+    }
+  }
+
+  .accordion-button {
+    background-color: #fff;
+    color: var(--v-dark);
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    
+    /* BOOTSTRAP ALAP NYÍL KIKAPCSOLÁSA GLOBÁLISAN */
+    &::after {
+      display: none !important; 
+      background-image: none !important;
+    }
+
+    .v-question-text {
+      font-size: 1.15rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding-right: 20px;
+    }
+
+    /* Egyedi Plusz/Mínusz ikon */
+    .v-toggle-icon {
+      position: relative;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--v-dark);
+      font-size: 1.5rem;
+      flex-shrink: 0;
+
+      .plus, .dash {
+        position: absolute;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+      }
+      
+      .dash {
+        opacity: 0;
+        transform: rotate(-90deg);
+      }
+    }
+
+    /* Kinyitott állapot */
+    &:not(.collapsed) {
+      background-color: #fff;
+      color: var(--v-red);
+      
+      .v-toggle-icon {
+        color: var(--v-red);
+        
+        .plus {
+          opacity: 0;
+          transform: rotate(90deg);
+        }
+        .dash {
+          opacity: 1;
+          transform: rotate(0);
+        }
+      }
+    }
+  }
+
+  /* Kinyíló tartalom stílusa */
+  .accordion-body {
+    background-color: #fff;
+    
+    .v-answer-content {
+      border-left: 2px solid var(--v-red);
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--v-gray);
+    }
   }
 }

@@ -1,55 +1,207 @@
-/* Háttér finomítása (opcionális, ha nincs a globálisban) */
-.bg-light-pattern {
-  background-color: #f8f9fa; /* Nagyon halvány szürke, hogy a fehér kártyák kiugorjanak */
+/* =========================================
+   VERTREND STÍLUS: GYIK (OSZTOTT, VASTAG CÍMMEL)
+   ========================================= */
+
+/* Helyi SCSS változók */
+$v-red: #a81c1c;
+$v-dark: #1a1a1a; 
+$v-gray: #555555;
+$v-bg: #fafafa;
+$v-border: #e6e6e6;
+
+.v-faq-section {
+  background-color: $v-bg;
 }
 
-.custom-accordion {
+/* --- BAL OLDAL --- */
+.v-red-line {
+  width: 60px;
+  height: 5px;
+  background-color: $v-red;
+}
+
+/* ÚJ, BRUTÁLISAN VASTAG CÍMSOR */
+.v-section-title-massive {
+  font-size: 3.5rem; /* Hatalmas betűméret */
+  font-weight: 900; /* Legvastagabb betűsúly */
+  color: #111;
+  text-transform: uppercase;
+  letter-spacing: -1.5px; /* Kicsit összébb húzva, hogy tömbös legyen */
+  line-height: 1.1;
+  -webkit-text-stroke: 1.5px #111; /* Extra vastagítás a széleken */
+  
+  .v-text-red {
+    color: $v-red !important;
+    -webkit-text-stroke: 1.5px $v-red; /* Extra vastagítás a piros szónak is */
+  }
+}
+
+.v-desc {
+  font-size: 1.05rem;
+  color: $v-gray;
+  font-weight: 500;
+  line-height: 1.7;
+}
+
+/* --- SÖTÉT KAPCSOLAT DOBOZ --- */
+.v-contact-box {
+  background-color: $v-dark !important; 
+  border: none;
+  border-radius: 0; 
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  border-left: 4px solid $v-red;
+
+  .contact-title {
+    color: #ffffff !important;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.15rem;
+  }
+
+  .contact-text {
+    color: rgba(255, 255, 255, 0.7) !important;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+}
+
+/* --- GOMB --- */
+.v-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 24px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  border-radius: 0;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.v-btn-primary {
+  background-color: $v-red;
+  color: #fff;
+  
+  &:hover {
+    background-color: #8a1616;
+    color: #fff;
+  }
+}
+
+/* --- JOBB OLDAL (HARMONIKA) --- */
+.v-accordion {
   .accordion-item {
     background-color: #fff;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid $v-border !important;
+    border-radius: 0 !important;
+    transition: all 0.3s ease;
     
-    /* Hover effekt: kicsit kiemelkedik, ha ráviszed az egeret */
     &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 .5rem 1rem rgba(0,0,0,.08) !important;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.03) !important;
     }
   }
 
   .accordion-button {
-    background-color: #fff; /* Alapból fehér */
-    color: var(--secondary-grey);
-    box-shadow: none !important; /* Kék keret eltüntetése kattintáskor */
-    font-size: 1.1rem;
+    background-color: #fff;
+    color: #111;
+    box-shadow: none !important;
+    border-radius: 0 !important;
     
-    /* A lenyíló nyíl (chevron) színezése */
+    /* Bootstrap alap nyíl eltüntetése */
     &::after {
-      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%232C7BE5'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
-      transition: transform 0.3s ease;
+      display: none !important; 
+      background-image: none !important;
     }
 
-    /* Amikor ki van nyitva a kérdés */
-    &:not(.collapsed) {
-      color: var(--primary-blue); /* Kék szöveg */
-      background-color: rgba(44, 123, 229, 0.05); /* Nagyon halvány kék háttér */
-      box-shadow: inset 4px 0 0 var(--primary-blue) !important; /* Bal oldali kék csík jelölő */
-      font-weight: 700; // Vastagabb betű
+    .v-question-text {
+      font-size: 1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding-right: 20px;
+    }
 
-      /* Az ikon is legyen teljesen élénk */
-      i {
-        opacity: 1 !important;
+    /* Egyedi Plusz/Mínusz ikon */
+    .v-toggle-icon {
+      position: relative;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #111;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+
+      .plus, .dash {
+        position: absolute;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+      
+      .dash {
+        opacity: 0;
+        transform: rotate(-90deg);
       }
     }
 
-    /* Ikon stílusa alapállapotban */
-    i {
-      font-size: 1.2rem;
-      transition: opacity 0.3s;
+    /* Kinyitott állapot */
+    &:not(.collapsed) {
+      background-color: #fff;
+      color: $v-red;
+      
+      .v-toggle-icon {
+        color: $v-red;
+        
+        .plus {
+          opacity: 0;
+          transform: rotate(90deg);
+        }
+        .dash {
+          opacity: 1;
+          transform: rotate(0);
+        }
+      }
     }
   }
 
+  /* Kinyíló tartalom stílusa */
   .accordion-body {
     background-color: #fff;
-    /* Ha nyitva van, a body háttere maradjon fehér, vagy legyen halványkék, ízlés kérdése. 
-       Most fehéren hagyjuk a tisztaság érdekében. */
+    
+    .v-answer-content {
+      border-left: 2px solid $v-red;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: $v-gray;
+      line-height: 1.7;
+    }
+  }
+}
+
+/* --- ASZTALI NÉZET: A bal oldal fixen marad görgetéskor --- */
+@media (min-width: 992px) {
+  .v-sticky-wrapper {
+    position: sticky;
+    top: 100px;
+  }
+}
+
+/* --- MOBIL OPTIMALIZÁLÁS --- */
+@media (max-width: 991px) {
+  .v-section-title-massive {
+    font-size: 2.5rem;
+  }
+  
+  .v-accordion .accordion-button .v-question-text {
+    font-size: 0.9rem;
+  }
+
+  .v-sticky-wrapper {
+    margin-bottom: 2rem;
   }
 }

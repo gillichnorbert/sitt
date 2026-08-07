@@ -1,41 +1,64 @@
-<section id="faq" class="py-5 bg-light-pattern">
-  <div class="container">
-    
-    <div class="text-center mb-5">
-      <h2 class="fw-bold text-brand-blue display-6">Gyakran Ismételt Kérdések</h2>
+<section id="faq" class="v-faq-section py-5">
+  <div class="container py-5">
+    <div class="row gy-5">
 
-    </div>
+      <div class="col-lg-5 pe-lg-5">
+        <div class="v-sticky-wrapper">
+          
+          <div class="v-red-line mb-4"></div>
+          
+          <h2 class="v-section-title-massive mb-4">
+            GYAKRAN ISMÉTELT<br><span class="v-text-red">KÉRDÉSEK.</span>
+          </h2>
+          
+          <p class="v-desc mb-5">
+Mindent transzparensen és érthetően kezelünk. Itt összegyűjtöttük a legfontosabb kérdéseket a munkamenettel, árakkal és szolgáltatásainkkal kapcsolatban.
+          </p>
 
-    <div class="row justify-content-center">
-      <div class="col-lg-9 col-xl-8">
-        
-        <div class="accordion custom-accordion" id="accordionFAQ">
+          <div class="v-contact-box p-4 p-xl-5">
+            <h4 class="contact-title mb-3">További kérdése van?</h4>
+            <p class="contact-text mb-4">
+              Kollégáink készséggel állnak rendelkezésére telefonon vagy e-mailen, hogy azonnal megoldást kínáljanak.
+            </p>
+            <a href="tel:+36707287316" class="v-btn v-btn-primary w-100">
+              <i class="bi bi-telephone-fill me-2"></i> EGYEZTESSÜNK
+            </a>
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="col-lg-7">
+        <div class="accordion v-accordion" id="accordionFAQ">
           
           @for (item of faqs; track item.question; let i = $index) {
-            <div class="accordion-item shadow-sm mb-3 border-0 rounded-3 overflow-hidden">
+            <div class="accordion-item mb-3">
               <h2 class="accordion-header" [id]="'heading' + i">
-                <button class="accordion-button collapsed py-3 fw-semibold" type="button" data-bs-toggle="collapse" 
+                <button class="accordion-button collapsed p-4" type="button" data-bs-toggle="collapse" 
                         [attr.data-bs-target]="'#collapse' + i" aria-expanded="false" [attr.aria-controls]="'collapse' + i">
-                  <i class="bi bi-question-circle-fill me-3 text-brand-blue opacity-75"></i>
-                  <span>{{ item.question }}</span>
+                  
+                  <span class="v-question-text">{{ item.question }}</span>
+                  
+                  <div class="v-toggle-icon ms-auto">
+                    <i class="bi bi-plus-lg plus"></i>
+                    <i class="bi bi-dash-lg dash"></i>
+                  </div>
+                  
                 </button>
               </h2>
               <div [id]="'collapse' + i" class="accordion-collapse collapse" [attr.aria-labelledby]="'heading' + i" data-bs-parent="#accordionFAQ">
-                <div class="accordion-body text-secondary lh-lg pb-4 px-4 px-md-5">
-                  {{ item.answer }}
+                <div class="accordion-body px-4 pb-4 pt-0">
+                  <div class="v-answer-content ps-3">
+                    {{ item.answer }}
+                  </div>
                 </div>
               </div>
             </div>
           }
 
         </div>
-        <div class="text-center mb-5">
-      <p class="text-muted lead">
-        Nem találta meg a választ? További kérdéseire szívesen válaszolunk telefonon!
-      </p>
-    </div>
-
       </div>
+
     </div>
   </div>
 </section>

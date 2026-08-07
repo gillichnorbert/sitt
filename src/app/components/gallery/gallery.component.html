@@ -1,0 +1,124 @@
+<div class="v-service-hero position-relative d-flex align-items-center justify-content-center text-center bg-dark" style="background: url('assets/sitteszsak.jpg') center/cover no-repeat; min-height: 40vh;">
+  <div class="position-absolute top-0 start-0 w-100 h-100" style="background-color: rgba(23, 23, 23, 0.85); z-index: 0;"></div>
+  <div class="container position-relative z-1 pt-5">
+    <span class="text-uppercase fw-bold text-white mb-3 d-block" style="color: #a81c1c !important; letter-spacing: 2px; font-size: 0.85rem;">Munkáink Képekben</span>
+    <h1 class="text-white mb-0 text-uppercase fw-black" style="font-size: clamp(2rem, 5vw, 3.5rem); letter-spacing: -1px; font-weight: 900;">
+      GALÉRIA ÉS <br><span style="color: #a81c1c;">REFERENCIÁK.</span>
+    </h1>
+  </div>
+</div>
+
+<section id="referenciak" class="v-section">
+  <div class="container">
+    
+    <div class="v-header text-center mb-5 pb-4">
+      <span class="v-subtitle">Eredményeink</span>
+      <h2 class="v-title">Látható minőség, <span class="text-red">kompromisszumok nélkül.</span></h2>
+      <div class="v-divider"></div>
+      <p class="v-desc">
+        Húzza el a csúszkát a képeken! Nézze meg, hogyan dolgozunk a gyakorlatban. A bélyegképekre kattintva további referenciákat talál az adott szolgáltatáson belül.
+      </p>
+    </div>
+
+    <!-- KÁRTYÁK RÁCSA -->
+    <!-- KÁRTYÁK RÁCSA -->
+    <div class="row g-4 justify-content-center">
+      
+      @for (item of galleryItems; track item.title; let cIdx = $index) {
+        <div class="col-md-6 col-xl-5"> 
+          <div class="v-card h-100">
+            
+            <div class="v-card-line"></div>
+
+            <div class="v-card-content flex-grow-1 d-flex flex-column">
+              
+              <!-- KÉP / CSÚSZKA KONTÉNER (Fix 4:3 aránnyal) -->
+              <div class="v-before-after-slider position-relative overflow-hidden shadow-sm mb-2 border w-100">
+                
+                <!-- HA VAN ELŐTTE ÉS UTÁNA KÉP IS (CSÚSZKA MÓD) -->
+                <ng-container *ngIf="item.images[item.activeIdx].after; else staticImage">
+                  
+                  <!-- TÖLTÉS INDIKÁTOR (Fő képekhez) -->
+                  <div class="v-loading-overlay z-5" *ngIf="!isLoaded(item.images[item.activeIdx].after) || !isLoaded(item.images[item.activeIdx].before)">
+                    <div class="v-spinner"></div>
+                  </div>
+
+                  <!-- UTÁNA kép -->
+                  <img [src]="item.images[item.activeIdx].after" 
+                       (load)="onImageLoad(item.images[item.activeIdx].after)"
+                       class="position-absolute top-0 start-0 w-100 h-100 v-img-contain z-0" alt="Utána">
+                  
+                  <!-- ELŐTTE kép -->
+                  <img [src]="item.images[item.activeIdx].before" 
+                       (load)="onImageLoad(item.images[item.activeIdx].before)"
+                       class="position-absolute top-0 start-0 w-100 h-100 v-img-contain z-1" 
+                       [style.clip-path]="'polygon(0 0, ' + item.images[item.activeIdx].value + '% 0, ' + item.images[item.activeIdx].value + '% 100%, 0 100%)'" 
+                       alt="Előtte">
+                  
+                  <input type="range" min="0" max="100" [value]="item.images[item.activeIdx].value" (input)="updateSlider($event, cIdx)" 
+                         class="slider position-absolute top-0 start-0 w-100 h-100 m-0 opacity-0 cursor-ew-resize z-3">
+                  
+                  <div class="slider-line position-absolute top-0 bottom-0 z-2" [style.left.%]="item.images[item.activeIdx].value">
+                    <div class="slider-button shadow-sm d-flex align-items-center justify-content-center">
+                      <i class="bi bi-caret-left-fill"></i>
+                      <i class="bi bi-caret-right-fill"></i>
+                    </div>
+                  </div>
+                  
+                  <span class="v-slider-badge bg-dark text-white position-absolute top-0 start-0 m-2 z-2">Előtte</span>
+                  <span class="v-slider-badge v-bg-red text-white position-absolute top-0 end-0 m-2 z-2">Utána</span>
+                </ng-container>
+
+                <!-- HA CSAK EGY KÉP VAN (STATIKUS MÓD) -->
+                <ng-template #staticImage>
+                  <!-- TÖLTÉS INDIKÁTOR (Fő képekhez) -->
+                  <div class="v-loading-overlay z-5" *ngIf="!isLoaded(item.images[item.activeIdx].before)">
+                    <div class="v-spinner"></div>
+                  </div>
+                  
+                  <img [src]="item.images[item.activeIdx].before" 
+                       (load)="onImageLoad(item.images[item.activeIdx].before)"
+                       class="position-absolute top-0 start-0 w-100 h-100 v-img-contain z-0" alt="Referencia kép">
+                </ng-template>
+
+              </div>
+
+              <!-- BÉLYEGKÉPEK (THUMBNAILS) -->
+              <div class="d-flex gap-2 mb-4 mt-1 flex-wrap" *ngIf="item.images.length > 1">
+                @for (img of item.images; track img.before; let iIdx = $index) {
+                  <div class="v-thumbnail position-relative" 
+                       [class.active]="item.activeIdx === iIdx"
+                       (click)="setActiveImage(cIdx, iIdx)"
+                       title="Kattints a kép váltásához">
+                    
+                    <!-- Kis töltő indikátor a bélyegképnek is -->
+                    <div class="v-loading-overlay z-2" *ngIf="!isLoaded(img.after ? img.after : img.before)">
+                      <div class="v-spinner v-spinner-sm"></div>
+                    </div>
+
+                    <img [src]="img.after ? img.after : img.before" 
+                         (load)="onImageLoad(img.after ? img.after : img.before)"
+                         class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover z-1" alt="Előnézet">
+                  </div>
+                }
+              </div>
+
+              <!-- IKON ÉS CÍM -->
+              <div class="d-flex align-items-center mb-3 mt-auto">
+                <div class="v-icon-box shadow-sm me-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" [attr.d]="item.iconPath" />
+                  </svg>
+                </div>
+                <h3 class="v-card-heading mb-0">{{ item.title }}</h3>
+              </div>
+              
+              
+            </div>
+          </div>
+        </div>
+      }
+
+    </div>
+  </div>
+</section>

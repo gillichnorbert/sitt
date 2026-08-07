@@ -1,52 +1,89 @@
-<section id="about" class="py-5 bg-white position-relative overflow-hidden">
-  <div class="container">
+<section id="about" class="v-about-section py-5 position-relative overflow-hidden">
+  <div class="container py-4">
     <div class="row align-items-center gy-5">
       
+      <!-- Szöveges tartalom -->
       <div class="col-lg-7 order-2 order-lg-1">
-        
         <div class="text-center text-lg-start">
-          <h2 class="section-title mb-4">Rólunk</h2>
+          <span class="v-subtitle">Rólunk</span>
+          <h2 class="v-section-title mb-4">EGY PARTNER, <span class="v-text-red">SZÁMOS SZOLGÁLTATÁS</span></h2>
         </div>
         
-<div class="about-text text-secondary mb-4">
-  <p>
-    A <strong>SittTransport</strong> legfőbb célja, hogy levegyük a terhet a válláról. Tudjuk, hogy a felújítás stresszes, ezért mi nem csak szállítunk, hanem megoldást kínálunk: gyorsan, tisztán és <strong>megbízhatóan</strong>.
-  </p>
-  <p>
-    Specialitásunk a <strong>zsákos sittszállítás</strong> és a kézi rakodás. Nem hagyunk ott konténert, nem foglaljuk a parkolót napokig – csapatunk érkezik, megrakodja az autót, és azonnal el is szállítja a hulladékot.
-  </p>
-  <p>
-    Legyen szó építési törmelékről vagy teljes körű <strong>lomtalanításról</strong>, nálunk a precíz munkavégzés alapkövetelmény. Erős fizikumú kollégáinkkal és tapasztalatunkkal garantáljuk a gyorsaságot.
-  </p>
-  <p>
-    Felejtse el a cipekedést és az engedélyeztetést! Ha ránk bízza a munkát, bebizonyítjuk, hogy a hulladékszállítás lehet egyszerű és kényelmes folyamat is.
-  </p>
-</div>
+        <div class="v-about-text text-secondary mb-4">
+          <p class="mb-4">
+            A <strong class="text-dark">TerraMove</strong> célja, hogy különböző területeken is megbízható és teljes körű megoldásokat nyújtson ügyfelei számára. Legyen szó gépi földmunkáról, sittszállításról, teherfuvarozásról, egyéb szállítási feladatokról, nyílászárók beépítéséről vagy szervizeléséről, minden munkát szakértelemmel, precizitással és elkötelezettséggel végzünk el.
+          </p>
+          
+          <!-- ÚJ: Kiemelt szövegdoboz - IGAZI VERTREND SÖTÉT STÍLUS -->
+          <div class="v-highlight-box-dark p-4 p-md-5 mb-4 shadow-lg">
+            <h5 class="text-white fw-bolder text-uppercase mb-3" style="font-size: 0.9rem; letter-spacing: 2px;">
+              <i class="bi bi-gear-fill me-2 v-text-red"></i> ÁTFOGÓ SZOLGÁLTATÁSOK
+            </h5>
+            <p class="mb-0 text-light" style="opacity: 0.85;">
+              A TerraMove egy megbízható partnerként több területen is teljes körű megoldásokat biztosít. Legyen szó földmunkáról, fuvarozásról, sittszállításról, nyílászárók beépítéséről vagy szervizeléséről, Önnek csak fel kell vennie velünk a kapcsolatot a 
+              <a href="tel:06-70-728-7316" class="text-red">06 70 728 7316</a> telefonszámon vagy a
+              <a href="mailto:terramoveinfo@gmail.com" class="text-red">terramoveinfo&#64;gmail.com</a> 
+              e-mail címen, mi pedig a megfelelő megoldást biztosítjuk az igényeihez igazodva.
+            </p>
+          </div>
 
-<div class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start">
-  
-  <a href="/araink" class="btn btn-primary px-4 px-md-5 py-3 fw-bold text-uppercase rounded-pill shadow-sm hover-scale">
-    Megnézem az árakat
-  </a>
+          <p class="mb-0">
+            Legyen szó bármely szolgáltatásunkról, célunk, hogy minden megrendelés során egyszerű, gördülékeny ügyintézést és megbízható megoldást biztosítsunk ügyfeleink számára.
+          </p>
+        </div>
 
-  <a href="/szolgaltatasok" class="btn btn-outline-secondary px-4 px-md-5 py-3 fw-bold text-uppercase rounded-pill hover-scale">
-    Szolgáltatásaink
-  </a>
-
-</div>
-
+        <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start mt-5">
+          <a href="/araink" class="v-btn v-btn-primary d-flex align-items-center justify-content-center">
+            MEGNÉZEM AZ ÁRAKAT
+          </a>
+          <a href="/szolgaltatasok" class="v-btn v-btn-outline d-flex align-items-center justify-content-center">
+            SZOLGÁLTATÁSAINK
+          </a>
+        </div>
       </div>
 
-      <div class="col-lg-5 order-1 order-lg-2 position-relative text-center">
-        <div class="dots-decoration d-none d-lg-block"></div>
+      <!-- Képes tartalom (változatlan) -->
+      <div class="col-lg-5 order-1 order-lg-2 position-relative text-center pl-lg-4">
+        <!-- Szögletes építészeti dekoráció a kép mögött -->
+        <div class="v-img-backdrop d-none d-lg-block"></div>
+        <div class="position-relative z-1">
+          <img src="assets/sitteszsak.jpg"
+               alt="TerraMove földmunka és szállítás munka közben"
+               class="img-fluid shadow-lg v-main-img">
+        </div>
+      </div>
+    </div>
 
-        <div class="image-wrapper position-relative z-1">
-          <img src="https://www.lomtalanitasmegma.hu/wp-content/uploads/2022/04/42EA7C3B-FB22-4ACA-9CAC-4D2123217213-2-1024x768.jpeg" 
-               alt="Sittszállítás csapat" 
-               class="img-fluid rounded-4 shadow-lg main-img">
+    <!-- Előtte-Utána Csúszka Szekció 
+    <div class="row gy-5 justify-content-center mt-5 pt-5 border-top v-border-light">
+      
+      <div class="col-md-6 col-lg-4" *ngFor="let item of sliders; let i = index">
+        <div class="v-before-after-slider position-relative overflow-hidden shadow-sm border w-100">
+          
+          <img [src]="item.after" class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover z-0" alt="Utána">
+          
+          <img [src]="item.before" class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover z-1" 
+               [style.clip-path]="'polygon(0 0, ' + item.value + '% 0, ' + item.value + '% 100%, 0 100%)'" 
+               alt="Előtte">
+          
+          <input type="range" min="0" max="100" [value]="item.value" (input)="updateSlider($event, i)" 
+                 class="slider position-absolute top-0 start-0 w-100 h-100 m-0 opacity-0 cursor-ew-resize z-3">
+                 
+          <div class="slider-line position-absolute top-0 bottom-0 z-2" [style.left.%]="item.value">
+
+            <div class="slider-button shadow-sm d-flex align-items-center justify-content-center">
+              <i class="bi bi-caret-left-fill"></i>
+              <i class="bi bi-caret-right-fill"></i>
+            </div>
+          </div>
+          
+          <span class="v-slider-badge bg-dark position-absolute top-0 start-0 m-3 z-2">Előtte</span>
+          <span class="v-slider-badge v-bg-red position-absolute top-0 end-0 m-3 z-2">Utána</span>
         </div>
       </div>
 
     </div>
+  -->
+
   </div>
 </section>
