@@ -24,6 +24,13 @@ $v-border: #e6e6e6;
   background-attachment: fixed; 
   height: 450px;
   
+  /* --- ÚJ RÉSZ: MOBIL FIX --- */
+  @media (max-width: 991px) {
+    background-attachment: scroll; /* Kikapcsolja a hibás zoomolást mobilon */
+    height: 350px; /* Mobilon érdemes picit kisebbre venni a magasságot, de maradhat 450px is, ha úgy jobban tetszik */
+  }
+  /* -------------------------- */
+
   .v-overlay {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
