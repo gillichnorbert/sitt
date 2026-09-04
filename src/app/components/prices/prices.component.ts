@@ -15,14 +15,14 @@ export class PricesComponent {
   pricingItems = [
     {
       title: 'Sittszállítás és Lomtalanítás',
-      price: '14 000 Ft',
-      unit: '/ m³-től',
+      price: '990 Ft',
+      unit: '/ Zsáktól',
       desc: 'Tiszta sitt 14 000 Ft-tól, vegyes hulladék 16 000 Ft-tól. Teljes lomtalanítás megegyezés szerint, ingyenes felméréssel.',
       icon: 'bi-trash3-fill'
     },
     {
       title: 'Áruszállítás / Teherfuvarozás',
-      price: '12 000 Ft',
+      price: '20 000 Ft',
       unit: '/ óra-tól',
       desc: 'Gyors és biztonságos árutovábbítás. Városon belüli és Pest megyei fuvarozás. Fix áras konstrukció is kérhető.',
       icon: 'bi-truck'

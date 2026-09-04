@@ -72,10 +72,19 @@
           
         </div>
 
-        <!-- Szolgáltatás Díjszabása (Változatlan, bevált dizájn) -->
+<!-- Szolgáltatás Díjszabása (Változatlan, bevált dizájn) -->
         <h4 class="fw-bolder text-uppercase mb-4 letter-spacing-1">Sittszállítás Díjszabása</h4>
         
         <div class="row g-3 mb-4">
+          <div class="col-md-6">
+            <div class="v-price-card-mini p-4 shadow-sm h-100">
+              <h5 class="fw-bold mb-2 text-uppercase letter-spacing-1 fs-6">Sitt zsákolva</h5>
+              
+              <div class="text-dark fw-black fs-2 mb-0" style="font-weight: 900; letter-spacing: -1px;">
+                990 Ft <span class="fs-6 text-muted fw-normal letter-spacing-0">/ zsák</span>
+              </div>
+            </div>
+          </div>
           <div class="col-md-6">
             <div class="v-price-card-mini p-4 shadow-sm h-100">
               <h5 class="fw-bold mb-2 text-uppercase letter-spacing-1 fs-6">Tiszta sitt</h5>
@@ -97,14 +106,29 @@
           </div>
         </div>
 
-        <div class="v-price-info-box p-4 bg-light text-secondary">
+        <div class="v-price-info-box p-4 bg-light text-secondary mb-4">
           <p class="mb-2"><strong class="text-dark">Lomtalanítás:</strong> Pincék, padlások és hagyatékok teljes kiürítése ingyenes helyszíni felmérés alapján, fix összegért történik.</p>
           <p class="mb-2"><strong class="text-dark">Helyszín: </strong> Budapest és Pest megye teljes területe</p>
-          <p class="mb-2"><strong class="text-dark">Rakodás: </strong> Igény szerint profi rakodószemélyzetet is biztosítunk a sitt lehordásához és zsákolásához.</p>
-          
+          <p class="mb-0"><strong class="text-dark">Rakodás: </strong> Igény szerint profi rakodószemélyzetet is biztosítunk a sitt lehordásához és zsákolásához.</p>
         </div>
 
-      </div>
+        <!-- ÚJ: Fotós árajánlatkérő CTA -->
+        <div class="mt-4 p-4 text-center text-md-start d-md-flex align-items-center justify-content-between border shadow-sm" style="background-color: var(--v-dark);">
+          <div class="mb-3 mb-md-0 pe-md-3">
+            <h5 class="fw-bold mb-1 text-uppercase letter-spacing-1 text-white">
+              <i class="bi bi-camera-fill v-text-red me-2"></i> Küldjön képet, és megmondjuk az árat!
+            </h5>
+            <p class="small text-light mb-0 opacity-75">
+              Fotózza le a sittet vagy a lomot, és küldje el nekünk e-mailben. Gyorsan és pontosan kiszámoljuk Önnek a költségeket!
+            </p>
+          </div>
+          <!-- A "subject" paraméterrel előre kitöltjük az e-mail tárgyát! -->
+          <a href="mailto:terramoveinfo@gmail.com?subject=Árajánlatkérés%20fotó%20alapján" class="v-btn v-btn-primary flex-shrink-0 text-nowrap">
+            <i class="bi bi-envelope-fill me-2"></i> KÉPET KÜLDÖK
+          </a>
+        </div>
+
+      </div> <!-- BAL OLDAL VÉGE -->
 
       <!-- JOBB OLDAL: Sticky kapcsolat doboz -->
       <div class="col-lg-4">

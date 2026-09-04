@@ -55,20 +55,20 @@ export class GalleryComponent {
         { before: 'assets/aruszallitas/folyamat-rakodas.webp'},
       ]
     },
-    {
-      title: 'NYÍLÁSZÁRÓK SZERVIZELÉSE',
-      desc: 'Régi elöregedett ablakok cseréje. A bontástól az új műanyag nyílászáró milliméterpontos beépítéséig és a törmelék elszállításáig.',
-      iconPath: 'M13.5 10.5V6.75a4.5 4.5 0 119 0v3.75M3.75 21.75h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H3.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z',
-      activeIdx: 0,
-      images: [
-        { before: 'assets/nyilaszaro/IMG_1095.webp'},
-        { before: 'assets/nyilaszaro/IMG_1096.webp'},
-        { before: 'assets/nyilaszaro/IMG_1321.webp'},
-        { before: 'assets/nyilaszaro/IMG_1336.webp'},
-        { before: 'assets/nyilaszaro/IMG_1334.webp'},
-        { before: 'assets/nyilaszaro/IMG_1331.webp'},
-      ]
-    }
+    // {
+    //   title: 'NYÍLÁSZÁRÓK SZERVIZELÉSE',
+    //   desc: 'Régi elöregedett ablakok cseréje. A bontástól az új műanyag nyílászáró milliméterpontos beépítéséig és a törmelék elszállításáig.',
+    //   iconPath: 'M13.5 10.5V6.75a4.5 4.5 0 119 0v3.75M3.75 21.75h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H3.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z',
+    //   activeIdx: 0,
+    //   images: [
+    //     { before: 'assets/nyilaszaro/IMG_1095.webp'},
+    //     { before: 'assets/nyilaszaro/IMG_1096.webp'},
+    //     { before: 'assets/nyilaszaro/IMG_1321.webp'},
+    //     { before: 'assets/nyilaszaro/IMG_1336.webp'},
+    //     { before: 'assets/nyilaszaro/IMG_1334.webp'},
+    //     { before: 'assets/nyilaszaro/IMG_1331.webp'},
+    //   ]
+    // }
   ];
 
   updateSlider(event: any, categoryIndex: number) {

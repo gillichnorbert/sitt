@@ -35,14 +35,6 @@ export class FaqComponent {
       answer: 'Igen. A kitermelt föld elszállítását és szakszerű elhelyezését is biztosítjuk.'
     },
     { 
-      question: 'Műanyag és fa nyílászárókkal is foglalkoznak?', 
-      answer: 'Igen. Műanyag és fa nyílászárók szervizelését, javítását és beépítését egyaránt vállaljuk.'
-    },
-    { 
-      question: 'Nyílászárók beépítését is vállalják?', 
-      answer: 'Igen. Bejárati ajtók, teraszajtók és ablakok szakszerű beépítését is elvégezzük.'
-    },
-    { 
       question: 'Mennyi idő a kiszállás?', 
       answer: 'A legtöbb esetben akár aznapi vagy másnapi kiszállást is vállalunk Budapest és Pest vármegye területén.'
     }
