@@ -18,7 +18,7 @@ export const routes: Routes = [
   { 
     path: '', 
     component: HomeComponent, 
-    title: 'TerraMove | Földmunka, Szállítás és Nyílászáró Szerviz' // Keresőbarát főcím
+    title: 'TerraMove | Sittszállítás és Tehertaxi Rakodással' // Keresőbarát főcím
   },
   
   // SEO szempontból jobb, ha a /kezdolap átirányít a főoldalra, hogy ne legyen duplikált tartalom
@@ -50,11 +50,6 @@ export const routes: Routes = [
     path: 'szolgaltatasok/foldmunka', 
     component: FoldmunkaComponent, 
     title: 'Gépi Földmunka és Anyagmozgatás | TerraMove' 
-  },
-  { 
-    path: 'szolgaltatasok/nyilaszarok', 
-    component: NyilaszarokComponent, 
-    title: 'Nyílászárók Szervizelése és Beszerelése | TerraMove' 
   },
 
   // Árak oldal

@@ -29,12 +29,6 @@ export class ServicesComponent {
       desc: 'Professzionális gépi földmunkák, tereprendezés, alapásás és nehéz építőanyagok hatékony mozgatása az építési területen.',
       iconPath: 'M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0l4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0l-5.571 3-5.571-3',
       url: 'foldmunka'
-    },
-    {
-      title: 'Nyílászárók szervizelése',
-      desc: 'Ablakok és ajtók szakszerű beépítése, beállítása, valamint meglévő nyílászárók javítása, szigetelése és teljes körű karbantartása.',
-      iconPath: 'M13.5 10.5V6.75a4.5 4.5 0 119 0v3.75M3.75 21.75h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H3.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z',
-      url: 'nyilaszarok' // HOZZÁADVA
     }
   ];
 }

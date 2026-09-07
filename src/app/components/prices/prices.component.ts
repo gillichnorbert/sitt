@@ -33,13 +33,6 @@ export class PricesComponent {
       unit: '/ gépóra-tól',
       desc: 'Tereprendezés, alapásás és anyagmozgatás professzionális gépparkkal. Az ár tartalmazza a gépkezelő díját is.',
       icon: 'bi-cone-striped'
-    },
-    {
-      title: 'Nyílászárók Szervizelése',
-      price: 'Egyedi',
-      unit: 'árajánlat',
-      desc: 'A pontos árat az ingyenes helyszíni felmérés, a vasalatok állapota és a beépítési paraméterek tükrében határozzuk meg.',
-      icon: 'bi-door-open-fill'
     }
   ];
 
