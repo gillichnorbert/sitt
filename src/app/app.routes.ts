@@ -10,7 +10,6 @@ import { ServicesComponent } from './components/services/services.component';
 import { SittszallitasComponent } from './pages/sittszallitas/sittszallitas.component';
 import { AruszallitasComponent } from './pages/aruszallitas/aruszallitas.component';
 import { FoldmunkaComponent } from './pages/foldmunka/foldmunka.component';
-import { NyilaszarokComponent } from './pages/nyilaszarok/nyilaszarok.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 
 export const routes: Routes = [
