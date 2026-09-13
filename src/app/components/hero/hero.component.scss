@@ -1,28 +1,29 @@
 /* =========================================
-   VERTREND STÍLUS: HERO (KÉP NÉLKÜL, SZOLGÁLTATÁS FÓKUSSZAL)
+   VERTREND STÍLUS: HERO KÉPES HÁTTÉRREL
    ========================================= */
 
 $v-red: #a81c1c;
 $v-dark: #111111;
 $v-gray: #555555;
-$v-bg-light: #eef1f5; /* Elegáns, nagyon halvány ipari szürke háttér */
+$v-bg-light: #eef1f5; 
 
 .v-text-red { color: $v-red !important; }
 .letter-spacing-1 { letter-spacing: 1px; }
 
 /* A teljes szekció háttere */
 .v-hero-section {
-  background-color: $v-bg-light;
+  /* ÚJ: Kép beállítása háttérnek (középre igazítva, kitöltve) */
+  background: url('/assets/cover.png') center/cover no-repeat;
+  background-color: $v-dark; /* Biztonsági háttér, amíg betölt a kép */
   min-height: 85vh; /* Hogy kitöltse a képernyőt */
   position: relative;
   
-  /* Egy finom átlós vonal a háttérben, hogy ne legyen túl üres a kép hiánya miatt */
+  /* ÚJ: Elegáns sötétítő réteg (overlay), hogy a fehér doboz kiugorjon a térből */
   &::before {
     content: '';
     position: absolute;
     top: 0; right: 0; bottom: 0; left: 0;
-    background: linear-gradient(135deg, transparent 49%, rgba(0,0,0,0.02) 50%, transparent 51%);
-    background-size: 20px 20px;
+    background: rgba(17, 17, 17, 0.65); /* 65%-os fekete sötétítés */
     z-index: 0;
   }
 }
@@ -34,8 +35,8 @@ $v-bg-light: #eef1f5; /* Elegáns, nagyon halvány ipari szürke háttér */
 
 /* --- BAL OLDAL: FEHÉR DOBOZ (VERTREND STÍLUS) --- */
 .v-hero-content-box {
-  border-left: 8px solid $v-red; /* A vastag piros vonal bal oldalon */
-  border-radius: 0; /* Szigorúan szögletes */
+  border-left: 8px solid $v-red;
+  border-radius: 0; 
   position: relative;
   z-index: 2;
   
@@ -45,6 +46,7 @@ $v-bg-light: #eef1f5; /* Elegáns, nagyon halvány ipari szürke háttér */
     font-weight: 800;
     letter-spacing: 2px;
   }
+
 
   .v-hero-title {
     font-size: clamp(2.2rem, 4vw, 3.8rem);

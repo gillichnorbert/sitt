@@ -10,10 +10,11 @@
       </p>
     </div>
 
+    <!-- A kártyák rácsa: itt lett col-lg-6, hogy 2 nagy kártya legyen! -->
     <div class="row g-4 justify-content-center mb-5">
       
       @for (item of pricingItems; track item.title) {
-        <div class="col-md-6 col-xl-3">
+        <div class="col-md-6 col-lg-6">
           <div class="v-price-card h-100 d-flex flex-column shadow-sm p-4">
             
             <div class="v-icon-box mb-4">
@@ -22,10 +23,22 @@
             
             <h3 class="v-card-title mb-3">{{ item.title }}</h3>
             
-            <div class="v-price-display mb-4">
-              <span class="price-amount">{{ item.price }}</span>
-              <span class="price-unit">{{ item.unit }}</span>
-            </div>
+            <!-- <div class="v-price-display mb-4">
+              <span class="price-amount">{{ item.price }}</span> 
+               <span class="price-unit">{{ item.unit }}</span> 
+            </div> -->
+            
+            <!-- BELSŐ ÁRLISTA (Csak ott jelenik meg, ahol van adat a subPrices-ban) -->
+            @if (item.subPrices && item.subPrices.length > 0) {
+              <ul class="list-unstyled mb-4 border-top pt-3">
+                @for (sub of item.subPrices; track sub.name) {
+                  <li class="d-flex justify-content-between mb-2">
+                    <span class="small">{{ sub.name }}</span>
+                    <strong class="small">{{ sub.value }}</strong>
+                  </li>
+                }
+              </ul>
+            }
             
             <p class="v-card-text flex-grow-1">
               {{ item.desc }}
@@ -56,9 +69,13 @@
           </div>
         </div>
 
-        <div class="mt-4">
+        <!-- GOMBOK: Hívás és Képküldés egymás mellett -->
+        <div class="mt-4 d-flex flex-column flex-md-row justify-content-center gap-3">
           <a href="tel:+36707287316" class="v-btn v-btn-primary shadow-lg">
             KÉRJEN AJÁNLATOT <i class="bi bi-telephone-fill ms-2"></i>
+          </a>
+          <a href="mailto:terramoveinfo@gmail.com?subject=Árajánlatkérés%20fotó%20alapján" class="v-btn v-btn-primary shadow-lg">
+            FOTÓT KÜLDÖK ÁRAZÁSHOZ <i class="bi bi-camera-fill ms-2"></i>
           </a>
         </div>
 
