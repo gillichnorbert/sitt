@@ -25,11 +25,6 @@
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
-    <url>
-    <loc>https://terramove.hu/szolgaltatasok/nyilaszarok</loc>
-    <priority>0.8</priority>
-    <changefreq>monthly</changefreq>
-  </url>
   <url>
     <loc>https://terramove.hu/araink</loc>
     <priority>0.8</priority>
