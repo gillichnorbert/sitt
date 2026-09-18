@@ -13,7 +13,7 @@ $v-bg-light: #eef1f5;
 /* A teljes szekció háttere */
 .v-hero-section {
   /* ÚJ: Kép beállítása háttérnek (középre igazítva, kitöltve) */
-  background: url('/assets/cover.png') center/cover no-repeat;
+  background: url('/assets/cover.webp') center/cover no-repeat;
   background-color: $v-dark; /* Biztonsági háttér, amíg betölt a kép */
   min-height: 85vh; /* Hogy kitöltse a képernyőt */
   position: relative;
