@@ -1,16 +1,12 @@
+import { NotFoundComponent } from './pages/not-found.component';
 import { Routes } from '@angular/router';
 
 // Fő komponensek
 import { HomeComponent } from './components/home/home.component';
-import { PricesComponent } from './components/prices/prices.component';
 import { ServicesComponent } from './components/services/services.component';
 
 // Új szolgáltatás aloldalak importálása 
 // (Ellenőrizd az elérési utakat, hogy nálad pontosan hol vannak a mappák!)
-import { SittszallitasComponent } from './pages/sittszallitas/sittszallitas.component';
-import { AruszallitasComponent } from './pages/aruszallitas/aruszallitas.component';
-import { FoldmunkaComponent } from './pages/foldmunka/foldmunka.component';
-import { GalleryComponent } from './components/gallery/gallery.component';
 
 export const routes: Routes = [
   // Főoldal
@@ -19,6 +15,7 @@ export const routes: Routes = [
     component: HomeComponent, 
     title: 'TerraMove | Sittszállítás és Tehertaxi Rakodással' // Keresőbarát főcím
   },
+
   
   // SEO szempontból jobb, ha a /kezdolap átirányít a főoldalra, hogy ne legyen duplikált tartalom
   { 
@@ -37,35 +34,35 @@ export const routes: Routes = [
   // --- ÚJ SZOLGÁLTATÁS ALOLDALAK ---
   { 
     path: 'szolgaltatasok/sittszallitas', 
-    component: SittszallitasComponent, 
+    loadComponent: () => import('./pages/sittszallitas/sittszallitas.component').then(m => m.SittszallitasComponent), 
     title: 'Sittszállítás és Lomtalanítás | TerraMove' 
   },
   { 
     path: 'szolgaltatasok/aruszallitas', 
-    component: AruszallitasComponent, 
+    loadComponent: () => import('./pages/aruszallitas/aruszallitas.component').then(m => m.AruszallitasComponent), 
     title: 'Áruszállítás és Teherfuvarozás | TerraMove' 
   },
   { 
     path: 'szolgaltatasok/foldmunka', 
-    component: FoldmunkaComponent, 
+    loadComponent: () => import('./pages/foldmunka/foldmunka.component').then(m => m.FoldmunkaComponent), 
     title: 'Gépi Földmunka és Anyagmozgatás | TerraMove' 
   },
 
   // Árak oldal
   { 
     path: 'araink', 
-    component: PricesComponent, 
+    loadComponent: () => import('./components/prices/prices.component').then(m => m.PricesComponent), 
     title: 'Áraink | Földmunka, Szállítás és Szerviz | TerraMove' 
   },
   {
     path: 'galeria',
-    component: GalleryComponent,
+    loadComponent: () => import('./components/gallery/gallery.component').then(m => m.GalleryComponent),
     title: 'Galéria | TerraMove'
   },
 
-  // Hibás URL esetén visszadob a főoldalra (404-es hiba elkerülése)
+  // Hibás URL: külön hibaoldal; HTTP 404 státuszt a szerver ad.
   {
     path: '**',
-    redirectTo: ''
+    component: NotFoundComponent
   }
 ];

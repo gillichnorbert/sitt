@@ -1,3 +1,4 @@
+import { SEO_PAGES } from './src/app/seo/pages';
 import { APP_BASE_HREF } from '@angular/common';
 import { CommonEngine } from '@angular/ssr';
 import express from 'express';
@@ -17,12 +18,22 @@ export function app(): express.Express {
   server.set('view engine', 'html');
   server.set('views', browserDistFolder);
 
+  server.use((req, res, next) => {
+    if (req.path === '/kezdolap' || req.path === '/kezdolap/') { res.redirect(301, '/' + (req.url.includes('?') ? req.url.slice(req.url.indexOf('?')) : '')); return; }
+    if (req.path !== '/' && req.path.endsWith('/')) {
+      res.redirect(301, req.path.replace(/\/+$/, '').replace(/^\/+/, '/') + (req.url.includes('?') ? req.url.slice(req.url.indexOf('?')) : '')); return;
+    }
+    next();
+  });
+
   // Example Express Rest API endpoints
   // server.get('/api/**', (req, res) => { });
   // Serve static files from /browser
   server.get('**', express.static(browserDistFolder, {
     maxAge: '1y',
-    index: 'index.html',
+    index: false,
+    redirect: false,
+    setHeaders: (res, file) => { if (!/[-.][A-Z0-9]{8,}\.(js|css)$/i.test(file)) res.setHeader('Cache-Control', 'public, max-age=3600'); },
   }));
 
   // All regular routes use the Angular engine
@@ -37,7 +48,10 @@ export function app(): express.Express {
         publicPath: browserDistFolder,
         providers: [{ provide: APP_BASE_HREF, useValue: baseUrl }],
       })
-      .then((html) => res.send(html))
+      .then((html) => {
+        const exists = Object.prototype.hasOwnProperty.call(SEO_PAGES, req.path.replace(/^\/+|\/+$/g, ''));
+        res.status(exists ? 200 : 404).set('Cache-Control', 'no-cache').send(html);
+      })
       .catch((err) => next(err));
   });
 

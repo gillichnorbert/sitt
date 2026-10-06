@@ -6,7 +6,7 @@
     </a>
 
     <div class="v-desktop-menu d-none d-lg-flex">
-      <a class="v-nav-link" routerLink="/kezdolap" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Kezdőlap</a>
+      <a class="v-nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Kezdőlap</a>
       <a class="v-nav-link" routerLink="/araink" routerLinkActive="active">Áraink</a>
       <a class="v-nav-link" routerLink="/galeria" routerLinkActive="active">Galéria</a>
       <a class="v-nav-link" routerLink="/szolgaltatasok" routerLinkActive="active">Szolgáltatások</a>
@@ -14,12 +14,12 @@
       <a href="tel:+36707287316" class="v-btn v-btn-primary ms-5">
         <i class="bi bi-telephone-fill me-2"></i> +36 70 728 7316
       </a>
-            <a href="mailto:info@terramove.hu" class="v-btn v-btn-primary ms-2">
+            <a aria-label="E-mail küldése" href="mailto:info@terramove.hu" class="v-btn v-btn-primary ms-2">
         <i class="bi bi-envelope-fill "></i>
       </a>
     </div>
 
-    <button class="v-hamburger d-lg-none" [class.open]="isMenuOpen" (click)="toggleMenu()" aria-label="Menü">
+    <button class="v-hamburger d-lg-none" [class.open]="isMenuOpen" (click)="toggleMenu()" aria-label="Menü" [attr.aria-expanded]="isMenuOpen" aria-controls="mobile-menu">
       <span></span>
       <span></span>
       <span></span>
@@ -28,10 +28,10 @@
   </div>
 </nav>
 
-<div class="v-mobile-menu" [class.open]="isMenuOpen">
+<div id="mobile-menu" [attr.inert]="isMenuOpen ? null : ''" class="v-mobile-menu" [class.open]="isMenuOpen">
   <div class="v-mobile-menu-content">
     
-    <a class="v-mobile-link" routerLink="/kezdolap" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">
+    <a class="v-mobile-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">
       Kezdőlap
     </a>
     <a class="v-mobile-link" routerLink="/araink" routerLinkActive="active" (click)="closeMenu()">
@@ -52,7 +52,7 @@
       <a href="tel:+36707287316" class="v-btn v-btn-primary w-100" (click)="closeMenu()">
         <i class="bi bi-telephone-fill me-2"></i> +36 70 728 7316
       </a>
-      <a href="mailto:info@terramove.hu" class="v-btn v-btn-primary w-100 mt-2" (click)="closeMenu()">
+      <a aria-label="E-mail küldése" href="mailto:info@terramove.hu" class="v-btn v-btn-primary w-100 mt-2" (click)="closeMenu()">
         <i class="bi bi-envelope-fill me-2"></i> info&#64;terramove.hu
       </a>
     </div>

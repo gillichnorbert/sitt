@@ -24,7 +24,7 @@ Minden munkát szakértelemmel, precizitással és elkötelezettséggel végzün
   <p class="mb-0 text-light" style="opacity: 0.85;">
      TerraMove megbízható partnerként több területen is teljes körű megoldásokat biztosít. Önnek csak fel kell vennie velünk a kapcsolatot a 
     <!-- IDE KERÜLT A text-nowrap OSZTÁLY -->
-    <a href="tel:06-70-728-7316" class="text-red text-nowrap">06 70 728 7316</a> telefonszámon vagy a
+    <a href="tel:+36707287316" class="text-red text-nowrap">06 70 728 7316</a> telefonszámon vagy a
     <a href="mailto:info@terramove.hu" class="text-red text-nowrap">info&#64;terramove.hu</a> 
     e-mail címen, mi pedig a megfelelő megoldást biztosítjuk az igényeihez igazodva.
   </p>
@@ -50,7 +50,7 @@ Minden munkát szakértelemmel, precizitással és elkötelezettséggel végzün
         <!-- Szögletes építészeti dekoráció a kép mögött -->
         <div class="v-img-backdrop d-none d-lg-block"></div>
         <div class="position-relative z-1">
-          <img src="assets/sitteszsak.jpg"
+          <img loading="lazy" decoding="async" src="assets/sitteszsak.jpg"
                alt="TerraMove földmunka és szállítás munka közben"
                class="img-fluid shadow-lg v-main-img">
         </div>
@@ -63,9 +63,9 @@ Minden munkát szakértelemmel, precizitással és elkötelezettséggel végzün
       <div class="col-md-6 col-lg-4" *ngFor="let item of sliders; let i = index">
         <div class="v-before-after-slider position-relative overflow-hidden shadow-sm border w-100">
           
-          <img [src]="item.after" class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover z-0" alt="Utána">
+          <img loading="lazy" decoding="async" [src]="item.after" class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover z-0" alt="Utána">
           
-          <img [src]="item.before" class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover z-1" 
+          <img loading="lazy" decoding="async" [src]="item.before" class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover z-1" 
                [style.clip-path]="'polygon(0 0, ' + item.value + '% 0, ' + item.value + '% 100%, 0 100%)'" 
                alt="Előtte">
           

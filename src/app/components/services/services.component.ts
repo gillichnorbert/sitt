@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router'; // EZT IMPORTÁLNI KELLETT A LINKEKHEZ
+import { Component, inject } from '@angular/core';
+import { RouterModule, ActivatedRoute } from '@angular/router'; // EZT IMPORTÁLNI KELLETT A LINKEKHEZ
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive'; 
 
 @Component({
@@ -11,6 +11,7 @@ import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive'
   styleUrl: './services.component.scss'
 })
 export class ServicesComponent {
+  standalonePage = inject(ActivatedRoute).snapshot.routeConfig?.path === 'szolgaltatasok';
   services = [
     {
       title: 'Sittszállítás és lomtalanítás',

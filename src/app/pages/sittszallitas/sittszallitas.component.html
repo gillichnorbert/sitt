@@ -160,9 +160,9 @@
       <div class="col-md-6 col-lg-4" *ngFor="let item of sliders; let i = index">
         <div class="v-before-after-slider position-relative overflow-hidden shadow-sm border w-100">
           
-          <img [src]="item.after" class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover z-0" alt="Utána">
+          <img loading="lazy" decoding="async" [src]="item.after" class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover z-0" alt="Utána">
           
-          <img [src]="item.before" class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover z-1" 
+          <img loading="lazy" decoding="async" [src]="item.before" class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover z-1" 
                [style.clip-path]="'polygon(0 0, ' + item.value + '% 0, ' + item.value + '% 100%, 0 100%)'" 
                alt="Előtte">
           
