@@ -43,3 +43,14 @@ A helyi build Node 24 alatt, a környezetből hiányzó memóriastatisztikát ke
 Az árak áfatartalmát, minimumdíjait, a céges/adatkezelési információkat és a meglévő analitika hozzájárulás-kezelését élesítés előtt az üzemeltető ellenőrizze. Search Console- és Cégprofil-módosítás nem történt. A SEO jobb kereshetőséget készít elő, de helyezés vagy látogatószám nem garantálható.
 
 Forrás: https://developers.google.com/search/docs/fundamentals/seo-starter-guide (2026. október 6.).
+
+
+## Agent discoverability javítás
+
+A `public/llms.txt` Markdown H1-et és a hét nyilvános oldalra mutató linkeket tartalmaz. A `public/ai-catalog.json`, `public/.well-known/ai-catalog.json` és `public/.well-known/ard.json` érvényes JSON-dokumentum. A katalógus `entries` listája szándékosan üres: a projekt nem tartalmaz nyilvános AI-ügynököt, MCP-szervert vagy foglalási API-t. A weboldal tartalma az llms.txt-ből fedezhető fel. A fájl nem állít nem létező automatizálási képességet, tanítási engedélyt vagy tiltást.
+
+A Node-szerver kifejezetten kezeli ezeket az útvonalakat, a rejtett `.well-known` könyvtárat is; a HTTP-teszt 200-as választ, a helyes tartalomtípust és HTML helyett szöveget/JSON-t ellenőriz. A build külön másolja a `.well-known` JSON-fájljait. A felület megjelenése nem változott.
+
+Statikus tárhelyre a `.well-known` könyvtárat is fel kell tölteni, és e fájlok kéréseit ki kell venni az esetleges SPA-átírásból. `llms.txt`: text/plain; JSON-fájlok: application/json. Feltöltés után közvetlenül nyissa meg az URL-eket és futtassa újra az auditot. A javítás helyi builden és HTTP-válaszokon lett ellenőrizve; az éles Lighthouse-audit nem futott le. A korábbi Search Console-indexelési állapotok változását ez önmagában nem garantálja.
+
+Hivatkozások: https://llmstxt.org/ ; https://agenticresourcediscovery.org/spec/ ; a katalógus ellenőrzéséhez a GoogleChrome/lighthouse `third-party/ard/spec/schemas/ai-catalog.schema.json` sémája (2026-10-06). Az ARD v0.91 új útvonala az `ard.json`, a Lighthouse régebbi katalógusellenőrzéséhez az `ai-catalog.json` is megmaradt.

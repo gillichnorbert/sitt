@@ -29,6 +29,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "*.json",
+                "input": "public/.well-known",
+                "output": "/.well-known/"
               }
             ],
             "styles": [

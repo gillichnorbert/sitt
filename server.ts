@@ -26,6 +26,17 @@ export function app(): express.Express {
     next();
   });
 
+  // Serve discovery documents explicitly; never fall through to Angular HTML.
+  for (const path of ['/llms.txt', '/ai-catalog.json', '/.well-known/ai-catalog.json', '/.well-known/ard.json']) {
+    server.get(path, (_req, res) => {
+      res.type(path.endsWith('.txt') ? 'text/plain' : 'application/json');
+      res.set('Cache-Control', 'public, max-age=300');
+      res.sendFile(join(browserDistFolder, path.slice(1)), { dotfiles: 'allow' }, err => {
+        if (err && !res.headersSent) res.status(404).type('text/plain').send('Not found');
+      });
+    });
+  }
+
   // Example Express Rest API endpoints
   // server.get('/api/**', (req, res) => { });
   // Serve static files from /browser

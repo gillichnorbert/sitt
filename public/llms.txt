@@ -1,0 +1,20 @@
+# TerraMove
+
+> Sittszállítás, lomtalanítás, tehertaxi és gépi földmunka Budapesten és Pest vármegyében.
+
+Ez a fájl a TerraMove nyilvános weboldalainak rövid tartalomjegyzéke. A szolgáltatások aktuális feltételeit és árait a hivatkozott oldalak tartalmazzák. Végleges árajánlat és időpont telefonos vagy e-mailes egyeztetéssel kérhető.
+
+Kapcsolat: +36 70 728 7316; info@terramove.hu. A webhely magyar nyelvű. Nem kínál nyilvános foglalási API-t, MCP-szervert vagy önálló AI-ügynököt.
+
+## Szolgáltatások
+
+- [TerraMove főoldal](https://terramove.hu/): A vállalkozás és szolgáltatásainak bemutatása.
+- [Szolgáltatások](https://terramove.hu/szolgaltatasok): A vállalt munkák áttekintése.
+- [Sittszállítás és lomtalanítás](https://terramove.hu/szolgaltatasok/sittszallitas): Zsákos sittszállítás és lomtalanítás rakodással.
+- [Áruszállítás és tehertaxi](https://terramove.hu/szolgaltatasok/aruszallitas): Bútorok, építőanyagok és raklapos áruk szállítása.
+- [Gépi földmunka](https://terramove.hu/szolgaltatasok/foldmunka): Földmunka, tereprendezés és anyagmozgatás.
+- [Áraink](https://terramove.hu/araink): Tájékoztató díjak és az egyedi ajánlatkérés feltételei.
+
+## Optional
+
+- [Galéria](https://terramove.hu/galeria): Korábbi munkák képei.
