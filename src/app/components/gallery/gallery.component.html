@@ -92,12 +92,12 @@
                        title="Kattints a kép váltásához">
                     
                     <!-- Kis töltő indikátor a bélyegképnek is -->
-                    <div class="v-loading-overlay z-2" *ngIf="!isLoaded(img.after ? img.after : img.before)">
+                    <div class="v-loading-overlay z-2" *ngIf="!isLoaded(img.thumbnail)">
                       <div class="v-spinner v-spinner-sm"></div>
                     </div>
 
-                    <img loading="lazy" decoding="async" [src]="img.after ? img.after : img.before" 
-                         (load)="onImageLoad(img.after ? img.after : img.before)"
+                    <img loading="lazy" decoding="async" [src]="img.thumbnail"
+                         (load)="onImageLoad(img.thumbnail)"
                          class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover z-1" alt="Előnézet">
                   </div>
                 }
@@ -112,6 +112,7 @@
                 </div>
                 <h3 class="v-card-heading mb-0">{{ item.title }}</h3>
               </div>
+              <a [routerLink]="item.serviceUrl" class="text-red fw-bold d-block mt-2">{{ item.serviceLinkLabel }}</a>
               
               
             </div>

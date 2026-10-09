@@ -18,41 +18,47 @@ export class GalleryComponent {
     {
       title: 'Sittszállítás és Lomtalanítás',
       desc: 'Építési törmelék és felgyülemlett lomok teljes körű elszállítása. A káoszból tiszta, rendezett területet varázsolunk pillanatok alatt.',
+      serviceUrl: '/szolgaltatasok/sittszallitas',
+      serviceLinkLabel: 'Sittszállítás és lomtalanítás részletei',
       iconPath: 'M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0',
       activeIdx: 0,
       images: [
-        { before: 'assets/sittszallitas/before_1.jpeg', after: 'assets/sittszallitas/after_1.jpeg', value: 50 },
-        { before: 'assets/sittszallitas/before_2.webp', after: 'assets/sittszallitas/after_2.webp', value: 50 },
-        { before: 'assets/sittszallitas/before_3.jpeg', after: 'assets/sittszallitas/after_3.jpeg', value: 50 },
-        { before: 'assets/sittszallitas/before_4.webp', after: 'assets/sittszallitas/after_4.webp', value: 50 },
-        { before: 'assets/sittszallitas/before_5.webp', after: 'assets/sittszallitas/after_5.webp', value: 50 },
-        { before: 'assets/sittszallitas/before_6.webp', after: 'assets/sittszallitas/after_6.webp', value: 50 },
-        { before: 'assets/sittszallitas/IMG_6643.webp' },
-        { before: 'assets/sittszallitas/IMG_6635.webp' },
+        { before: 'assets/sittszallitas/before_1.jpeg', after: 'assets/sittszallitas/after_1.jpeg', thumbnail: 'assets/thumbnails/sittszallitas-after_1.webp', value: 50 },
+        { before: 'assets/sittszallitas/before_2.webp', after: 'assets/sittszallitas/after_2.webp', thumbnail: 'assets/thumbnails/sittszallitas-after_2.webp', value: 50 },
+        { before: 'assets/sittszallitas/before_3.jpeg', after: 'assets/sittszallitas/after_3.jpeg', thumbnail: 'assets/thumbnails/sittszallitas-after_3.webp', value: 50 },
+        { before: 'assets/sittszallitas/before_4.webp', after: 'assets/sittszallitas/after_4.webp', thumbnail: 'assets/thumbnails/sittszallitas-after_4.webp', value: 50 },
+        { before: 'assets/sittszallitas/before_5.webp', after: 'assets/sittszallitas/after_5.webp', thumbnail: 'assets/thumbnails/sittszallitas-after_5.webp', value: 50 },
+        { before: 'assets/sittszallitas/before_6.webp', after: 'assets/sittszallitas/after_6.webp', thumbnail: 'assets/thumbnails/sittszallitas-after_6.webp', value: 50 },
+        { before: 'assets/sittszallitas/IMG_6643.webp', thumbnail: 'assets/thumbnails/sittszallitas-IMG_6643.webp' },
+        { before: 'assets/sittszallitas/IMG_6635.webp', thumbnail: 'assets/thumbnails/sittszallitas-IMG_6635.webp' },
       ]
     },
     {
       title: 'GÉPI FÖLDMUNKA / ANYAGMOZGATÁS',
       desc: 'Teljes tereprendezés, alapásás és szintezés. A felesleges föld kitermelése és azonnali, nyom nélküli elszállítása.',
+      serviceUrl: '/szolgaltatasok/foldmunka',
+      serviceLinkLabel: 'Gépi földmunka részletei',
       iconPath: 'M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0l4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0l-5.571 3-5.571-3',
       activeIdx: 0,
       images: [
-        { before: 'assets/foldmunka/IMG_5523.webp' },
-        { before: 'assets/foldmunka/IMG_5522.webp' } 
+        { before: 'assets/foldmunka/IMG_5523.webp', thumbnail: 'assets/thumbnails/foldmunka-IMG_5523.webp' },
+        { before: 'assets/foldmunka/IMG_5522.webp', thumbnail: 'assets/thumbnails/foldmunka-IMG_5522.webp' }
       ]
     },
     {
       title: 'ÁRUSZÁLLÍTÁS / TEHERFUVAROZÁS',
-      desc: 'Elhanyagolt pincék, padlások és hagyatékok szakszerű kiürítése. Nem hagyunk magunk után mást, csak az üres teret.',
+      desc: 'Bútorok, raklapos áruk és építőanyagok szállítása Budapesten és Pest vármegyében, igény szerint rakodással.',
+      serviceUrl: '/szolgaltatasok/aruszallitas',
+      serviceLinkLabel: 'Tehertaxi és áruszállítás részletei',
       iconPath: 'M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12',
       activeIdx: 0,
       images: [
-        { before: 'assets/aruszallitas/aru1.webp'},
-        { before: 'assets/aruszallitas/aru2.webp'},
-        { before: 'assets/aruszallitas/folyamat-szallitas.webp'},
-        { before: 'assets/aruszallitas/aru3.webp'},
-        { before: 'assets/aruszallitas/folyamat-celba-eres.webp'},
-        { before: 'assets/aruszallitas/folyamat-rakodas.webp'},
+        { before: 'assets/aruszallitas/aru1.webp', thumbnail: 'assets/thumbnails/aruszallitas-aru1.webp'},
+        { before: 'assets/aruszallitas/aru2.webp', thumbnail: 'assets/thumbnails/aruszallitas-aru2.webp'},
+        { before: 'assets/aruszallitas/folyamat-szallitas.webp', thumbnail: 'assets/thumbnails/aruszallitas-folyamat-szallitas.webp'},
+        { before: 'assets/aruszallitas/aru3.webp', thumbnail: 'assets/thumbnails/aruszallitas-aru3.webp'},
+        { before: 'assets/aruszallitas/folyamat-celba-eres.webp', thumbnail: 'assets/thumbnails/aruszallitas-folyamat-celba-eres.webp'},
+        { before: 'assets/aruszallitas/folyamat-rakodas.webp', thumbnail: 'assets/thumbnails/aruszallitas-folyamat-rakodas.webp'},
       ]
     },
     // {

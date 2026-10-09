@@ -1,0 +1,78 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "npm ci",
+  "buildCommand": "npm run build && npm run check:hosting",
+  "outputDirectory": "dist/sitt-transport/browser",
+  "routes": [
+    {
+      "src": "^/kezdolap/*$",
+      "caseSensitive": true,
+      "headers": { "Location": "/" },
+      "status": 301
+    },
+    {
+      "src": "^/(szolgaltatasok(?:/(?:sittszallitas|aruszallitas|foldmunka))?|araink|galeria)/+$",
+      "caseSensitive": true,
+      "headers": { "Location": "/$1" },
+      "status": 301
+    },
+    {
+      "src": "^/index\\.html/*$",
+      "caseSensitive": true,
+      "headers": { "Location": "/" },
+      "status": 301
+    },
+    {
+      "src": "^/(szolgaltatasok(?:/(?:sittszallitas|aruszallitas|foldmunka))?|araink|galeria)/index\\.html/*$",
+      "caseSensitive": true,
+      "headers": { "Location": "/$1" },
+      "status": 301
+    },
+    {
+      "src": "^/(?:kalkulator|tudastar)(?:/.*)?$|^/(?:index\\.csr|404)\\.html$",
+      "caseSensitive": true,
+      "dest": "/404.html",
+      "headers": { "Cache-Control": "no-cache", "X-Robots-Tag": "noindex" },
+      "status": 404
+    },
+    {
+      "src": "^/(?:llms|robots)\\.txt$",
+      "caseSensitive": true,
+      "headers": { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "public, max-age=300" },
+      "continue": true
+    },
+    {
+      "src": "^/(?:ai-catalog\\.json|\\.well-known/(?:ai-catalog|ard)\\.json)$",
+      "caseSensitive": true,
+      "headers": { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "public, max-age=300" },
+      "continue": true
+    },
+    {
+      "src": "^/sitemap\\.xml$",
+      "caseSensitive": true,
+      "headers": { "Content-Type": "application/xml; charset=utf-8", "Cache-Control": "public, max-age=300" },
+      "continue": true
+    },
+    {
+      "src": "^/$",
+      "caseSensitive": true,
+      "dest": "/index.html",
+      "headers": { "Cache-Control": "no-cache" }
+    },
+    {
+      "src": "^/(szolgaltatasok(?:/(?:sittszallitas|aruszallitas|foldmunka))?|araink|galeria)$",
+      "caseSensitive": true,
+      "dest": "/$1/index.html",
+      "headers": { "Cache-Control": "no-cache" }
+    },
+    { "handle": "filesystem" },
+    {
+      "src": "^/.*$",
+      "caseSensitive": true,
+      "dest": "/404.html",
+      "headers": { "Cache-Control": "no-cache", "X-Robots-Tag": "noindex" },
+      "status": 404
+    }
+  ]
+}

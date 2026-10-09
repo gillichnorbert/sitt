@@ -10,6 +10,7 @@
     "serve:ssr:sitt-transport": "node dist/sitt-transport/server/server.mjs",
     "check:seo": "python3 scripts/check-seo.py",
     "check:http": "node scripts/check-http.mjs",
+    "check:hosting": "node scripts/check-hosting.mjs",
     "prebuild": "node scripts/clean-build.mjs"
   },
   "private": true,
