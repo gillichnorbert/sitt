@@ -15,6 +15,10 @@ Kapcsolat: +36 70 728 7316; info@terramove.hu. A webhely magyar nyelvű. Nem kí
 - [Gépi földmunka](https://terramove.hu/szolgaltatasok/foldmunka): Földmunka, tereprendezés és anyagmozgatás.
 - [Áraink](https://terramove.hu/araink): Tájékoztató díjak és az egyedi ajánlatkérés feltételei.
 
+## Blog
+
+- [Sittszállítás és tehertaxi blog](https://terramove.hu/blog): Gyakorlati útmutatók az előkészítéshez, a rakodáshoz és a szállítás egyeztetéséhez.
+
 ## Optional
 
 - [Galéria](https://terramove.hu/galeria): Korábbi munkák képei.

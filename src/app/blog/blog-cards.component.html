@@ -1,0 +1,37 @@
+<section id="blog" class="blog-section" aria-labelledby="blog-heading">
+  <div class="container">
+    @if (standalonePage) {
+      <nav class="blog-breadcrumb" aria-label="Morzsamenü">
+        <a routerLink="/">Főoldal</a><span aria-hidden="true">/</span><span>Blog</span>
+      </nav>
+    }
+    <div class="blog-heading-row">
+      <div>
+        <span class="blog-eyebrow">TerraMove blog</span>
+        @if (standalonePage) {
+          <h1 id="blog-heading">Sittszállítás és tehertaxi: <span>hasznos tudnivalók</span></h1>
+        } @else {
+          <h2 id="blog-heading">Sittszállítás és tehertaxi: <span>hasznos tudnivalók</span></h2>
+        }
+        <p class="blog-intro">Gyakorlati útmutatók, hogy az előkészítéstől a rakodásig gördülékenyen menjen a szállítás.</p>
+      </div>
+      @if (!standalonePage) {
+        <a class="blog-all" routerLink="/blog">Minden cikk <span aria-hidden="true">↗</span></a>
+      }
+    </div>
+    <div class="blog-grid">
+      @for (post of posts; track post.slug; let i = $index) {
+        <article class="blog-card">
+          <div class="blog-card-meta">
+            <span class="blog-category">{{ post.category }}</span>
+            <span>{{ post.readingMinutes }} perc olvasás</span>
+          </div>
+          <span class="blog-number" aria-hidden="true">0{{ i + 1 }}</span>
+          <h3><a [routerLink]="['/blog', post.slug]">{{ post.title }}</a></h3>
+          <p>{{ post.excerpt }}</p>
+          <span class="blog-card-cta" aria-hidden="true">Cikk elolvasása <span>→</span></span>
+        </article>
+      }
+    </div>
+  </div>
+</section>

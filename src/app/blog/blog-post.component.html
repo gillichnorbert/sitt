@@ -1,0 +1,54 @@
+@if (post(); as article) {
+  <article class="post">
+    <header class="post-header">
+      <div class="container">
+        <nav class="post-breadcrumb" aria-label="Morzsamenü">
+          <a routerLink="/">Főoldal</a><span aria-hidden="true">/</span><a routerLink="/blog">Blog</a><span aria-hidden="true">/</span><span>{{ article.category }}</span>
+        </nav>
+        <div class="post-meta"><span>{{ article.category }}</span><span>{{ article.readingMinutes }} perc olvasás · TerraMove</span></div>
+        <h1>{{ article.title }}</h1>
+        <p class="post-lead">{{ article.excerpt }}</p>
+      </div>
+    </header>
+    <div class="container post-layout">
+      <aside class="post-sidebar">
+        <nav aria-label="A cikk tartalma" class="post-toc">
+          <p>A cikkben</p>
+          <ol>
+            @for (section of article.sections; track $index) {
+              <li><a [routerLink]="['/blog', article.slug]" [fragment]="'resz-' + ($index + 1)">{{ section.heading }}</a></li>
+            }
+          </ol>
+          <a class="post-service-link" [routerLink]="article.servicePath">{{ article.serviceLabel }} <span aria-hidden="true">↗</span></a>
+        </nav>
+      </aside>
+      <div class="post-body">
+        @for (section of article.sections; track $index) {
+          <section [id]="'resz-' + ($index + 1)">
+            <h2>{{ section.heading }}</h2>
+            @for (paragraph of section.paragraphs; track $index) { <p>{{ paragraph }}</p> }
+            @if (section.items?.length) {
+              <ul>@for (item of section.items; track $index) { <li>{{ item }}</li> }</ul>
+            }
+          </section>
+        }
+        <aside class="post-contact" aria-label="Szállítás egyeztetése">
+          <span>Segítünk a következő lépésben</span>
+          <h2>Egyeztessük a szállítás részleteit!</h2>
+          <p>A TerraMove Budapesten és Pest vármegyében vállal szállítást. Mondja el, mit kell elvinni, honnan és milyen rakodásra van szükség.</p>
+          <div class="post-actions">
+            <a [routerLink]="article.servicePath">{{ article.serviceLabel }} <span aria-hidden="true">→</span></a>
+            <a href="tel:+36707287316">+36 70 728 7316</a>
+          </div>
+        </aside>
+        <section class="post-related" aria-labelledby="related-heading">
+          <h2 id="related-heading">Ezt is érdemes elolvasni</h2>
+          @for (related of relatedPosts(article.slug); track related.slug) {
+            <a [routerLink]="['/blog', related.slug]">{{ related.title }} <span aria-hidden="true">→</span></a>
+          }
+          <a class="post-back" routerLink="/blog">← Vissza az összes cikkhez</a>
+        </section>
+      </div>
+    </div>
+  </article>
+}

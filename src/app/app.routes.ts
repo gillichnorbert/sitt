@@ -4,6 +4,7 @@ import { Routes } from '@angular/router';
 // Fő komponensek
 import { HomeComponent } from './components/home/home.component';
 import { ServicesComponent } from './components/services/services.component';
+import { BLOG_POSTS } from './blog/blog-posts';
 
 // Új szolgáltatás aloldalak importálása 
 // (Ellenőrizd az elérési utakat, hogy nálad pontosan hol vannak a mappák!)
@@ -59,6 +60,18 @@ export const routes: Routes = [
     loadComponent: () => import('./components/gallery/gallery.component').then(m => m.GalleryComponent),
     title: 'Galéria | TerraMove'
   },
+
+  {
+    path: 'blog',
+    loadComponent: () => import('./blog/blog-index.component').then(m => m.BlogIndexComponent),
+    title: 'Sittszállítás és tehertaxi blog | TerraMove'
+  },
+  ...BLOG_POSTS.map(post => ({
+    path: 'blog/' + post.slug,
+    loadComponent: () => import('./blog/blog-post.component').then(m => m.BlogPostComponent),
+    title: post.title + ' | TerraMove',
+    data: { slug: post.slug }
+  })),
 
   // Hibás URL: külön hibaoldal; HTTP 404 státuszt a szerver ad.
   {

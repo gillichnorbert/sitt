@@ -1,3 +1,5 @@
+import { BLOG_POSTS } from '../blog/blog-posts';
+
 export const SEO_PAGES: Record<string, {title: string; description: string; label: string; image: string}> = {
   "": {
     "title": "Sittszállítás és tehertaxi Budapesten | TerraMove",
@@ -35,6 +37,18 @@ export const SEO_PAGES: Record<string, {title: string; description: string; labe
     "label": "Áraink",
     "image": "/assets/borito.webp"
   },
+  "blog": {
+    "title": "Sittszállítás és tehertaxi blog | TerraMove",
+    "description": "Gyakorlati útmutatók zsákos sittszállításhoz és tehertaxi rendeléséhez: előkészítés, rakodás, csomagolás és a szállításhoz szükséges adatok.",
+    "label": "Blog",
+    "image": "/assets/borito.webp"
+  },
+  ...Object.fromEntries(BLOG_POSTS.map(post => ['blog/' + post.slug, {
+    title: post.title + ' | TerraMove',
+    description: post.description,
+    label: post.title,
+    image: post.category === 'Sittszállítás' ? '/assets/sitteszsak.jpg' : '/assets/aruszallitascover.webp'
+  }])),
   "galeria": {
     "title": "Korábbi munkáink képekben | TerraMove",
     "description": "Nézze meg a TerraMove munkáiról készült képeket, majd ismerje meg szolgáltatásainkat és kérjen ajánlatot saját feladatára.",

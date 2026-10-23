@@ -12,7 +12,7 @@
       "status": 301
     },
     {
-      "src": "^/(szolgaltatasok(?:/(?:sittszallitas|aruszallitas|foldmunka))?|araink|galeria)/+$",
+      "src": "^/(szolgaltatasok(?:/(?:sittszallitas|aruszallitas|foldmunka))?|araink|galeria|blog(?:/(?:zsakos-sitt-elokeszitese-elszallitasra|sittszallitas-rendeles-adatok-ellenorzolista|tehertaxi-rakodassal-fuvar-elokeszitese|butor-epitoanyag-szallitas-csomagolas-bejutas))?)/+$",
       "caseSensitive": true,
       "headers": { "Location": "/$1" },
       "status": 301
@@ -24,7 +24,7 @@
       "status": 301
     },
     {
-      "src": "^/(szolgaltatasok(?:/(?:sittszallitas|aruszallitas|foldmunka))?|araink|galeria)/index\\.html/*$",
+      "src": "^/(szolgaltatasok(?:/(?:sittszallitas|aruszallitas|foldmunka))?|araink|galeria|blog(?:/(?:zsakos-sitt-elokeszitese-elszallitasra|sittszallitas-rendeles-adatok-ellenorzolista|tehertaxi-rakodassal-fuvar-elokeszitese|butor-epitoanyag-szallitas-csomagolas-bejutas))?)/index\\.html/*$",
       "caseSensitive": true,
       "headers": { "Location": "/$1" },
       "status": 301
@@ -61,7 +61,7 @@
       "headers": { "Cache-Control": "no-cache" }
     },
     {
-      "src": "^/(szolgaltatasok(?:/(?:sittszallitas|aruszallitas|foldmunka))?|araink|galeria)$",
+      "src": "^/(szolgaltatasok(?:/(?:sittszallitas|aruszallitas|foldmunka))?|araink|galeria|blog(?:/(?:zsakos-sitt-elokeszitese-elszallitasra|sittszallitas-rendeles-adatok-ellenorzolista|tehertaxi-rakodassal-fuvar-elokeszitese|butor-epitoanyag-szallitas-csomagolas-bejutas))?)$",
       "caseSensitive": true,
       "dest": "/$1/index.html",
       "headers": { "Cache-Control": "no-cache" }

@@ -73,8 +73,16 @@ function responseFor(requestUrl) {
 }
 
 const sitemap = readFileSync(resolve(output, 'sitemap.xml'), 'utf8');
-const pages = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => new URL(match[1]).pathname);
-assert.equal(pages.length, 7, 'Update hosting routes intentionally when adding approved pages');
+const pages = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => {
+  const url = new URL(match[1]);
+  assert.equal(url.origin, 'https://terramove.hu');
+  return url.pathname;
+});
+assert.equal(pages.length, 12, 'Expected the seven original pages, blog index and four articles');
+assert.equal(new Set(pages).size, pages.length, 'Duplicate sitemap URLs');
+assert.ok(pages.includes('/blog'));
+const blogPages = pages.filter(path => path.startsWith('/blog/'));
+assert.equal(blogPages.length, 4);
 for (const pathname of pages) {
   for (const query of ['', '?utm_source=hosting-check']) {
     const response = responseFor(pathname + query);
@@ -97,11 +105,13 @@ for (const pathname of ['/kezdolap', '/kezdolap/', '/index.html', '/index.html/'
   assert.equal(response.status, 301, pathname);
   assert.equal(response.headers.location, '/?utm_source=hosting-check&x=1');
 }
-console.log('PASS: 7 prerendered pages, canonical redirects and query preservation');
+console.log(`PASS: ${pages.length} prerendered pages, canonical redirects and query preservation`);
 
 for (const pathname of [
   '/kalkulator', '/kalkulator/', '/tudastar', '/tudastar/tehertaxi-rendeles',
   '/nincs-ilyen-oldal', '/nincs-ilyen-oldal/', '/szolgaltatasok/nincs-ilyen',
+  '/blog/nincs-ilyen-cikk', '/blog/nincs-ilyen-cikk/', '/blog/nincs-ilyen-cikk/index.html',
+  '/blog/nincs-ilyen-cikk.js', blogPages[0] + '/tobb', blogPages[0] + '.js',
   '/szolgaltatasok/sittszallitas/tobb', '/szolgaltatasok/sittszallitas.js',
   '/arainkx', '/Araink', '/KEZDOLAP', '/index.csr.html', '/404.html',
   '/missing.js', '/missing.css', '/assets/missing.webp', '/assets/cover.webp/missing',

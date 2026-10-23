@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { RouterStateSnapshot, TitleStrategy } from '@angular/router';
 import { SEO_PAGES } from './pages';
+import { BLOG_POSTS } from '../blog/blog-posts';
 @Injectable()
 export class SeoTitleStrategy extends TitleStrategy {
   private doc = inject(DOCUMENT);
@@ -11,6 +12,7 @@ export class SeoTitleStrategy extends TitleStrategy {
   override updateTitle(state: RouterStateSnapshot): void {
     const path = state.url.split(/[?#]/)[0].replace(/^\/+|\/+$/g, '');
     const page = SEO_PAGES[path];
+    const post = BLOG_POSTS.find(post => path === 'blog/' + post.slug);
     const title = page?.title ?? 'Az oldal nem található | TerraMove';
     const description = page?.description ?? 'A keresett oldal nem található. Tekintse meg a TerraMove szolgáltatásait.';
     const url = 'https://terramove.hu/' + path;
@@ -19,7 +21,7 @@ export class SeoTitleStrategy extends TitleStrategy {
     if (!path) { const preload = this.doc.createElement('link'); preload.id = 'hero-preload'; preload.rel = 'preload'; preload.as = 'image'; preload.href = '/assets/cover.webp'; this.doc.head.appendChild(preload); }
     this.title.setTitle(title);
     for (const [name, content] of Object.entries({description, robots: page ? 'index, follow, max-image-preview:large' : 'noindex, follow', 'twitter:card': 'summary_large_image', 'twitter:title': title, 'twitter:description': description, 'twitter:image': image})) this.meta.updateTag({name, content});
-    for (const [property, content] of Object.entries({'og:title': title, 'og:description': description, 'og:url': url, 'og:image': image, 'og:image:alt': 'TerraMove – szállítás és földmunka', 'og:type': 'website', 'og:locale': 'hu_HU', 'og:site_name': 'TerraMove'})) this.meta.updateTag({property, content});
+    for (const [property, content] of Object.entries({'og:title': title, 'og:description': description, 'og:url': url, 'og:image': image, 'og:image:alt': post ? 'TerraMove – ' + post.category : 'TerraMove – szállítás és földmunka', 'og:type': post ? 'article' : 'website', 'og:locale': 'hu_HU', 'og:site_name': 'TerraMove'})) this.meta.updateTag({property, content});
     this.doc.querySelectorAll('link[rel="canonical"]').forEach(el => el.remove());
     if (page) {const link = this.doc.createElement('link'); link.rel = 'canonical'; link.href = url; this.doc.head.appendChild(link);}
     this.doc.getElementById('seo-schema')?.remove();
@@ -31,6 +33,18 @@ export class SeoTitleStrategy extends TitleStrategy {
       graph.push({'@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Főoldal', item: 'https://terramove.hu/' }, ...paths.map((key, i) => ({'@type': 'ListItem', position: i + 2, name: SEO_PAGES[key]?.label ?? key, item: 'https://terramove.hu/' + key}))]});
     }
     if (path.startsWith('szolgaltatasok/')) graph.push({'@type': 'Service', name: page.label, description, url, provider: {'@id': business['@id']}, areaServed: ['Budapest', 'Pest vármegye']});
+    if (post) graph.push({
+      '@type': 'BlogPosting', '@id': url + '#article', url,
+      headline: post.title, description, inLanguage: 'hu-HU', articleSection: post.category,
+      image: [image], author: {'@type': 'Organization', '@id': business['@id'], name: 'TerraMove', url: 'https://terramove.hu/'},
+      publisher: {'@id': business['@id']}, mainEntityOfPage: {'@id': url + '#webpage'},
+      isPartOf: {'@id': 'https://terramove.hu/blog#webpage'},
+      about: {'@type': 'Service', name: post.category, url: 'https://terramove.hu' + post.servicePath}
+    });
+    if (path === 'blog') graph.push({
+      '@type': 'ItemList', '@id': url + '#posts',
+      itemListElement: BLOG_POSTS.map((post, i) => ({'@type': 'ListItem', position: i + 1, name: post.title, url: 'https://terramove.hu/blog/' + post.slug}))
+    });
     const script = this.doc.createElement('script'); script.id = 'seo-schema'; script.type = 'application/ld+json'; script.textContent = JSON.stringify({'@context': 'https://schema.org', '@graph': graph}).replace(/</g, '\\u003c'); this.doc.head.appendChild(script);
   }
 }

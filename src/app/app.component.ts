@@ -1,4 +1,5 @@
-import { Component, HostListener } from '@angular/core';
+import { DOCUMENT, ViewportScroller } from '@angular/common';
+import { Component, HostListener, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router'; // Ez kell!
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -12,6 +13,13 @@ import { FooterComponent } from './components/footer/footer.component';
 })
 export class AppComponent {
   title = 'sitt-transport';
+
+  constructor() {
+    const document = inject(DOCUMENT);
+    // Keep article and homepage anchor targets clear of the fixed navigation.
+    inject(ViewportScroller).setOffset(() => [0, (document.querySelector('.v-navbar')?.clientHeight ?? 80) + 24]);
+  }
+
   @HostListener('document:click', ['$event'])
   trackContact(event: MouseEvent): void {
     const anchor = (event.target as Element)?.closest?.('a');

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common'; // Ez kell az [class.open] miatt
 
@@ -24,9 +24,15 @@ export class HeaderComponent {
     this.handleBodyScroll();
   }
 
+  @HostListener('window:resize')
+  closeMenuOnDesktop() {
+    if (this.isMenuOpen && window.innerWidth >= 992) this.closeMenu();
+  }
+
   // Háttér görgetésének letiltása, ha nyitva a menü
   private handleBodyScroll() {
     if (this.isMenuOpen) {
+      document.getElementById('mobile-menu')?.scrollTo({ top: 0 });
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';
