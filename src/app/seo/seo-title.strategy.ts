@@ -26,7 +26,7 @@ export class SeoTitleStrategy extends TitleStrategy {
     if (page) {const link = this.doc.createElement('link'); link.rel = 'canonical'; link.href = url; this.doc.head.appendChild(link);}
     this.doc.getElementById('seo-schema')?.remove();
     if (!page) return;
-    const business = {'@type': 'Organization', '@id': 'https://terramove.hu/#organization', name: 'TerraMove', url: 'https://terramove.hu/', logo: 'https://terramove.hu/assets/logo.webp', telephone: '+36707287316', email: 'info@terramove.hu', areaServed: ['Budapest', 'Pest vármegye'], sameAs: ['https://www.facebook.com/profile.php?id=61588377595699', 'https://www.instagram.com/sittransport_/', 'https://www.tiktok.com/@sitttransport']};
+    const business = {'@type': 'Organization', '@id': 'https://terramove.hu/#organization', name: 'TerraMove', url: 'https://terramove.hu/', logo: 'https://terramove.hu/assets/logo.webp', telephone: '+36707287316', email: 'terramoveinfo@gmail.com', areaServed: ['Budapest', 'Pest vármegye'], sameAs: ['https://www.facebook.com/profile.php?id=61588377595699', 'https://www.instagram.com/sittransport_/', 'https://www.tiktok.com/@sitttransport']};
     const graph: object[] = [business, {'@type': 'WebSite', '@id': 'https://terramove.hu/#website', url: 'https://terramove.hu/', name: 'TerraMove', inLanguage: 'hu-HU', publisher: {'@id': business['@id']}}, {'@type': 'WebPage', '@id': url + '#webpage', url, name: title, description, inLanguage: 'hu-HU', isPartOf: {'@id': 'https://terramove.hu/#website'}}];
     if (path) {
       const paths = path.split('/').map((_, i, parts) => parts.slice(0, i + 1).join('/'));

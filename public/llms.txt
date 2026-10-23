@@ -4,7 +4,7 @@
 
 Ez a fájl a TerraMove nyilvános weboldalainak rövid tartalomjegyzéke. A szolgáltatások aktuális feltételeit és árait a hivatkozott oldalak tartalmazzák. Végleges árajánlat és időpont telefonos vagy e-mailes egyeztetéssel kérhető.
 
-Kapcsolat: +36 70 728 7316; info@terramove.hu. A webhely magyar nyelvű. Nem kínál nyilvános foglalási API-t, MCP-szervert vagy önálló AI-ügynököt.
+Kapcsolat: +36 70 728 7316; terramoveinfo@gmail.com. A webhely magyar nyelvű. Nem kínál nyilvános foglalási API-t, MCP-szervert vagy önálló AI-ügynököt.
 
 ## Szolgáltatások
 
