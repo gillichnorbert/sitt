@@ -28,15 +28,17 @@ $v-radius: 20px;
   object-fit: cover;
   z-index: -2;
   background-color: $v-dark; 
+  /* FONTOS: Ez tiltja le, hogy a videó interaktív legyen mobilon (így nincs play gomb) */
+  pointer-events: none; 
 }
 
 /* --- SÖTÉTÍTŐ RÉTEG --- */
 .v-hero-overlay {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  /* Asztalon jobb oldalon átlátszóbb, de mobilon egységesebb sötétítést kap a videó miatt */
   background: linear-gradient(135deg, rgba(17, 17, 17, 0.8) 0%, rgba(17, 17, 17, 0.45) 100%);
   z-index: -1;
+  pointer-events: none; /* Ez is védi a kattintástól */
 }
 
 /* --- TARTALOM DOBOZ (Alapból asztali nézet: Tejüveg) --- */
@@ -129,7 +131,7 @@ $v-radius: 20px;
 }
 
 /* =========================================
-   MOBIL OPTIMALIZÁLÁS (Itt látszik a videó kitűnően)
+   MOBIL OPTIMALIZÁLÁS
    ========================================= */
 @media (max-width: 991px) {
   .v-hero-section {
@@ -137,11 +139,9 @@ $v-radius: 20px;
   }
   
   .v-hero-overlay {
-    /* Mobilon egyenletesebb, sötétebb réteg, hogy a fehér szöveg üssön, de a videó is látszódjon */
     background: rgba(17, 17, 17, 0.55); 
   }
 
-  /* MOBILON ELTŰNJÖK A TEJÜVEG HÁTTÉRT ÉS A BLUR-T, HOGY A VIDEÓ LÁTSZÓDJON */
   .v-hero-content-box {
     background: transparent !important;
     backdrop-filter: none !important;
@@ -150,12 +150,10 @@ $v-radius: 20px;
     box-shadow: none !important;
     padding: 0 !important;
 
-    /* A bal oldali piros csíkot is leszedjük mobilon, mert felesleges */
     &::before {
       display: none;
     }
 
-    /* Mobilon átállítjuk a szövegeket fehérre, hogy a sötétített videón tökéletesen olvashatóak legyenek */
     .v-hero-badge {
       background-color: rgba(168, 28, 28, 0.8) !important;
       color: #ffffff !important;
@@ -170,7 +168,6 @@ $v-radius: 20px;
     }
   }
 
-  /* Mobilon a második gomb is kapjon szép sötét / áttetsző stílust, hogy illeszkedjen */
   .v-btn-outline {
     background-color: rgba(255, 255, 255, 0.15);
     border-color: rgba(255, 255, 255, 0.4);
