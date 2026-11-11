@@ -6,13 +6,26 @@ $v-red: #a81c1c;
 $v-dark: #1a1a1a; 
 $v-gray: #555555;
 $v-bg: #fafafa;
-$v-border: #e6e6e6;
+$v-border: #eef0f2;
+$v-radius: 16px; // Modern, lágy kerekítés
 
 .v-text-red { color: $v-red !important; }
 .letter-spacing-1 { letter-spacing: 1px; }
+.v-bg-red { background-color: $v-red !important; }
+
+.v-link-red {
+  color: $v-red;
+  text-decoration: none;
+  border-bottom: 2px solid rgba($v-red, 0.2);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    color: darken($v-red, 10%);
+    border-bottom-color: $v-red;
+  }
+}
 
 /* --- HERO (FEJLÉC) HÁTTÉRKÉPEK --- */
-/* Ide írd be az assets mappádban lévő képek pontos nevét! */
 .sitt-bg   { background-image: url('/assets/sitteszsak.jpg'); }
 .aru-bg    { background-image: url('/assets/aruszallitas.webp'); }
 .fold-bg   { background-image: url('/assets/foldmunka.jpg'); }
@@ -22,24 +35,23 @@ $v-border: #e6e6e6;
   background-size: cover;
   background-position: center;
   background-attachment: fixed; 
-  height: 450px;
+  height: 480px;
   
-  /* --- ÚJ RÉSZ: MOBIL FIX --- */
   @media (max-width: 991px) {
-    background-attachment: scroll; /* Kikapcsolja a hibás zoomolást mobilon */
-    height: 350px; /* Mobilon érdemes picit kisebbre venni a magasságot, de maradhat 450px is, ha úgy jobban tetszik */
+    background-attachment: scroll; 
+    height: 380px; 
   }
-  /* -------------------------- */
 
   .v-overlay {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background-color: rgba(17, 17, 17, 0.75); 
+    /* Modern, sötétedő átmenet */
+    background: linear-gradient(to right, rgba(17, 17, 17, 0.85) 0%, rgba(17, 17, 17, 0.5) 100%);
     z-index: 0;
   }
 
   .v-subtitle {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 3px;
@@ -50,7 +62,6 @@ $v-border: #e6e6e6;
   .v-title-massive {
     font-size: clamp(2.5rem, 5vw, 4.5rem);
     font-weight: 900;
-    text-transform: uppercase;
     letter-spacing: -1px;
     line-height: 1.1;
   }
@@ -70,7 +81,8 @@ $v-border: #e6e6e6;
 
 .v-red-line {
   width: 60px;
-  height: 5px;
+  height: 4px;
+  border-radius: 2px;
   background-color: $v-red;
 }
 
@@ -82,28 +94,35 @@ $v-border: #e6e6e6;
     margin-bottom: 1.5rem;
   }
   .lead {
-    font-size: 1.2rem;
-    color: #111;
+    font-size: 1.25rem;
+    color: #1a1a1a;
   }
 }
 
-/* --- TULAJDONSÁGOK (LISTA) --- */
-.v-feature-list {
-  li {
-    display: flex;
-    align-items: center;
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: #111;
-    margin-bottom: 15px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid $v-border;
+/* --- TULAJDONSÁGOK (LISTA ÉS KÁRTYÁK) --- */
+.v-icon-box {
+  width: 50px;
+  height: 50px;
+  background-color: rgba($v-red, 0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    i {
-      color: $v-red;
-      font-size: 1.5rem;
-      margin-right: 15px;
-    }
+.v-feature-card {
+  background-color: #ffffff;
+  border: 1px solid rgba(0,0,0,0.05);
+  border-radius: $v-radius;
+  padding: 1.75rem;
+  height: 100%;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+    border-color: rgba(0,0,0,0.08);
   }
 }
 
@@ -116,22 +135,29 @@ $v-border: #e6e6e6;
 }
 
 .v-contact-box {
-  background-color: $v-dark; 
+  background: linear-gradient(145deg, $v-dark 0%, lighten($v-dark, 5%) 100%);
+  border-radius: $v-radius; 
   border: none;
-  border-radius: 0; 
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  border-left: 4px solid $v-red;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background-color: $v-red;
+  }
 
   .contact-title {
     color: #ffffff;
     font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
   }
 
   .contact-text {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.75);
     font-size: 0.95rem;
     line-height: 1.6;
   }
@@ -144,11 +170,11 @@ $v-border: #e6e6e6;
   align-items: center;
   padding: 14px 24px;
   font-size: 0.95rem;
-  font-weight: 800;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   text-decoration: none;
-  border-radius: 0;
+  border-radius: 8px;
   transition: all 0.3s ease;
   cursor: pointer;
   border: 2px solid transparent;
@@ -159,45 +185,105 @@ $v-border: #e6e6e6;
   color: #fff;
   
   &:hover {
-    background-color: #ffffff;
-    color: $v-red;
+    background-color: darken($v-red, 8%);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba($v-red, 0.3);
   }
 }
 
 .v-btn-outline-light {
-  background-color: transparent;
-  border-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
   color: #fff;
   
   &:hover {
     background-color: #fff;
     color: $v-dark;
+    transform: translateY(-2px);
   }
 }
 
-/* --- ÚJ: MINI ÁRKÁRTYÁK AZ ALOLDALON --- */
-.v-price-card-mini {
-  background-color: #ffffff;
-  border: 1px solid var(--v-border, #e6e6e6);
-  border-radius: 0;
-  border-top: 3px solid var(--v-red, #a81c1c); /* Piros tető a stílusért */
-  transition: all 0.3s ease;
-
-  &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05) !important;
-    border-color: #ccc;
-  }
-}
-
-.letter-spacing-0 {
-  letter-spacing: 0 !important;
-}
-
+/* --- INFÓ DOBOZOK --- */
 .v-price-info-box {
-  border-left: 3px solid var(--v-dark, #111111);
-  font-size: 0.95rem;
+  background-color: #ffffff;
+  border-radius: $v-radius;
+  border-left: 4px solid $v-dark;
+  font-size: 1rem;
   line-height: 1.6;
+  color: $v-gray;
+}
+
+/* --- FOTÓ KÁRTYÁK --- */
+.v-photo-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: $v-radius;
+  background-color: #ffffff;
+  
+  &.shadow-hover {
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+    }
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+  
+  &:hover img {
+    transform: scale(1.05);
+  }
+  
+  .v-photo-badge {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    background-color: rgba(26, 26, 26, 0.85);
+    backdrop-filter: blur(4px);
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 8px 16px;
+    border-radius: 30px; 
+    text-transform: uppercase;
+  }
+}
+
+/* --- MUNKAFOLYAMAT KÁRTYÁK (PROCESS CARDS) --- */
+.v-process-card {
+  background-color: transparent;
+  
+  .img-wrapper {
+    border-radius: $v-radius;
+    border: 1px solid rgba(0,0,0,0.05);
+  }
+
+  .v-step-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 48px;
+    height: 48px;
+    color: #fff;
+    border-radius: 50%; /* Modern, kerek badge a régi szögletes helyett */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    z-index: 2;
+  }
 }
 
 /* --- MOBIL OPTIMALIZÁLÁS --- */
@@ -206,6 +292,9 @@ $v-border: #e6e6e6;
     font-size: 1.8rem;
   }
   .v-sticky-wrapper {
-    margin-top: 2rem;
+    margin-top: 1rem;
+  }
+  .v-feature-card {
+    padding: 1.25rem;
   }
 }

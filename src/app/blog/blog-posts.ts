@@ -72,7 +72,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         heading: 'Egyeztessen az előkészítés állapotáról',
         paragraphs: [
-          'A TerraMove Budapesten és Pest vármegyében végez zsákos sittszállítást kézi rakodással. A szolgáltatás részleteinél a zsákolásról és a lehordásról is talál információt. A feladatot a +36 70 728 7316 telefonszámon egyeztetheti; mondja el, mi készült már el, és mely lépésekhez kér segítséget.'
+          'A TerraMove Budapesten és Pest megyében végez zsákos sittszállítást kézi rakodással. A szolgáltatás részleteinél a zsákolásról és a lehordásról is talál információt. A feladatot a +36 70 728 7316 telefonszámon egyeztetheti; mondja el, mi készült már el, és mely lépésekhez kér segítséget.'
         ]
       }
     ]
@@ -133,7 +133,7 @@ export const BLOG_POSTS: BlogPost[] = [
         heading: 'Az időpont előtt frissítse a változó adatokat',
         paragraphs: [
           'A fuvar előtt jelezze, ha változott a mennyiség, a hozzáférés vagy a rakodás kiindulási helye. Ha más lesz a helyszíni kapcsolattartó, adja át neki is a megbeszélt részleteket. Különösen fontos, hogy a jelen lévő személy tudja, mely tételek tartoznak az elszállításhoz.',
-          'A TerraMove sittszállítási szolgáltatása Budapesten és Pest vármegyében érhető el. A szolgáltatásoldalon a rakodási lehetőségeket is áttekintheti, majd a +36 70 728 7316 telefonszámon egyeztethet a helyszínről és a feladatról. Az összegyűjtött adatok segítenek célzottan végigbeszélni a rendelést.'
+          'A TerraMove sittszállítási szolgáltatása Budapesten és Pest megyében érhető el. A szolgáltatásoldalon a rakodási lehetőségeket is áttekintheti, majd a +36 70 728 7316 telefonszámon egyeztethet a helyszínről és a feladatról. Az összegyűjtött adatok segítenek célzottan végigbeszélni a rendelést.'
         ]
       }
     ]
@@ -194,7 +194,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         heading: 'Egyeztessen a fuvar részleteiről',
         paragraphs: [
-          'A TerraMove tehertaxi és áruszállítás szolgáltatása Budapesten és Pest vármegyében vehető igénybe. A szolgáltatásoldalon a szállítható árukról és a rakodási lehetőségekről is talál tájékoztatást. A +36 70 728 7316 telefonszámon a felvételi hely, a célállomás és a rakomány bemutatásával kezdheti az egyeztetést.'
+          'A TerraMove tehertaxi és áruszállítás szolgáltatása Budapesten és Pest megyében vehető igénybe. A szolgáltatásoldalon a szállítható árukról és a rakodási lehetőségekről is talál tájékoztatást. A +36 70 728 7316 telefonszámon a felvételi hely, a célállomás és a rakomány bemutatásával kezdheti az egyeztetést.'
         ]
       }
     ]
@@ -254,7 +254,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         heading: 'A rakomány állapotát a szállítóval is beszélje át',
         paragraphs: [
-          'A TerraMove bútorok, raklapos áruk és építőanyagok szállítását is vállalja Budapesten és Pest vármegyében, igény szerint rakodással. A szolgáltatás részleteit az áruszállítás oldalán tekintheti meg. A +36 70 728 7316 telefonszámon a méretek, a csomagolás és a két helyszín ismertetésével egyeztethet a konkrét fuvarról.'
+          'A TerraMove bútorok, raklapos áruk és építőanyagok szállítását is vállalja Budapesten és Pest megyében, igény szerint rakodással. A szolgáltatás részleteit az áruszállítás oldalán tekintheti meg. A +36 70 728 7316 telefonszámon a méretek, a csomagolás és a két helyszín ismertetésével egyeztethet a konkrét fuvarról.'
         ]
       }
     ]

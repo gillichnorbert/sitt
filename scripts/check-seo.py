@@ -91,7 +91,7 @@ assert all(re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', post['slug']) for post in p
 posts_by_url = {ORIGIN + '/blog/' + post['slug']: post for post in posts}
 expected_urls = {ORIGIN + path for path in [
     '/', '/szolgaltatasok', '/szolgaltatasok/sittszallitas',
-    '/szolgaltatasok/aruszallitas', '/szolgaltatasok/foldmunka', '/araink', '/galeria', '/blog'
+    '/szolgaltatasok/aruszallitas', '/szolgaltatasok/lomtalanitas', '/araink', '/galeria', '/blog'
 ]} | set(posts_by_url)
 urls = sitemap_urls(ROOT / 'public/sitemap.xml')
 assert len(urls) == 12 and set(urls) == expected_urls, 'Sitemap must contain the original pages, blog index and four model articles exactly once'

@@ -3,12 +3,10 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-foldmunka',
+  selector: 'app-lomtalanitas',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  templateUrl: './foldmunka.component.html',
-  styleUrl: './foldmunka.component.scss'
+  templateUrl: './lomtalanitas.component.html',
+  styleUrl: './lomtalanitas.component.scss'
 })
-export class FoldmunkaComponent {
-
-}
+export class LomtalanitasComponent {}

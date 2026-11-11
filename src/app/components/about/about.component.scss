@@ -1,5 +1,5 @@
 /* =========================================
-   VERTREND STÍLUS: RÓLUNK (ABOUT) SZEKCIÓ
+   VERTREND MODERN STÍLUS: RÓLUNK (ABOUT) SZEKCIÓ
    ========================================= */
 
 :host {
@@ -7,8 +7,13 @@
   --v-red-hover: #e31414;
   --v-dark: #171717;
   --v-gray: #4b5563;
-  --v-light: #fdfdfd;
-  --v-border: #e6e6e6;
+  --v-light: #f8f9fa;
+  --v-border: #eef2f6;
+}
+
+.shadow-soft {
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05), 0 5px 15px rgba(0, 0, 0, 0.02) !important;
+  transition: all 0.3s ease;
 }
 
 .v-about-section {
@@ -25,7 +30,6 @@
   &:hover {
     text-decoration: none;
     color: var(--v-red-hover);
-    
   }
 }
 
@@ -38,27 +42,27 @@
   color: #fff !important;
 }
 
-.v-border-light {
-  border-color: var(--v-border) !important;
-}
-
 /* --- TIPOGRÁFIA --- */
 .v-subtitle {
-  display: block;
-  color: var(--v-red);
+  display: inline-block;
+  color: #ff4d4d;
   font-size: 0.85rem;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
+  padding: 6px 16px;
+  background: rgba(168, 28, 28, 0.1);
+  border-radius: 50rem;
+  border: 1px solid rgba(255, 77, 77, 0.2);
   margin-bottom: 1rem;
 }
 
 .v-section-title {
-  font-size: 2.5rem;
+  font-size: 2.3rem;
   font-weight: 900;
   color: var(--v-dark);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: -0.5px;
   margin-bottom: 1.5rem;
 }
 
@@ -79,26 +83,33 @@
 
 /* --- GOMBOK --- */
 .v-btn {
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   padding: 14px 32px;
   font-size: 0.9rem;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
   text-decoration: none;
-  border-radius: 0; /* Szögletes dizájn */
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
   cursor: pointer;
   border: 2px solid transparent;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
 }
 
 .v-btn-primary {
   background-color: var(--v-red);
   color: #fff;
+  box-shadow: 0 4px 15px rgba(168, 28, 28, 0.3);
   
   &:hover {
-    background-color: #8a1616;
+    background-color: #921717;
     color: #fff;
+    box-shadow: 0 6px 20px rgba(168, 28, 28, 0.4);
   }
 }
 
@@ -110,92 +121,59 @@
   &:hover {
     background-color: var(--v-dark);
     color: #fff;
+    border-color: var(--v-dark);
   }
 }
 
-/* --- KÉP ÉS DEKORÁCIÓ --- */
-.v-main-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 0; /* Szögletes kép */
-  border: 1px solid var(--v-border);
-}
-
-/* Sötétpiros építészeti elcsúsztatott keret a kép mögött */
-.v-img-backdrop {
-  position: absolute;
-  top: 20px;
-  left: -15px; /* A kép bal oldala felé csúszik ki */
-  width: 100%;
-  height: 100%;
-  border: 3px solid var(--v-red);
-  z-index: 0;
-}
-
-/* =========================================
-   ELŐTTE-UTÁNA CSÚSZKA (BEFORE-AFTER SLIDER)
-   ========================================= */
-.v-before-after-slider {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  background-color: #eeeeee;
-  display: block;
-  border-radius: 0 !important; /* Fontos: nincs kerekítés! */
-  border: 1px solid var(--v-border) !important;
-
-  .object-fit-cover {
+/* --- TÖBBKEPES GALÉRIA KÁRTYÁK --- */
+.v-photo-card {
+  position: relative;
+  overflow: hidden;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  
+  img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    object-position: center;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
   }
   
-  .cursor-ew-resize {
-    cursor: ew-resize;
+  &:hover img {
+    transform: scale(1.06);
   }
-
-  /* Szögletes címkék a kép sarkain */
-  .v-slider-badge {
-    padding: 6px 12px;
-    font-size: 0.75rem;
-    font-weight: 700;
+  
+  .v-photo-badge {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: rgba(26, 26, 26, 0.85);
+    backdrop-filter: blur(4px);
+    color: #ffffff;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    padding: 5px 12px;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    border-radius: 0;
-    color: #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  }
+    border-radius: 50rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
 
-  .slider-line {
-    width: 3px;
-    background-color: var(--v-red); /* A vonal színe is piros */
-    transform: translateX(-50%);
-    pointer-events: none;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    
-    /* A mozgató fogantyú */
-    .slider-button {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 44px;
-      height: 44px;
-      background: #fff;
-      border-radius: 0; /* Kerek helyett szögletes fogantyú */
-      border: 2px solid var(--v-red);
-      font-size: 1.2rem;
-      color: var(--v-red);
+    &.small-badge {
+      font-size: 0.65rem;
+      padding: 4px 10px;
     }
   }
 }
 
-/* --- ÚJ: KIEMELT TÉGLALAP A SZÖVEGBEN (MASSZÍV VERTREND SÖTÉT STÍLUS) --- */
+/* --- KIEMELT TÉGLALAP A SZÖVEGBEN --- */
 .v-highlight-box-dark {
-  background-color: var(--v-dark); /* Teljesen sötét/fekete háttér */
-  border-left: 8px solid var(--v-red); /* Vastag vörös Vertrend csík bal oldalon */
-  border-radius: 0; /* Szigorúan szögletes */
+  background: linear-gradient(135deg, #171717 0%, #222222 100%);
+  border-left: 6px solid var(--v-red);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
   
   p {
-    font-size: 1.05rem !important;
+    font-size: 1.02rem !important;
     line-height: 1.8;
   }
 }
@@ -205,23 +183,19 @@
    ========================================= */
 @media (max-width: 991px) {
   .v-section-title {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
   }
 
   .v-about-text {
-    text-align: left; /* A modern stílus jobban szereti a balra igazítást mobilon is */
     font-size: 0.95rem;
-  }
-
-  .v-main-img {
-    max-height: 350px;
-    object-fit: cover;
-    width: 100%;
   }
 
   .v-btn {
     width: 100%;
-    padding: 14px 0;
+  }
+
+  .v-about-gallery-grid {
+    margin-top: 1rem;
   }
 }

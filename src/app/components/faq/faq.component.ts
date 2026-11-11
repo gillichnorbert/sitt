@@ -3,7 +3,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-faq',
   standalone: true,
-  templateUrl: './faq.component.html'
+  templateUrl: './faq.component.html',
+  styleUrls: ['./faq.component.scss']
 })
 export class FaqComponent {
   faqs = [
@@ -27,16 +28,8 @@ export class FaqComponent {
     },
     // ÚJ: Bútorszerelés
     { 
-      question: 'A gépi földmunkákhoz biztosítanak gépkezelőt is?', 
-      answer: 'Igen. Minden földmunkát tapasztalt gépkezelővel és korszerű munkagépekkel végzünk.'
-    },
-    { 
-      question: 'A kitermelt, feleslegessé vált föld elszállítását is vállalják?', 
-      answer: 'Igen. A kitermelt föld elszállítását és szakszerű elhelyezését is biztosítjuk.'
-    },
-    { 
       question: 'Mennyi idő a kiszállás?', 
-      answer: 'A legtöbb esetben akár aznapi vagy másnapi kiszállást is vállalunk Budapest és Pest vármegye területén.'
+      answer: 'A legtöbb esetben akár aznapi vagy másnapi kiszállást is vállalunk Budapest és Pest megye területén.'
     }
   ];
 }

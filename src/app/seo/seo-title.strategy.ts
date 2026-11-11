@@ -21,18 +21,18 @@ export class SeoTitleStrategy extends TitleStrategy {
     if (!path) { const preload = this.doc.createElement('link'); preload.id = 'hero-preload'; preload.rel = 'preload'; preload.as = 'image'; preload.href = '/assets/cover.webp'; this.doc.head.appendChild(preload); }
     this.title.setTitle(title);
     for (const [name, content] of Object.entries({description, robots: page ? 'index, follow, max-image-preview:large' : 'noindex, follow', 'twitter:card': 'summary_large_image', 'twitter:title': title, 'twitter:description': description, 'twitter:image': image})) this.meta.updateTag({name, content});
-    for (const [property, content] of Object.entries({'og:title': title, 'og:description': description, 'og:url': url, 'og:image': image, 'og:image:alt': post ? 'TerraMove – ' + post.category : 'TerraMove – szállítás és földmunka', 'og:type': post ? 'article' : 'website', 'og:locale': 'hu_HU', 'og:site_name': 'TerraMove'})) this.meta.updateTag({property, content});
+    for (const [property, content] of Object.entries({'og:title': title, 'og:description': description, 'og:url': url, 'og:image': image, 'og:image:alt': post ? 'TerraMove – ' + post.category : 'TerraMove – szállítás és lomtalanítás', 'og:type': post ? 'article' : 'website', 'og:locale': 'hu_HU', 'og:site_name': 'TerraMove'})) this.meta.updateTag({property, content});
     this.doc.querySelectorAll('link[rel="canonical"]').forEach(el => el.remove());
     if (page) {const link = this.doc.createElement('link'); link.rel = 'canonical'; link.href = url; this.doc.head.appendChild(link);}
     this.doc.getElementById('seo-schema')?.remove();
     if (!page) return;
-    const business = {'@type': 'Organization', '@id': 'https://terramove.hu/#organization', name: 'TerraMove', url: 'https://terramove.hu/', logo: 'https://terramove.hu/assets/logo.webp', telephone: '+36707287316', email: 'terramoveinfo@gmail.com', areaServed: ['Budapest', 'Pest vármegye'], sameAs: ['https://www.facebook.com/profile.php?id=61588377595699', 'https://www.instagram.com/sittransport_/', 'https://www.tiktok.com/@sitttransport']};
+    const business = {'@type': 'Organization', '@id': 'https://terramove.hu/#organization', name: 'TerraMove', url: 'https://terramove.hu/', logo: 'https://terramove.hu/assets/logo.webp', telephone: '+36707287316', email: 'terramoveinfo@gmail.com', areaServed: ['Budapest', 'Pest megye'], sameAs: ['https://www.facebook.com/profile.php?id=61588377595699', 'https://www.instagram.com/sittransport_/', 'https://www.tiktok.com/@sitttransport']};
     const graph: object[] = [business, {'@type': 'WebSite', '@id': 'https://terramove.hu/#website', url: 'https://terramove.hu/', name: 'TerraMove', inLanguage: 'hu-HU', publisher: {'@id': business['@id']}}, {'@type': 'WebPage', '@id': url + '#webpage', url, name: title, description, inLanguage: 'hu-HU', isPartOf: {'@id': 'https://terramove.hu/#website'}}];
     if (path) {
       const paths = path.split('/').map((_, i, parts) => parts.slice(0, i + 1).join('/'));
       graph.push({'@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Főoldal', item: 'https://terramove.hu/' }, ...paths.map((key, i) => ({'@type': 'ListItem', position: i + 2, name: SEO_PAGES[key]?.label ?? key, item: 'https://terramove.hu/' + key}))]});
     }
-    if (path.startsWith('szolgaltatasok/')) graph.push({'@type': 'Service', name: page.label, description, url, provider: {'@id': business['@id']}, areaServed: ['Budapest', 'Pest vármegye']});
+    if (path.startsWith('szolgaltatasok/')) graph.push({'@type': 'Service', name: page.label, description, url, provider: {'@id': business['@id']}, areaServed: ['Budapest', 'Pest megye']});
     if (post) graph.push({
       '@type': 'BlogPosting', '@id': url + '#article', url,
       headline: post.title, description, inLanguage: 'hu-HU', articleSection: post.category,

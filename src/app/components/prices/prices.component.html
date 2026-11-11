@@ -1,81 +1,82 @@
 <section id="prices" class="v-prices-section py-5">
   <div class="container py-5">
     
+    <!-- Fejléc -->
     <div class="v-header text-center mb-5 pb-3">
-      <span class="v-subtitle">Áraink</span>
-      <h2 role="heading" aria-level="1" class="v-section-title mb-3">TRANSZPARENS <span class="v-text-red">ÁRKÉPZÉS.</span></h2>
+      <h2 role="heading" aria-level="1" class="v-section-title mb-3">ÁRKÉPZÉSÜNK</h2>
       <div class="v-divider mx-auto"></div>
-      <p class="v-desc mt-4 mx-auto" style="max-width: 700px;">
-        Rejtett költségek nélkül. Minden szolgáltatásunkra személyre szabott, korrekt árajánlatot adunk a munka mérete és bonyolultsága alapján.
+      <p class="v-desc mt-4 mx-auto">
+        Rejtett költségek nélkül. Minden szolgáltatásunkra személyre szabott, korrekt árajánlatot adunk a munka mérete, a helyszín és a szükséges rakodás alapján.
       </p>
     </div>
 
-    <!-- A kártyák rácsa: itt lett col-lg-6, hogy 2 nagy kártya legyen! -->
+    <!-- Kártyák Rácsa (3 oszlopos elrendezés) -->
     <div class="row g-4 justify-content-center mb-5">
       
       @for (item of pricingItems; track item.title) {
-        <div class="col-md-6 col-lg-6">
-          <div class="v-price-card h-100 d-flex flex-column shadow-sm p-4">
+        <div class="col-md-6 col-lg-4">
+          <div class="v-price-card h-100 d-flex flex-column p-4 p-xl-5" [class.featured]="item.featured">
             
-            <div class="v-icon-box mb-4">
-              <i class="bi {{ item.icon }}"></i>
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <div class="v-icon-box">
+                <i class="bi {{ item.icon }}"></i>
+              </div>
+              <span class="v-card-badge">{{ item.badge }}</span>
             </div>
             
             <h3 class="v-card-title mb-3">{{ item.title }}</h3>
+            <p class="v-card-text mb-4">
+              {{ item.desc }}
+            </p>
             
-            <!-- <div class="v-price-display mb-4">
-              <span class="price-amount">{{ item.price }}</span> 
-               <span class="price-unit">{{ item.unit }}</span> 
-            </div> -->
-            
-            <!-- BELSŐ ÁRLISTA (Csak ott jelenik meg, ahol van adat a subPrices-ban) -->
-            @if (item.subPrices && item.subPrices.length > 0) {
-              <ul class="list-unstyled mb-4 border-top pt-3">
-                @for (sub of item.subPrices; track sub.name) {
-                  <li class="d-flex justify-content-between mb-2">
-                    <span class="small">{{ sub.name }}</span>
-                    <strong class="small">{{ sub.value }}</strong>
+            <!-- Értelmes tulajdonságok árak helyett -->
+            @if (item.features && item.features.length > 0) {
+              <ul class="v-feature-list list-unstyled mb-4 mt-auto pt-3 border-top">
+                @for (feat of item.features; track feat.name) {
+                  <li class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="small text-secondary fw-semibold">{{ feat.name }}</span>
+                    <span class="small fw-bold text-dark">{{ feat.value }}</span>
                   </li>
                 }
               </ul>
             }
             
-            <p class="v-card-text flex-grow-1">
-              {{ item.desc }}
-            </p>
-            
+            <a href="tel:+36707287316" class="v-btn v-btn-card w-100 mt-2">
+              Ajánlatot kérek <i class="bi bi-arrow-right-short ms-1"></i>
+            </a>
+
           </div>
         </div>
       }
 
     </div>
 
+    <!-- Fontos Tudnivalók Doboz -->
     <div class="row justify-content-center">
-      <div class="col-lg-10 text-center">
+      <div class="col-lg-10">
         
-        <div class="v-info-box p-4 p-md-5 mb-5 text-start shadow-sm d-flex flex-column flex-md-row align-items-center gap-4">
+        <div class="v-info-box p-4 p-md-5 mb-5 text-start shadow-lg d-flex flex-column flex-md-row align-items-center gap-4">
           <div class="v-info-icon flex-shrink-0">
-            <i class="bi bi-exclamation-triangle-fill"></i>
+            <i class="bi bi-shield-check"></i>
           </div>
           <div>
-            <h4 class="fw-bolder text-uppercase mb-3 letter-spacing-1">Fontos tudnivalók</h4>
+            <h4 class="fw-bold text-uppercase mb-3 letter-spacing-1 text-white">Fontos tudnivalók az árajánlathoz</h4>
             <ul class="list-unstyled mb-0 v-info-list">
-              <li><i class="bi bi-check2"></i> Budapest területén az alap kiszállás és felmérés ingyenes.</li>
-              <li><i class="bi bi-check2"></i> Pest megyében a kiszállítási díj távolságfüggő (egyedi ajánlatban rögzítve).</li>
-              <li><i class="bi bi-check2"></i> Sittszállítás és tehertaxi szolgáltatásaink esetén a kiállási díj: +1 óra díja.</li>
-              <li><i class="bi bi-check2"></i> A weboldalon feltüntetett árak tájékoztató jellegűek.</li>
-              <li><i class="bi bi-check2"></i> A végleges, fix ajánlatot minden esetben a pontos helyszínismeret és a feladat egyeztetése után adjuk meg.</li>
+              <li><i class="bi bi-check2-circle"></i> Budapest területén a helyszíni felmérés és a konzultáció teljesen ingyenes.</li>
+              <li><i class="bi bi-check2-circle"></i> Pest vármegyében a kiszállási díj távolságfüggő (melyet az egyedi ajánlatban előre rögzítünk).</li>
+              <li><i class="bi bi-check2-circle"></i> Lomtalanítás esetén fix, egyösszegű ajánlatot adunk a felmérést követően.</li>
+              <li><i class="bi bi-check2-circle"></i> A végleges árat a pontos helyszín, az emelet/lehordás és a mennyiség ismeretében határozzuk meg.</li>
             </ul>
           </div>
         </div>
 
-        <!-- GOMBOK: Hívás és Képküldés egymás mellett -->
-        <div class="mt-4 d-flex flex-column flex-md-row justify-content-center gap-3">
+        <!-- Akciógombok -->
+        <div class="mt-4 d-flex flex-column flex-sm-row justify-content-center gap-3">
           <a href="tel:+36707287316" class="v-btn v-btn-primary shadow-lg">
-            KÉRJEN AJÁNLATOT <i class="bi bi-telephone-fill ms-2"></i>
+            <i class="bi bi-telephone-fill me-2"></i> KÉRJEN AJÁNLATOT
           </a>
-          <a href="mailto:terramoveinfo@gmail.com?subject=Árajánlatkérés%20fotó%20alapján" class="v-btn v-btn-primary shadow-lg">
-            FOTÓT KÜLDÖK ÁRAZÁSHOZ <i class="bi bi-camera-fill ms-2"></i>
+          <a href="mailto:terramoveinfo@gmail.com?subject=Árajánlatkérés%20fotó%20alapján" class="v-btn v-btn-dark shadow-lg">
+            <i class="bi bi-camera-fill me-2"></i> FOTÓT KÜLDÖK ÁRAZÁSHOZ
           </a>
         </div>
 

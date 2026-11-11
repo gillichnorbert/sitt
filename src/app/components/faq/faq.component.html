@@ -1,4 +1,4 @@
-<section id="faq" class="v-faq-section py-5">
+<section id="faq" class="v-faq-section py-5 position-relative overflow-hidden">
   <div class="container py-5">
     <div class="row gy-5">
 
@@ -12,15 +12,15 @@
           </h2>
           
           <p class="v-desc mb-5">
-Mindent transzparensen és érthetően kezelünk. Itt összegyűjtöttük a legfontosabb kérdéseket a munkamenettel, árakkal és szolgáltatásainkkal kapcsolatban.
+            Mindent transzparensen és érthetően kezelünk. Itt összegyűjtöttük a legfontosabb kérdéseket a munkamenettel, árakkal és szolgáltatásainkkal kapcsolatban.
           </p>
 
-          <div class="v-contact-box p-4 p-xl-5">
+          <div class="v-contact-box p-4 p-xl-5 shadow-soft rounded-4 border-0">
             <h4 class="contact-title mb-3">További kérdése van?</h4>
             <p class="contact-text mb-4">
               Kollégáink készséggel állnak rendelkezésére telefonon vagy e-mailen, hogy azonnal megoldást kínáljanak.
             </p>
-            <a href="tel:+36707287316" class="v-btn v-btn-primary w-100">
+            <a href="tel:+36707287316" class="v-btn v-btn-primary w-100 rounded-pill shadow-sm">
               <i class="bi bi-telephone-fill me-2"></i> EGYEZTESSÜNK
             </a>
           </div>
@@ -32,7 +32,7 @@ Mindent transzparensen és érthetően kezelünk. Itt összegyűjtöttük a legf
         <div class="accordion v-accordion" id="accordionFAQ">
           
           @for (item of faqs; track item.question; let i = $index) {
-            <div class="accordion-item mb-3">
+            <div class="accordion-item mb-3 shadow-soft rounded-4 overflow-hidden border-0">
               <h2 class="accordion-header" [id]="'heading' + i">
                 <button class="accordion-button collapsed p-4" type="button" data-bs-toggle="collapse" 
                         [attr.data-bs-target]="'#collapse' + i" aria-expanded="false" [attr.aria-controls]="'collapse' + i">

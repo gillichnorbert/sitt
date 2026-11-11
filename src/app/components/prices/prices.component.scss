@@ -1,12 +1,13 @@
 /* =========================================
-   VERTREND STÍLUS: ÁRAK SZEKCIÓ
+   VERTREND STÍLUS: ÁRAK SZEKCIÓ (MODERN)
    ========================================= */
 
 $v-red: #a81c1c;
-$v-dark: #111111;
+$v-dark: #1a1a1a; 
 $v-gray: #555555;
-$v-bg: #fdfdfd;
-$v-border: #e6e6e6;
+$v-bg: #fafafa;
+$v-border: #eef0f2;
+$v-radius: 16px;
 
 .v-prices-section {
   background-color: $v-bg;
@@ -20,124 +21,142 @@ $v-border: #e6e6e6;
   .v-subtitle {
     display: block;
     color: $v-red;
-    font-size: 0.85rem;
-    font-weight: 700;
+    font-size: 0.95rem;
+    font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 1rem;
+    letter-spacing: 3px;
+    margin-bottom: 0.75rem;
   }
 
   .v-section-title {
-    font-size: 2.8rem;
+    font-size: clamp(2.2rem, 4vw, 3rem);
     font-weight: 900;
     color: $v-dark;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: -0.5px;
   }
 
   .v-divider {
     width: 60px;
-    height: 5px;
+    height: 4px;
+    border-radius: 2px;
     background-color: $v-red;
-    margin-top: 1.5rem;
+    margin-top: 1.25rem;
   }
 
   .v-desc {
     font-size: 1.1rem;
     color: $v-gray;
-    font-weight: 500;
     line-height: 1.7;
+    max-width: 700px;
   }
 }
 
 /* --- ÁRKÁRTYÁK --- */
 .v-price-card {
   background-color: #ffffff;
-  border: 1px solid $v-border;
-  border-radius: 0; /* SZÖGLETES */
-  border-top: 4px solid transparent; /* Készenlét a hover csíkra */
+  border: 1px solid rgba(0,0,0,0.05);
+  border-radius: $v-radius;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  position: relative;
 
   .v-icon-box {
-    width: 50px;
-    height: 50px;
-    background-color: #222;
-    color: #fff;
+    width: 52px;
+    height: 52px;
+    background-color: rgba($v-red, 0.1);
+    color: $v-red;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     transition: all 0.3s ease;
   }
 
-  .v-card-title {
-    font-size: 1.15rem;
-    font-weight: 800;
-    color: $v-dark;
+  .v-card-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background-color: rgba(0,0,0,0.05);
+    color: $v-gray;
   }
 
-  .v-price-display {
-    border-bottom: 1px solid $v-border;
-    padding-bottom: 1.2rem;
-    
-    .price-amount {
-      font-size: 2.2rem;
-      font-weight: 900;
-      color: $v-red;
-      letter-spacing: -1px;
-    }
-    
-    .price-unit {
-      font-size: 1rem;
-      color: #888;
-      font-weight: 600;
-      margin-left: 5px;
-    }
+  .v-card-title {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: $v-dark;
   }
 
   .v-card-text {
     font-size: 0.95rem;
     color: $v-gray;
     line-height: 1.7;
-    margin-top: 1.2rem;
-    font-weight: 500;
+  }
+
+  .v-feature-list {
+    li {
+      padding: 6px 0;
+      border-bottom: 1px dashed rgba(0,0,0,0.05);
+      
+      &:last-child {
+        border-bottom: none;
+      }
+    }
   }
 
   &:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.06) !important;
-    border-color: #ccc;
-    border-top-color: $v-red; /* Piros csík felül */
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08) !important;
+    border-color: rgba(0,0,0,0.08);
 
     .v-icon-box {
-      background-color: $v-red; /* Ikon piros lesz */
+      background-color: $v-red;
+      color: #ffffff;
+    }
+  }
+
+  /* Kiemelt kártya stílus (Sittszállítás) */
+  &.featured {
+    border: 2px solid $v-red;
+    
+    .v-card-badge {
+      background-color: rgba($v-red, 0.15);
+      color: $v-red;
     }
   }
 }
 
 /* --- INFÓ DOBOZ --- */
 .v-info-box {
-  background-color: #111; /* Sötét doboz */
+  background: linear-gradient(145deg, $v-dark 0%, lighten($v-dark, 5%) 100%);
   border: none;
-  border-radius: 0;
-  border-left: 4px solid $v-red;
+  border-radius: $v-radius;
   color: #fff;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background-color: $v-red;
+  }
 
   .v-info-icon {
     width: 60px;
     height: 60px;
-    background-color: $v-red;
-    color: #fff;
+    background-color: rgba($v-red, 0.2);
+    border: 1px solid rgba($v-red, 0.4);
+    border-radius: 50%;
+    color: $v-red;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.8rem;
-  }
-
-  h4 {
-    color: #fff;
   }
 
   .v-info-list {
@@ -151,63 +170,73 @@ $v-border: #e6e6e6;
       i {
         color: $v-red;
         font-size: 1.2rem;
-        margin-right: 12px;
-        margin-top: -2px;
-      }
-
-      strong {
-        color: #fff;
+        margin-right: 10px;
+        flex-shrink: 0;
       }
     }
   }
 }
 
-/* --- GOMB --- */
+/* --- GOMBOK --- */
 .v-btn {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  padding: 16px 36px;
-  font-size: 1rem;
-  font-weight: 800;
+  padding: 14px 28px;
+  font-size: 0.95rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
+  letter-spacing: 0.5px;
   text-decoration: none;
-  border-radius: 0;
+  border-radius: 8px;
   transition: all 0.3s ease;
   cursor: pointer;
   border: 2px solid transparent;
-}
 
-.v-btn-primary {
-  background-color: $v-red;
-  color: #fff;
-  
-  &:hover {
+  &-primary {
+    background-color: $v-red;
+    color: #fff;
+    
+    &:hover {
+      background-color: darken($v-red, 8%);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba($v-red, 0.3);
+    }
+  }
+
+  &-dark {
     background-color: $v-dark;
     color: #fff;
+    
+    &:hover {
+      background-color: lighten($v-dark, 10%);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+  }
+
+  &-card {
+    background-color: rgba(0,0,0,0.03);
+    color: $v-dark;
+    border: 1px solid rgba(0,0,0,0.08);
+
+    &:hover {
+      background-color: $v-red;
+      color: #fff;
+      border-color: $v-red;
+    }
   }
 }
 
-/* =========================================
-   MOBIL OPTIMALIZÁLÁS
-   ========================================= */
+/* --- MOBIL OPTIMALIZÁLÁS --- */
 @media (max-width: 991px) {
-  .v-section-title {
-    font-size: 2.2rem;
-  }
-
   .v-info-box {
     flex-direction: column !important;
     text-align: center !important;
     
-    .v-info-icon {
-      margin: 0 auto;
-    }
-    
     .v-info-list li {
-      justify-content: center;
-      text-align: left; /* A listaelemek maradjanak olvashatóak */
+      text-align: left;
     }
   }
 }

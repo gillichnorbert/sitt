@@ -1,19 +1,25 @@
 /* =========================================
-   VERTREND STÍLUS: ELŐNYÖK SZEKCIÓ
+   VERTREND MODERN STÍLUS: ELŐNYÖK SZEKCIÓ
    ========================================= */
 
 :host {
-  --v-red: #a81c1c;       /* Elegáns sötétpiros */
-  --v-dark: #171717;      /* Mély antracit/fekete */
-  --v-card-bg: #1f1f1f;   /* Picit világosabb sötétszürke a kártyáknak */
+  --v-red: #a81c1c;         /* Elegáns sötétpiros */
+  --v-dark: #121212;        /* Mély antracit/fekete háttér */
+  --v-card-bg: #1a1a1a;     /* Kártyák sötét háttérszíne */
+}
+
+/* Finom sötét árnyékok */
+.shadow-soft {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25) !important;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 /* Sötét háttér a szekciónak */
 .v-benefits-section {
   background-color: var(--v-dark);
   color: #ffffff;
-  border-top: 1px solid #2a2a2a;
-  border-bottom: 1px solid #2a2a2a;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .v-text-red {
@@ -22,33 +28,37 @@
 
 /* --- TIPOGRÁFIA --- */
 .v-subtitle {
-  display: block;
-  color: var(--v-red);
+  display: inline-block;
+  color: #ff4d4d;
   font-size: 0.85rem;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
+  padding: 6px 16px;
+  background: rgba(168, 28, 28, 0.15);
+  border-radius: 50rem;
+  border: 1px solid rgba(255, 77, 77, 0.3);
   margin-bottom: 1rem;
 }
 
 .v-section-title {
-  font-size: 2.5rem;
+  font-size: 2.3rem;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: -0.5px;
 }
 
 .v-desc {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 500;
 }
 
 /* --- KÁRTYA DIZÁJN --- */
 .v-benefit-card {
   background-color: var(--v-card-bg);
-  border: 1px solid #333333; 
-  border-radius: 0; /* Vertrend: Szigorúan szögletes */
-  transition: all 0.4s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05); 
+  position: relative;
+  overflow: hidden;
 
   .v-card-title {
     font-size: 1.15rem;
@@ -66,35 +76,35 @@
     margin-bottom: 0;
   }
 
-  /* Szögletes Ikon Doboz */
+  /* Ikon Doboz */
   .v-icon-wrapper {
-    background-color: #2a2a2a;
+    background-color: rgba(255, 255, 255, 0.03);
     color: #ffffff;
     width: 65px;
     height: 65px;
-    border-radius: 0; /* Nincs kerekítés */
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.75rem;
-    transition: all 0.4s ease;
-    border-left: 3px solid transparent;
+    font-size: 1.6rem;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   /* HOVER EFFEKTUSOK */
   &:hover {
     transform: translateY(-8px);
-    border-color: #444444;
-    background-color: #242424;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    border-color: rgba(168, 28, 28, 0.4);
+    background-color: #202020;
 
     .v-icon-wrapper {
       background-color: var(--v-red);
-      border-left-color: #ffffff; /* Fehér díszvonal bal oldalon hoverre */
+      color: #ffffff;
+      border-color: var(--v-red);
+      box-shadow: 0 0 20px rgba(168, 28, 28, 0.4);
     }
 
     .v-card-title {
-      color: var(--v-red);
+      color: #ff4d4d;
     }
   }
 }
@@ -104,7 +114,7 @@
    ========================================= */
 @media (max-width: 991px) {
   .v-section-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   
   .v-benefits-section {

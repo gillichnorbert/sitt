@@ -1,37 +1,70 @@
-<section id="blog" class="blog-section" aria-labelledby="blog-heading">
-  <div class="container">
+<section id="blog" class="v-blog-section py-5" aria-labelledby="blog-heading">
+  <div class="container py-5">
+    
     @if (standalonePage) {
-      <nav class="blog-breadcrumb" aria-label="Morzsamenü">
-        <a routerLink="/">Főoldal</a><span aria-hidden="true">/</span><span>Blog</span>
+      <nav class="v-breadcrumb mb-4" aria-label="Morzsamenü">
+        <a routerLink="/">Főoldal</a>
+        <span class="divider" aria-hidden="true">/</span>
+        <span class="current">Blog</span>
       </nav>
     }
-    <div class="blog-heading-row">
-      <div>
-        <span class="blog-eyebrow">TerraMove blog</span>
+
+    <!-- Modernizált fejléc sor -->
+    <div class="v-heading-row mb-5 pb-3">
+      <div class="v-heading-content">
+        <span class="v-subtitle">TerraMove blog</span>
         @if (standalonePage) {
-          <h1 id="blog-heading">Sittszállítás és tehertaxi: <span>hasznos tudnivalók</span></h1>
+          <h1 id="blog-heading" class="v-section-title">Sittszállítás és tehertaxi: <br><span class="v-text-red">hasznos tudnivalók</span></h1>
         } @else {
-          <h2 id="blog-heading">Sittszállítás és tehertaxi: <span>hasznos tudnivalók</span></h2>
+          <h2 id="blog-heading" class="v-section-title">Sittszállítás és tehertaxi: <br><span class="v-text-red">hasznos tudnivalók</span></h2>
         }
-        <p class="blog-intro">Gyakorlati útmutatók, hogy az előkészítéstől a rakodásig gördülékenyen menjen a szállítás.</p>
+        <div class="v-divider"></div>
+        <p class="v-desc mt-4">Gyakorlati útmutatók, hogy az előkészítéstől a rakodásig gördülékenyen menjen a szállítás.</p>
       </div>
+      
       @if (!standalonePage) {
-        <a class="blog-all" routerLink="/blog">Minden cikk <span aria-hidden="true">↗</span></a>
+        <div class="v-heading-action">
+          <a class="v-btn-outline" routerLink="/blog">
+            Minden cikk <i class="bi bi-arrow-right ms-2"></i>
+          </a>
+        </div>
       }
     </div>
-    <div class="blog-grid">
+
+    <!-- Kártyák rácsa -->
+    <div class="row g-4">
       @for (post of posts; track post.slug; let i = $index) {
-        <article class="blog-card">
-          <div class="blog-card-meta">
-            <span class="blog-category">{{ post.category }}</span>
-            <span>{{ post.readingMinutes }} perc olvasás</span>
-          </div>
-          <span class="blog-number" aria-hidden="true">0{{ i + 1 }}</span>
-          <h3><a [routerLink]="['/blog', post.slug]">{{ post.title }}</a></h3>
-          <p>{{ post.excerpt }}</p>
-          <span class="blog-card-cta" aria-hidden="true">Cikk elolvasása <span>→</span></span>
-        </article>
+        <div class="col-md-6">
+          <article class="v-blog-card h-100 d-flex flex-column p-4 p-xl-5">
+            
+            <!-- Meta adatok (Kategória badge és olvasási idő) -->
+            <div class="v-card-meta d-flex justify-content-between align-items-center mb-4">
+              <span class="v-category-badge">{{ post.category }}</span>
+              <span class="v-read-time">
+                <i class="bi bi-clock me-1"></i> {{ post.readingMinutes }} perc olvasás
+              </span>
+            </div>
+            
+            <span class="v-card-number" aria-hidden="true">0{{ i + 1 }}</span>
+            
+            <h3 class="v-card-title mb-3">
+              <a [routerLink]="['/blog', post.slug]">{{ post.title }}</a>
+            </h3>
+            
+            <p class="v-card-text flex-grow-1 mb-4">{{ post.excerpt }}</p>
+            
+            <!-- Cikk elolvasása (Modern gomb dizájn) -->
+            <div class="v-card-cta mt-auto pt-3 d-flex align-items-center justify-content-between">
+              <span class="link-text">Cikk elolvasása</span>
+              <span class="arrow-wrap">
+                <i class="bi bi-arrow-right"></i>
+              </span>
+            </div>
+
+          </article>
+        </div>
       }
     </div>
+
   </div>
 </section>

@@ -44,16 +44,21 @@ export const routes: Routes = [
     title: 'Áruszállítás és Teherfuvarozás | TerraMove' 
   },
   { 
+    path: 'szolgaltatasok/lomtalanitas', 
+    loadComponent: () => import('./pages/lomtalanitas/lomtalanitas.component').then(m => m.LomtalanitasComponent), 
+    title: 'Lomtalanítás és Ingatlankiürítés | TerraMove' 
+  },
+  { 
     path: 'szolgaltatasok/foldmunka', 
-    loadComponent: () => import('./pages/foldmunka/foldmunka.component').then(m => m.FoldmunkaComponent), 
-    title: 'Gépi Földmunka és Anyagmozgatás | TerraMove' 
+    redirectTo: 'szolgaltatasok/lomtalanitas',
+    pathMatch: 'full'
   },
 
   // Árak oldal
   { 
     path: 'araink', 
     loadComponent: () => import('./components/prices/prices.component').then(m => m.PricesComponent), 
-    title: 'Áraink | Földmunka, Szállítás és Szerviz | TerraMove' 
+    title: 'Sittszállítás és Tehertaxi Árak | TerraMove' 
   },
   {
     path: 'galeria',

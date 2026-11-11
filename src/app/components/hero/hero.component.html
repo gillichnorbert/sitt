@@ -1,66 +1,40 @@
 <section class="v-hero-section d-flex align-items-center">
-  <div class="container py-5">
+  
+  <!-- HÁTTÉRVIDEÓ / KÉP -->
+  <video autoplay muted loop playsinline class="v-hero-video" poster="assets/cover.webp">
+    <source src="assets/cover-video.mp4" type="video/mp4">
+  </video>
+  
+  <!-- Sötétítő réteg -->
+  <div class="v-hero-overlay"></div>
+
+  <div class="container py-5 position-relative z-1">
     <div class="row gy-5 align-items-center">
       
-      <!-- BAL OLDAL: A Vertrend stílusú fehér doboz -->
+      <!-- BAL OLDAL: Asztalon tejüveg doboz, mobilon tiszta, átlátszó szöveg -->
       <div class="col-lg-7">
-        <div class="v-hero-content-box bg-white p-4 p-md-5 p-xl-5 shadow-lg">
+        <div class="v-hero-content-box p-4 p-md-5 p-xl-5">
           
-          <!-- Fekete címke a cím felett -->
-          <div class="v-hero-badge bg-dark text-white px-3 py-1 mb-4 d-inline-block">
+          <div class="v-hero-badge mb-3 mb-md-4 d-inline-block">
             AKÁR MÁR AZNAPI KISZÁLLÁSSAL
           </div>
           
-          <h1 class="v-hero-title mb-4">
-            Zsákos sittszállítás<br><span class="v-text-red">és lomtalanítás</span><br>Budapesten
+          <h1 class="v-hero-title mb-3 mb-md-4">
+            SITTSZÁLLÍTÁS ÉS <br><span class="v-text-red">TEHERTAXI</span><br>Budapesten
           </h1>
           
-          <p class="v-hero-desc text-secondary mb-5">
-            Zsákos sittszállítás és lomtalanítás teljes körű rakodással Budapesten és Pest vármegyében. Tehertaxi és gépi földmunka gépkezelővel, egy megbízható partnertől.
+          <p class="v-hero-desc mb-4 mb-md-5">
+            Stabil csapat, korrekt hozzáállás. Ránk bízhatja a feladatot, mi pedig gondoskodunk róla, hogy minden a tervek szerint haladjon. A feladat méretétől függetlenül számíthat ránk!
           </p>
           
-          <!-- Gombok (Vertrend stílus) -->
+          <!-- Gombok -->
           <div class="d-flex flex-column flex-sm-row gap-3">
-            <a href="tel:+36707287316" class="v-btn v-btn-dark text-center">
-              KAPCSOLATFELVÉTEL
+            <a href="tel:+36707287316" class="v-btn v-btn-primary text-center">
+              <i class="bi bi-telephone-fill me-2"></i> Kapcsolatfelvétel
             </a>
             <a routerLink="/szolgaltatasok" class="v-btn v-btn-outline text-center">
-              RÉSZLETEK
+              Részletek <i class="bi bi-arrow-right-short fs-4 ms-1" style="margin-right: -10px;"></i>
             </a>
-          </div>
-          
-        </div>
-      </div>
-
-      <!-- JOBB OLDAL: Fókuszban a szolgáltatások (Sötét panel) -->
-      <div class="col-lg-5">
-        <div class="v-services-panel p-4 p-md-5 shadow-lg">
-          
-          <h4 class="text-white mb-4 text-uppercase fw-bolder letter-spacing-1 fs-5">
-            Kiemelt Szolgáltatások
-          </h4>
-          
-          <div class="d-flex flex-column gap-3">
-            
-            <a routerLink="/szolgaltatasok/sittszallitas" class="v-service-item text-decoration-none">
-              <div class="icon-box"><i class="bi bi-trash3-fill"></i></div>
-              <span class="service-name">Zsákos sittszállítás és lomtalanítás</span>
-              <i class="bi bi-arrow-right ms-auto arrow"></i>
-            </a>
-            
-            <a routerLink="/szolgaltatasok/aruszallitas" class="v-service-item text-decoration-none">
-              <div class="icon-box"><i class="bi bi-truck"></i></div>
-              <span class="service-name">Áruszállítás és tehertaxi</span>
-              <i class="bi bi-arrow-right ms-auto arrow"></i>
-            </a>
-            
-            <a routerLink="/szolgaltatasok/foldmunka" class="v-service-item text-decoration-none">
-              <div class="icon-box"><i class="bi bi-cone-striped"></i></div>
-              <span class="service-name">Gépi Földmunka</span>
-              <i class="bi bi-arrow-right ms-auto arrow"></i>
-            </a>
-            
-
           </div>
           
         </div>

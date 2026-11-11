@@ -1,52 +1,73 @@
 /* =========================================
-   VERTREND STÍLUS: HERO KÉPES HÁTTÉRREL
+   VERTREND STÍLUS: HERO (RESPONSIVE VIDEO & GLASS)
    ========================================= */
 
 $v-red: #a81c1c;
-$v-dark: #111111;
-$v-gray: #555555;
-$v-bg-light: #eef1f5; 
+$v-dark: #1a1a1a;
+$v-radius: 20px;
 
 .v-text-red { color: $v-red !important; }
-.letter-spacing-1 { letter-spacing: 1px; }
 
-/* A teljes szekció háttere */
+/* --- A TELJES SZEKCIÓ --- */
 .v-hero-section {
-  /* ÚJ: Kép beállítása háttérnek (középre igazítva, kitöltve) */
-  background: url('/assets/cover.webp') center/cover no-repeat;
-  background-color: $v-dark; /* Biztonsági háttér, amíg betölt a kép */
-  min-height: 85vh; /* Hogy kitöltse a képernyőt */
   position: relative;
+  min-height: 85vh;
+  overflow: hidden; 
+}
+
+/* --- HÁTTÉRVIDEÓ --- */
+.v-hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translateX(-50%) translateY(-50%);
+  object-fit: cover;
+  z-index: -2;
+  background-color: $v-dark; 
+}
+
+/* --- SÖTÉTÍTŐ RÉTEG --- */
+.v-hero-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  /* Asztalon jobb oldalon átlátszóbb, de mobilon egységesebb sötétítést kap a videó miatt */
+  background: linear-gradient(135deg, rgba(17, 17, 17, 0.8) 0%, rgba(17, 17, 17, 0.45) 100%);
+  z-index: -1;
+}
+
+/* --- TARTALOM DOBOZ (Alapból asztali nézet: Tejüveg) --- */
+.v-hero-content-box {
+  background: rgba(255, 255, 255, 0.599); 
+  backdrop-filter: blur(8px); 
+  -webkit-backdrop-filter: blur(8px); 
+  border: 1px solid rgba(255, 255, 255, 0.5); 
+  border-radius: $v-radius; 
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15); 
+  position: relative;
+  overflow: hidden;
   
-  /* ÚJ: Elegáns sötétítő réteg (overlay), hogy a fehér doboz kiugorjon a térből */
+  /* Piros díszcsík bal oldalon asztalon */
   &::before {
     content: '';
     position: absolute;
-    top: 0; right: 0; bottom: 0; left: 0;
-    background: rgba(17, 17, 17, 0.65); /* 65%-os fekete sötétítés */
-    z-index: 0;
+    top: 0; bottom: 0; left: 0;
+    width: 6px;
+    background-color: $v-red;
   }
-}
-
-.container {
-  position: relative;
-  z-index: 1;
-}
-
-/* --- BAL OLDAL: FEHÉR DOBOZ (VERTREND STÍLUS) --- */
-.v-hero-content-box {
-  border-left: 8px solid $v-red;
-  border-radius: 0; 
-  position: relative;
-  z-index: 2;
   
-  /* A fekete címke */
   .v-hero-badge {
+    background-color: rgba($v-red, 0.15); 
+    color: $v-red;
     font-size: 0.8rem;
     font-weight: 800;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
+    padding: 8px 16px;
+    border-radius: 30px;
   }
-
 
   .v-hero-title {
     font-size: clamp(2.2rem, 4vw, 3.8rem);
@@ -59,127 +80,115 @@ $v-bg-light: #eef1f5;
 
   .v-hero-desc {
     font-size: 1.1rem;
-    color: $v-gray;
-    line-height: 1.8;
-    font-weight: 500;
+    color: $v-dark; 
+    line-height: 1.7;
+    font-weight: 600; 
   }
 }
 
 /* --- GOMBOK --- */
 .v-btn {
-  padding: 16px 32px;
-  font-size: 0.9rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 28px;
+  font-size: 0.95rem;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
+  letter-spacing: 0.5px;
   text-decoration: none;
-  border-radius: 0;
+  border-radius: 8px; 
   transition: all 0.3s ease;
   border: 2px solid transparent;
   cursor: pointer;
 }
 
-.v-btn-dark {
-  background-color: $v-dark;
+.v-btn-primary {
+  background-color: $v-red;
   color: #fff;
   
   &:hover {
-    background-color: $v-red;
+    background-color: #921717;
     color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba($v-red, 0.3);
   }
 }
 
 .v-btn-outline {
-  background-color: transparent;
-  border-color: $v-dark;
+  background-color: rgba(255, 255, 255, 0.5); 
+  border-color: rgba($v-dark, 0.4);
   color: $v-dark;
   
   &:hover {
+    border-color: $v-dark;
     background-color: $v-dark;
     color: #fff;
-  }
-}
-
-/* --- JOBB OLDAL: SÖTÉT SZOLGÁLTATÁS PANEL --- */
-.v-services-panel {
-  background-color: $v-dark;
-  border-radius: 0;
-  border-right: 4px solid $v-red; /* Kiegészítő piros vonal a túloldalon */
-}
-
-/* Szolgáltatás lista elemek */
-.v-service-item {
-  display: flex;
-  align-items: center;
-  background-color: #1a1a1a;
-  padding: 1rem 1.5rem;
-  border: 1px solid #2a2a2a;
-  transition: all 0.3s ease;
-  color: #ffffff;
-  
-  .icon-box {
-    color: $v-red;
-    font-size: 1.5rem;
-    margin-right: 1.5rem;
-    transition: color 0.3s ease;
-  }
-
-  .service-name {
-    font-size: 1rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
-  .arrow {
-    font-size: 1.2rem;
-    color: #555;
-    transition: all 0.3s ease;
-  }
-
-  /* Hover effektus: Piros lesz az egész sáv */
-  &:hover {
-    background-color: $v-red;
-    border-color: $v-red;
-    transform: translateX(-10px); /* Kicsit balra ugrik */
-    
-    .icon-box, .arrow {
-      color: #ffffff;
-    }
-    
-    .arrow {
-      transform: translateX(5px); /* A nyíl jobbra mozdul */
-    }
+    transform: translateY(-2px);
   }
 }
 
 /* =========================================
-   MOBIL OPTIMALIZÁLÁS
+   MOBIL OPTIMALIZÁLÁS (Itt látszik a videó kitűnően)
    ========================================= */
 @media (max-width: 991px) {
   .v-hero-section {
-    min-height: auto;
-    padding: 2rem 0;
+    min-height: 75vh; 
   }
   
-  .v-hero-content-box {
-    border-left-width: 5px;
+  .v-hero-overlay {
+    /* Mobilon egyenletesebb, sötétebb réteg, hogy a fehér szöveg üssön, de a videó is látszódjon */
+    background: rgba(17, 17, 17, 0.55); 
   }
 
+  /* MOBILON ELTŰNJÖK A TEJÜVEG HÁTTÉRT ÉS A BLUR-T, HOGY A VIDEÓ LÁTSZÓDJON */
+  .v-hero-content-box {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+
+    /* A bal oldali piros csíkot is leszedjük mobilon, mert felesleges */
+    &::before {
+      display: none;
+    }
+
+    /* Mobilon átállítjuk a szövegeket fehérre, hogy a sötétített videón tökéletesen olvashatóak legyenek */
+    .v-hero-badge {
+      background-color: rgba(168, 28, 28, 0.8) !important;
+      color: #ffffff !important;
+    }
+
+    .v-hero-title {
+      color: #ffffff !important;
+    }
+
+    .v-hero-desc {
+      color: rgba(255, 255, 255, 0.9) !important;
+    }
+  }
+
+  /* Mobilon a második gomb is kapjon szép sötét / áttetsző stílust, hogy illeszkedjen */
+  .v-btn-outline {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+    
+    &:hover {
+      background-color: #ffffff;
+      color: $v-dark;
+      border-color: #ffffff;
+    }
+  }
+
+  .v-hero-title {
+    font-size: clamp(2.1rem, 7vw, 2.6rem); 
+  }
+  
   .v-btn {
     width: 100%;
     padding: 14px 0;
-  }
-  
-  .v-service-item {
-    padding: 1rem;
-    
-    .service-name {
-      font-size: 0.85rem;
-    }
-    .icon-box {
-      margin-right: 1rem;
-      font-size: 1.2rem;
-    }
   }
 }
